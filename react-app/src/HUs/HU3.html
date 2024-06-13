@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Ejemplo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .container {
+            padding: 20px;
+        }
+        .welcome {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .gallery img {
+            width: 30%;
+            margin-bottom: 20px;
+        }
+        .articles, .contact-form {
+            margin-bottom: 40px;
+        }
+        .articles h2, .contact-form h2 {
+            margin-bottom: 20px;
+        }
+        .article-item {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+        }
+        .contact-form input, .contact-form textarea {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .contact-form button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .contact-form button:hover {
+            background-color: #45a049;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Página de Ejemplo</h1>
+    </header>
+    <nav>
+        <a href="#welcome">Bienvenida</a>
+        <a href="#gallery">Galería</a>
+        <a href="#articles">Artículos</a>
+        <a href="#contact">Contacto</a>
+    </nav>
+    <div class="container">
+        <section id="welcome" class="welcome">
+            <h2>Bienvenidos a nuestra página</h2>
+            <p>Estamos encantados de tenerte aquí. Explora nuestras secciones para saber más sobre nosotros.</p>
+        </section>
+        <section id="gallery" class="gallery">
+            <img src="https://via.placeholder.com/300x200" alt="Imagen 1">
+            <img src="https://via.placeholder.com/300x200" alt="Imagen 2">
+            <img src="https://via.placeholder.com/300x200" alt="Imagen 3">
+        </section>
+        <section id="articles" class="articles">
+            <h2>Artículos Recientes</h2>
+            <div class="article-item">
+                <h3>Artículo 1</h3>
+                <p>Resumen del artículo 1.</p>
+            </div>
+            <div class="article-item">
+                <h3>Artículo 2</h3>
+                <p>Resumen del artículo 2.</p>
+            </div>
+            <div class="article-item">
+                <h3>Artículo 3</h3>
+                <p>Resumen del artículo 3.</p>
+            </div>
+        </section>
+        <section id="contact" class="contact-form">
+            <h2>Contacto</h2>
+            <form onsubmit="submitForm(event)">
+                <input type="text" id="name" placeholder="Nombre" required>
+                <input type="email" id="email" placeholder="Correo electrónico" required>
+                <textarea id="message" placeholder="Mensaje" required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+            <div id="form-result" style="display: none;"></div>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2024 Página de Ejemplo. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            const resultDiv = document.getElementById('form-result');
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = `Gracias por tu mensaje, ${name}. Nos pondremos en contacto contigo en ${email} lo antes posible.`;
+
+            // Limpiar el formulario
+            document.querySelector('form').reset();
+        }
+    </script>
+</body>
+</html>

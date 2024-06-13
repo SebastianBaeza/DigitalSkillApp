@@ -24,6 +24,7 @@
 // }
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Entrypoint from './Entrypoint.jsx';
+import HU8 from './HUs/HU8/HU8.jsx';
 import './App.css';
 
 // import Register from './user/Register';
@@ -44,6 +45,7 @@ export function App () {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Entrypoint />} />
+              <Route path="/HUs/HU8/" element={<HU8 />} />
               {/* <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/sound" element={<Sonido />} />

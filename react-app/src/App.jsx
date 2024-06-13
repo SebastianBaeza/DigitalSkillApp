@@ -1,32 +1,8 @@
-// import './App.css'
-// import { TwitterFollowCard } from './TwitterFollowCard'
-
-// export function App () {
-    
-//     return (
-        
-//         <section className='App'>
-//             <button>Click me</button>
-//             <TwitterFollowCard 
-//                 Username="@panchuwu"
-//                 isFollowing
-//                 name="Francisca González"
-//             />
-
-//             <TwitterFollowCard
-//                 Username="@panchuwu"
-//                 isFollowing={false}
-//                 name="Francisca González"
-//             />
-//         </section>
-        
-//     )
-// }
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Entrypoint from './Entrypoint.jsx';
 import './App.css';
 
-// import Register from './user/Register';
+import Register from './HUs/HU1.jsx';
 // import Composer_index from './Composer_index';
 // import Composer from './Composer';
 // import Perfil from './user/Perfil';
@@ -44,8 +20,9 @@ export function App () {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Entrypoint />} />
+              <Route path="/HUs/HU1" element={<Register />} />
               {/* <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
+              
               <Route path="/sound" element={<Sonido />} />
               <Route path="/compositor" element={<Composer_index />} />
               <Route path="/compositor/:id" element={<Composer />} />

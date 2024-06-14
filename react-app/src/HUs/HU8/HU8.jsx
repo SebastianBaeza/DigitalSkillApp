@@ -1,10 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Typography, TextField, Button, Box } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import './HU8.css';
 
 export default function HU8() {
-  const [question, setQuestion] = useState("¿Cuál es la capital de Francia?");
+  const preguntas = [
+    '¿Cuál es la capital de Francia?',
+    '¿Cuánto son 2 + 2?',
+    '¿Los fideos se parten o no?',
+    '¿Queso rallado a gusto?',
+  ];
+
+  const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    handleQuestionDisplay();
+  }, []);
+
+  const handleQuestionDisplay = () => {
+    const randomNumber = Math.floor(Math.random() * preguntas.length);
+    setQuestion(preguntas[randomNumber]);
+  };
 
   const handleInputChange = (event) => {
     setAnswer(event.target.value);
@@ -13,6 +31,10 @@ export default function HU8() {
   const handleSubmit = () => {
     console.log("Respuesta guardada:", answer);
     // Puedes almacenar la respuesta en una base de datos o en otro lugar
+  };
+
+  const handleBackToHome = () => {
+    navigate('/');
   };
 
   return (
@@ -37,6 +59,14 @@ export default function HU8() {
           Guardar Respuesta
         </Button>
       </Box>
+      <Button
+        variant="contained"
+        color="primary"
+        sx={{ mt: 2 }}
+        onClick={handleBackToHome}
+      >
+        Volver al inicio
+      </Button>
     </Container>
   );
 }

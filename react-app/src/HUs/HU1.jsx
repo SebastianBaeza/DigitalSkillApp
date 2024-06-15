@@ -26,40 +26,6 @@ export default function HU1() {
         });
         }
     }; 
-    // Blockly.Blocks['math_arithmetic'] = {
-    //     init: function() {
-    //     this.jsonInit({
-    //         "message0": "%1 %2 %3",
-    //         "args0": [
-    //         {
-    //             "type": "input_value",
-    //             "name": "NUM1",
-    //             "check": "Number"
-    //         },
-    //         {
-    //             "type": "field_dropdown",
-    //             "name": "OP",
-    //             "options": [
-    //             ["+", "ADD"],
-    //             ["-", "MINUS"],
-    //             ["*", "MULTIPLY"],
-    //             ["/", "DIVIDE"]
-    //             ]
-    //         },
-    //         {
-    //             "type": "input_value",
-    //             "name": "NUM2",
-    //             "check": "Number"
-    //         }
-    //         ],
-    //         "previousStatement": null,
-    //         "nextStatement": null,
-    //         "colour": 120,
-    //         "tooltip": "Este bloque realiza operaciones aritméticas básicas",
-    //         "helpUrl": ""
-    //     });
-    //     }
-    // }; 
   useEffect(() => {
         const toolbox = {
         "kind": "flyoutToolbox",
@@ -69,6 +35,7 @@ export default function HU1() {
             {"kind": "block", "type": "logic_compare"},
             {"kind": "block", "type": "math_number"},
             {"kind": "block", "type": "math_arithmetic"},
+            {"kind": "block", "type": "text"},
             // Add other blocks here
         ]
         };

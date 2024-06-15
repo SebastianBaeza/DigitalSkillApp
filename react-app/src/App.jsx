@@ -2,7 +2,7 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Entrypoint from './Entrypoint.jsx';
 import './App.css';
 
-import Register from './HUs/HU1.jsx';
+import HU1 from './HUs/HU1';
 // import Composer_index from './Composer_index';
 // import Composer from './Composer';
 // import Perfil from './user/Perfil';
@@ -20,9 +20,8 @@ export function App () {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Entrypoint />} />
-              <Route path="/HUs/HU1" element={<Register />} />
+              <Route path="/HU1" element={<HU1 />} />
               {/* <Route path="/login" element={<Login />} />
-              
               <Route path="/sound" element={<Sonido />} />
               <Route path="/compositor" element={<Composer_index />} />
               <Route path="/compositor/:id" element={<Composer />} />

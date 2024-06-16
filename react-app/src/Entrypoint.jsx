@@ -23,7 +23,7 @@ return (
         <Button variant="contained" href="/HUs/HU2">HU2</Button>
         <Button variant="contained" href="/HUs/HU3">HU3</Button>
         <Button variant="contained" href="/HUs/HU4">HU4</Button>
-        <Button variant="contained" href="/HUs/HU5">HU5</Button>
+        <Button variant="contained" href="/HU05">HU5</Button>
         <Button variant="contained" href="/HUs/HU6">HU6</Button>
         <Button variant="contained" href="/HUs/HU7">HU7</Button>
         <Button variant="contained" href="/HUs/HU8">HU8</Button>

@@ -25,6 +25,7 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Entrypoint from './Entrypoint.jsx';
 import './App.css';
+import { HU05 } from './HU05.jsx';
 
 // import Register from './user/Register';
 // import Composer_index from './Composer_index';
@@ -44,8 +45,8 @@ export function App () {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Entrypoint />} />
-              {/* <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
+              <Route path="/HU05" element={<HU05 />} />
+              {/* <Route path="/register" element={<Register />} />
               <Route path="/sound" element={<Sonido />} />
               <Route path="/compositor" element={<Composer_index />} />
               <Route path="/compositor/:id" element={<Composer />} />

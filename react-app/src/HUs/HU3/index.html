@@ -9,6 +9,9 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         header {
             background-color: #4CAF50;
@@ -33,6 +36,7 @@
         }
         .container {
             padding: 20px;
+            flex: 1;
         }
         .welcome {
             text-align: center;
@@ -47,10 +51,10 @@
             width: 30%;
             margin-bottom: 20px;
         }
-        .articles, .contact-form {
+        .articles, .contact-form, .extra-content {
             margin-bottom: 40px;
         }
-        .articles h2, .contact-form h2 {
+        .articles h2, .contact-form h2, .extra-content h2 {
             margin-bottom: 20px;
         }
         .article-item {
@@ -83,15 +87,39 @@
             color: white;
             text-align: center;
             padding: 10px 0;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
+        }
+        .buttons {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .buttons button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .buttons button:hover {
+            background-color: #45a049;
+        }
+        .advertisement {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .advertisement img {
+            width: 728px;
+            height: 90px;
         }
     </style>
 </head>
 <body>
     <header>
         <h1>Página de Ejemplo</h1>
+        <div class="advertisement">
+            <img src="boton_descargar.jpg" alt="Publicidad de Encabezado">
+        </div>
     </header>
     <nav>
         <a href="#welcome">Bienvenida</a>
@@ -100,15 +128,24 @@
         <a href="#contact">Contacto</a>
     </nav>
     <div class="container">
+        <div class="advertisement">
+            <img src="boton_descargar.jpg" alt="Publicidad de Contenedor Superior">
+        </div>
         <section id="welcome" class="welcome">
             <h2>Bienvenidos a nuestra página</h2>
             <p>Estamos encantados de tenerte aquí. Explora nuestras secciones para saber más sobre nosotros.</p>
         </section>
+        <div class="advertisement">
+            <img src="boton_descargar.jpg" alt="Publicidad de Contenedor Medio">
+        </div>
         <section id="gallery" class="gallery">
             <img src="https://via.placeholder.com/300x200" alt="Imagen 1">
             <img src="https://via.placeholder.com/300x200" alt="Imagen 2">
             <img src="https://via.placeholder.com/300x200" alt="Imagen 3">
         </section>
+        <div class="advertisement">
+            <img src="boton_descargar.jpg" alt="Publicidad de Contenedor Inferior">
+        </div>
         <section id="articles" class="articles">
             <h2>Artículos Recientes</h2>
             <div class="article-item">
@@ -134,9 +171,24 @@
             </form>
             <div id="form-result" style="display: none;"></div>
         </section>
+        <div class="buttons">
+            <button onclick="changePage('pagina1.html')">Página 1</button>
+            <button onclick="changePage('pagina2.html')">Página 2</button>
+        </div>
+        <section id="section1" class="extra-content" style="display: none;">
+            <h2>Sección 1</h2>
+            <p>Contenido de la Sección 1.</p>
+        </section>
+        <section id="section2" class="extra-content" style="display: none;">
+            <h2>Sección 2</h2>
+            <p>Contenido de la Sección 2.</p>
+        </section>
     </div>
     <footer>
         <p>&copy; 2024 Página de Ejemplo. Todos los derechos reservados.</p>
+        <div class="advertisement">
+            <img src="boton_descargar.jpg" alt="Publicidad de Pie de Página">
+        </div>
     </footer>
 
     <script>
@@ -152,6 +204,16 @@
 
             // Limpiar el formulario
             document.querySelector('form').reset();
+        }
+
+        function showSection(sectionId) {
+            document.getElementById('section1').style.display = 'none';
+            document.getElementById('section2').style.display = 'none';
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        function changePage(page) {
+            window.location.href = page;
         }
     </script>
 </body>

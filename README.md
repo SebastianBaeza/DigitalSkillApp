@@ -2,7 +2,7 @@
 
 ## Wiki
 
-Puede acceder a la Wiki mediante el siguiente enlace.
+Puede acceder a la Wiki mediante el siguiente enlace: https://github.com/SebastianBaeza/DigitalSkillApp/wiki
 
 ## Aspectos técnicos relevantes
 

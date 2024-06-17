@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Typography, FormControl, FormControlLabel, RadioGroup, Radio, Checkbox, Button, Box } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
 import './HU9.css';
 
 export default function HU8() {
@@ -29,7 +28,6 @@ export default function HU8() {
 
   const [currentQuestion, setCurrentQuestion] = useState({});
   const [selectedOptions, setSelectedOptions] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     handleQuestionDisplay();
@@ -57,10 +55,6 @@ export default function HU8() {
   const handleSubmit = () => {
     console.log("Respuesta guardada:", selectedOptions);
     // Puedes almacenar la respuesta en una base de datos o en otro lugar
-  };
-
-  const handleBackToHome = () => {
-    navigate('/');
   };
 
   return (
@@ -103,7 +97,7 @@ export default function HU8() {
         variant="contained"
         color="primary"
         sx={{ mt: 2 }}
-        onClick={handleBackToHome}
+        href="/"
       >
         Volver al inicio
       </Button>

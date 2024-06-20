@@ -1,0 +1,36 @@
+.app {
+    display: flex;
+    height: 100vh; /* Asegura que el contenedor principal ocupe toda la altura de la ventana del navegador */
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #c9f5ff;
+    padding: 15px;
+    height: 100%; /* Establece la altura de la barra lateral al 100% de su contenedor (.app) */
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    margin: 10px 0;
+    height: 100%; /* Asegura que los elementos de la lista ocupen toda la altura de la barra lateral */
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+    display: block; /* Asegura que los enlaces llenen completamente el espacio del elemento de lista */
+    height: 100%; /* Asegura que los enlaces ocupen toda la altura del elemento de lista */
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+    background-color: #ffffff;
+    height: 100%; /* Establece la altura del área de contenido al 100% de su contenedor (.app) */
+}

@@ -24,6 +24,16 @@
 // }
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Entrypoint from './Entrypoint.jsx';
+import Competencia3 from './DigitalSkillApp/Competencia3.jsx';
+import Competencia4 from './DigitalSkillApp/Competencia4.jsx';
+import Tests_3_1 from './DigitalSkillApp/Creacion_Contenido_Digital/3-1/Tests.jsx';
+import Tests_3_2 from './DigitalSkillApp/Creacion_Contenido_Digital/3-2/Tests.jsx';
+import Tests_3_3 from './DigitalSkillApp/Creacion_Contenido_Digital/3-3/Tests.jsx';
+import Tests_3_4 from './DigitalSkillApp/Creacion_Contenido_Digital/3-4/Tests.jsx';
+import Tests_4_1 from './DigitalSkillApp/Seguridad/4-1/Tests.jsx';
+import Tests_4_2 from './DigitalSkillApp/Seguridad/4-2/Tests.jsx';
+import Tests_4_3 from './DigitalSkillApp/Seguridad/4-3/Tests.jsx';
+import Tests_4_4 from './DigitalSkillApp/Seguridad/4-4/Tests.jsx';
 import './App.css';
 
 // import Register from './user/Register';
@@ -44,6 +54,16 @@ export function App () {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Entrypoint />} />
+              <Route path="/DigitalSkillApp/Creacion-Contenido-Digital" element={<Competencia3 />} />
+              <Route path="/DigitalSkillApp/Seguridad" element={<Competencia4 />} />
+              <Route path="/DigitalSkillApp/Creacion-Contenido-Digital/3-1" element={<Tests_3_1 />} />
+              <Route path="/DigitalSkillApp/Creacion-Contenido-Digital/3-2" element={<Tests_3_2 />} />
+              <Route path="/DigitalSkillApp/Creacion-Contenido-Digital/3-3" element={<Tests_3_3 />} />
+              <Route path="/DigitalSkillApp/Creacion-Contenido-Digital/3-4" element={<Tests_3_4 />} />
+              <Route path="/DigitalSkillApp/Seguridad/4-1" element={<Tests_4_1 />} />
+              <Route path="/DigitalSkillApp/Seguridad/4-2" element={<Tests_4_2 />} />
+              <Route path="/DigitalSkillApp/Seguridad/4-3" element={<Tests_4_3 />} />
+              <Route path="/DigitalSkillApp/Seguridad/4-4" element={<Tests_4_4 />} />
               {/* <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/sound" element={<Sonido />} />

@@ -16,14 +16,15 @@ export default function Entrypoint() {
 return (
     <>
 	<Container sx={{textAlign: "center", marginTop: "30px"}}>
-		<Typography sx={{marginBottom: "50px"}} variant="h1" gutterBottom>INICIO</Typography>
+		<Typography sx={{marginBottom: "50px"}} variant="h1" gutterBottom>CREACION DE CONTENIDO DIGITAL</Typography>
         {/* <Typography id="quien" sx={{marginTop: "20px"}} variant="h2" gutterBottom>HU's</Typography> */}
-        {/* <Button variant="contained" href="/">Entrypoint</Button> */}
-        <Button variant="contained" href="/DigitalSkillApp/Creacion-Contenido-Digital">Competencia 3: Creación de Contenido Digital</Button>
-        <Button variant="contained" href="/DigitalSkillApp/Seguridad">Competencia 4: Seguridad</Button>
-        {/* <Button variant="contained" href="/HUs/HU3">HU3</Button>
-        <Button variant="contained" href="/HUs/HU4">HU4</Button>
-        <Button variant="contained" href="/HUs/HU5">HU5</Button>
+        <Button variant="contained" href="/">Volver al inicio</Button>
+        <Button variant="contained" href="/DigitalSkillApp/Creacion-Contenido-Digital/3-1">3.1</Button>
+        <Button variant="contained" href="/DigitalSkillApp/Creacion-Contenido-Digital/3-2">3.2</Button>
+        <Button variant="contained" href="/DigitalSkillApp/Creacion-Contenido-Digital/3-3">3.3</Button>
+        <Button variant="contained" href="/DigitalSkillApp/Creacion-Contenido-Digital/3-4">3.4</Button>
+
+        {/* <Button variant="contained" href="/HUs/HU5">HU5</Button>
         <Button variant="contained" href="/HUs/HU6">HU6</Button>
         <Button variant="contained" href="/HUs/HU7">HU7</Button>
         <Button variant="contained" href="/HUs/HU8">HU8</Button>

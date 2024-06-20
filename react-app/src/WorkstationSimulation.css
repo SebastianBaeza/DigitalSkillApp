@@ -1,0 +1,86 @@
+.simulation {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 200px;
+  position: absolute;
+  left: 240px; /* Ajustar según sea necesario */
+  top: 250px;
+}
+
+.simulation-view {
+  flex-grow: 1;
+  height: calc(100vh - 200px); /* Ajustar según sea necesario */
+  background-color: #f0f0f0;
+  position: relative;
+  display: flex;
+  align-items: center; /* Centrar verticalmente */
+  justify-content: center; /* Centrar horizontalmente */
+}
+
+.workspace {
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.person,
+.chair-top,
+.chair-bottom {
+  position: absolute;
+  bottom: 0;
+}
+
+.person img,
+.chair-top img,
+.chair-bottom img,
+.desk img,
+.screen img {
+  max-height: 80vh; /* Máximo alto del 80% de la altura de la ventana */
+  display: block;
+}
+
+.chair-top {
+  z-index: 2; /* Asegurar que la parte superior de la silla esté sobre la inferior */
+}
+
+.desk {
+  position: relative; /* Permite posicionar screen dentro de desk */
+  z-index: 3;
+
+}
+
+.screen {
+  position: absolute;
+  top: 22.2%; /* Ajusta este valor para bajar la pantalla */
+  left: 58%;
+  transform: translateX(-50%);
+  transform-origin: center; /* Rotación desde el centro inferior */
+  z-index: 1; /* Asegura que screen esté encima de desk */  
+
+}
+
+.person {
+  z-index: 3; /* Asegurar que la persona esté sobre las sillas */
+}
+
+.person img{
+  width: 100%; /* Ajustar el tamaño del escritorio */
+  max-width: 700px; /* Asegurar que el ancho máximo sea proporcional */
+}
+
+.desk img{
+  width: 100%; /* Ajustar el tamaño del escritorio */
+  max-width: 800px; /* Asegurar que el ancho máximo sea proporcional */
+}
+
+.screen img {
+  width: 90%; /* Ajustar el tamaño de la pantalla */
+  max-width: 800px; /* Asegurar que el ancho máximo sea proporcional */
+}

@@ -2,39 +2,37 @@ body {
     margin: 0;
     display: flex;
     flex-direction: column;
+    background-color: #f4f4f4;
 }
 
 .ppt-title {
     display: flex;
     background-color: #C43E1C;
     color: #fff;
-    font-size: 14px;
-    padding: 5px;
+    font-size: 15px;
+    padding: 10px;
     justify-content: center;
     align-items: top;
     width: 100%;
     box-sizing: border-box;
 }
 
-.ppt-toolbar-main {
-    border-radius: 12px;
-    border-color: gray;
-    border-bottom: 2;
-}
-
 .ppt-toolbar {
-    display: flex;
     flex-direction: row;
     justify-content: left;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    position: relative;
 }
 
 .ppt-toolbar-option {
-    font-size: 15px;
-    padding: 5px 12px 5px 20px;
+    font-size: 12px;
+    padding: 5px 12px 0 20px;
     border-radius: 0px;
-    border-color: #fff;
     border: none;
-    background-color: #fff;
+    background-color: #f4f4f4;
     box-shadow: none;
     cursor: pointer;
     margin-right: 10px;
@@ -47,14 +45,16 @@ body {
     min-height: 100px;
     box-shadow: #000;
     padding: 10px;
-    margin-bottom: 15px;
+    margin-top: 25px;
+    margin-bottom: 25px;
     cursor: pointer;
 }
 
 .ppt-slides-container {
     display: flex;
     flex-direction: row;
-    border-color: gray;
+    align-items: center;
+    background-color: #f4f4f4;
 }
 
 .ppt-sidebar {
@@ -62,21 +62,30 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    border-right: gray solid;
+    border-right: 1px gray solid;
     width: 15%;
     background-color: #f4f4f4;
     padding: 10px;
     overflow-y: auto;
-    height: calc(100vh - 85px);
+    height: calc(100vh - 170px);
 }
 
 .ppt-editor {
-    flex: 1;
     display: flex;
     flex-direction: column;
-    background-color: #ffffff;
+    background-color: #fff;
     border: 2px gray solid;
-    width: 150px;
-    height: 100px;
+    width: 750px;
+    height: 500px;
     padding: 20px;
+    margin: auto;
+}
+
+.ppt-secondary-menu {
+    background-color: #fff;
+    border-radius: 12px;
+    margin-bottom: 5px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
 }

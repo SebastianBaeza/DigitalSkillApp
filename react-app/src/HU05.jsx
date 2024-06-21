@@ -3,6 +3,7 @@ import { Title } from "./assets/HUs/HU05/Title";
 import { PptToolbar } from "./assets/HUs/HU05/PptToolbar";
 import { PptSidebar } from "./assets/HUs/HU05/PptSidebar";
 import { PptEditor } from "./assets/HUs/HU05/PptEditor";
+import { PptSecondaryMenu } from "./assets/HUs/HU05/PptSecondaryMenu";
 
 import './assets/HUs/HU05/styles/HU05.css';
 
@@ -12,6 +13,8 @@ export function HU05 () {
     ]);
     
     const [currentSlide, setCurrentSlide] = useState(slides[0]);
+
+    const [menuOption, setMenuOption] = useState('inicio');
     
     const addSlide = () => {
         const newSlide = {
@@ -26,11 +29,12 @@ export function HU05 () {
     return (
         <>
             <Title name="Historia 5" />
-            <PptToolbar addSlide={addSlide}/>
-            <aside className="ppt-slides-container">
+            <PptToolbar setMenuOption={setMenuOption}/>
+            <PptSecondaryMenu addSlide={addSlide} menuOption={menuOption} />
+            <div className="ppt-slides-container">
                 <PptSidebar slides={slides} setCurrentSlide={setCurrentSlide}/>
                 <PptEditor slide={currentSlide} />
-            </aside>
+            </div>
         </>
     )
 }

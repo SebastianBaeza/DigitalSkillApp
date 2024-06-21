@@ -1,16 +1,14 @@
-import { Box, Tabs, Tab } from "@mui/material";
+import React from 'react';
 
-export function PptToolbar () {
+export function PptToolbar ({ addSlide }) {
+  return (
+    <div className="ppt-toolbar">
+      <button className="ppt-toolbar-option">File</button>
+      <button className="ppt-toolbar-option">Edit</button>
+      <button className="ppt-toolbar-option">View</button>
+      <button className="ppt-toolbar-option" onClick={addSlide}>Añadir Diapositiva</button>
+    </div>
+  );
+};
 
-    return (
-        <>
-        <Box sx={{borderBottom: 1, borderColor: "divider"}}>
-            <Tabs className="ppt-toolbar-options">
-                <Tab label="Item One"/>
-                <Tab label="Item Two"/>
-                <Tab label="Item Three"/>
-            </Tabs>
-        </Box>
-        </>
-    )
-}
+export default PptToolbar;

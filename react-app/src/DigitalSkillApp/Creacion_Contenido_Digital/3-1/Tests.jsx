@@ -26,7 +26,7 @@ return (
         <Button variant="contained" href="/HUs/HU5">HU5</Button>
         <Button variant="contained" href="/HUs/HU6">HU6</Button>
         <Button variant="contained" href="/HUs/HU7">HU7</Button>
-        <Button variant="contained" href="/HUs/HU8">HU8</Button>
+        <Button variant="contained" href="/DigitalSkillApp/Creacion-Contenido-Digital/3-1/Pregunta_Desarrollo">HU8</Button>
         <Button variant="contained" href="/HUs/HU9">HU9</Button>
 	</Container>
     </>

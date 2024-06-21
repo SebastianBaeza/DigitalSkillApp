@@ -27,6 +27,7 @@ import Entrypoint from './Entrypoint.jsx';
 import Competencia3 from './DigitalSkillApp/Competencia3.jsx';
 import Competencia4 from './DigitalSkillApp/Competencia4.jsx';
 import Tests_3_1 from './DigitalSkillApp/Creacion_Contenido_Digital/3-1/Tests.jsx';
+import Desarrollo_3_1 from './DigitalSkillApp/Creacion_Contenido_Digital/3-1/Pregunta_Desarrollo/HU8.jsx';
 import Tests_3_2 from './DigitalSkillApp/Creacion_Contenido_Digital/3-2/Tests.jsx';
 import Tests_3_3 from './DigitalSkillApp/Creacion_Contenido_Digital/3-3/Tests.jsx';
 import Tests_3_4 from './DigitalSkillApp/Creacion_Contenido_Digital/3-4/Tests.jsx';
@@ -47,6 +48,7 @@ import './App.css';
 // import Sonido from './Sonido';
 // import Draw from './Actividades/Draw';
 // import AddLeccionr from './AddLeccion';
+// DigitalSkillApp/Creacion_Contenido_Digital/3-1/Pregunta_Desarrollo/HU8.jsx
 
 export function App () {
 
@@ -57,6 +59,7 @@ export function App () {
               <Route path="/DigitalSkillApp/Creacion-Contenido-Digital" element={<Competencia3 />} />
               <Route path="/DigitalSkillApp/Seguridad" element={<Competencia4 />} />
               <Route path="/DigitalSkillApp/Creacion-Contenido-Digital/3-1" element={<Tests_3_1 />} />
+              <Route path="/DigitalSkillApp/Creacion-Contenido-Digital/3-1/Pregunta_Desarrollo" element={<Desarrollo_3_1 />} />
               <Route path="/DigitalSkillApp/Creacion-Contenido-Digital/3-2" element={<Tests_3_2 />} />
               <Route path="/DigitalSkillApp/Creacion-Contenido-Digital/3-3" element={<Tests_3_3 />} />
               <Route path="/DigitalSkillApp/Creacion-Contenido-Digital/3-4" element={<Tests_3_4 />} />

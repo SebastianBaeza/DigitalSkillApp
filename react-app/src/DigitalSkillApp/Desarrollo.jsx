@@ -8,7 +8,7 @@ export default function Desarrollo({ competencia, nivelPregunta }) {
   const [answer, setAnswer] = useState("");
   const [response, setResponse] = useState("");
 
-  const api_key = "sk-proj-iEQXamAilQ04mfh0aEreT3BlbkFJpGwkAdACuusOoGCqEfeX";
+  const api_key = "";
   const model_id = "gpt-4";
   // const competencia = "Creación de Contenidos Digitales. Esta competencia implica la capacidad de crear y editar contenidos digitales en diversos formatos. Incluye la habilidad de expresarse eficazmente a través de medios digitales. Los niveles de esta competencia van desde la identificación y selección básica de formas simples de contenido digital hasta la resolución avanzada de problemas y la innovación en la creación de contenidos."; // Se puede modificar para otras competencias
   // const nivel = "basico";

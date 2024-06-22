@@ -20,7 +20,7 @@ body {
 .ppt-toolbar {
     flex-direction: row;
     justify-content: left;
-    height: 50px;
+    height: 25px;
     display: flex;
     align-items: center;
     padding: 0 20px;
@@ -28,8 +28,8 @@ body {
 }
 
 .ppt-toolbar-option {
-    font-size: 14px;
-    padding: 5px 8px 0 16px;
+    font-size: 0.85rem;
+    padding: 5px 8px 0 12px;
     border-radius: 0px;
     border: none;
     background-color: #f4f4f4;
@@ -73,6 +73,7 @@ body {
 .ppt-editor {
     display: flex;
     flex-direction: column;
+    align-items: center;
     background-color: #fff;
     border: 2px gray solid;
     width: 750px;
@@ -84,8 +85,54 @@ body {
 .ppt-secondary-menu {
     background-color: #fff;
     border-radius: 9px;
-    margin: 5px 5px 0 5px;
+    margin: 5px 8px 0 8px;
     padding: 15px;
     display: flex;
     align-items: center;
 }
+
+.ppt-secondary-menu button {
+    font-size: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border: none;
+    background-color: #fff;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.ppt-text-box {
+    width: 80%; /* O cualquier ancho inicial que prefieras */
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    resize: both; /* Deshabilitar el estilo de redimensionamiento predeterminado */
+    position: relative;
+    overflow: hidden; /* Ocultar el pseudo-elemento cuando no se está redimensionando */
+    outline: none;
+    border: 1px dashed #000;
+}
+
+.ppt-text-box:focus {
+    outline: none;
+    border: 1px dashed #000;
+}
+
+.ppt-text-box::after {
+    content: '';
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    cursor: se-resize;
+}
+
+.ppt-text-box::-webkit-resizer {
+    display: none;
+}
+

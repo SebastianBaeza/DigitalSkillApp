@@ -1,12 +1,29 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClipboard } from '@fortawesome/free-regular-svg-icons';
+import { faImage, faPlus } from '@fortawesome/free-solid-svg-icons';
 
-export function PptSecondaryMenu ({ addSlide, menuOption }) {
+export function PptSecondaryMenu ({ addSlide, onPaste, menuOption }) {
   return (
     <div className="ppt-secondary-menu">
       {menuOption === 'inicio' && (
         <>
-          <button>Pegar</button>
-          <button onClick={addSlide}>Añadir Diapositiva</button>
+          <button onClick={onPaste}>
+            <div>
+              <FontAwesomeIcon icon={faClipboard} />
+            </div>
+            <div>
+              Pegar
+            </div>
+          </button>
+          <button onClick={addSlide}>
+            <div>
+              <FontAwesomeIcon icon={faPlus} />
+            </div>
+            <div>
+              Añadir Diapositiva
+            </div>
+          </button>
           <button>Fuente</button>
         </>
       )}

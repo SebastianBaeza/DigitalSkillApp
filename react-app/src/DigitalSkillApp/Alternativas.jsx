@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Typography, TextField, Button, Box } from '@mui/material';
+import { Container, Typography, FormControlLabel, RadioGroup, Radio, Checkbox, Button, Box } from '@mui/material';
 import axios from 'axios';
 import './Preguntas.css';
 
-export default function Desarrollo({ competencia, nivelPregunta }) {
-  const [question, setQuestion] = useState("");
-  const [answer, setAnswer] = useState("");
+export default function HU8({ competencia, nivelPregunta }) {
+  const [currentQuestion, setCurrentQuestion] = useState({});
+  const [selectedOptions, setSelectedOptions] = useState([]);
   const [response, setResponse] = useState("");
 
   const api_key = "";
@@ -13,7 +13,7 @@ export default function Desarrollo({ competencia, nivelPregunta }) {
 
   useEffect(() => {
     generateQuestion();
-  }, []);
+  }, [competencia, nivelPregunta]);
 
   const generateQuestion = async () => {
     const request_data = {
@@ -42,13 +42,20 @@ export default function Desarrollo({ competencia, nivelPregunta }) {
           "Authorization": `Bearer ${api_key}`
         }
       });
-      setQuestion(result.data.choices[0].message.content);
+      const content = result.data.choices[0].message.content;
+      const lines = content.split("\n").filter(line => line.trim() !== "");
+      const pregunta = lines[0];
+      const opciones = lines.slice(1, 6);
+      const multiple = opciones.some(option => option.toLowerCase().includes("multiple: true"));
+      
+      setCurrentQuestion({ pregunta, opciones, multiple });
+      setSelectedOptions([]);
     } catch (error) {
       console.error("Error en la solicitud:", error);
     }
   };
 
-  const analyzeAnswer = async () => {
+  const verifyAnswer = async () => {
     const request_data = {
       model: model_id,
       messages: [
@@ -64,7 +71,7 @@ export default function Desarrollo({ competencia, nivelPregunta }) {
         },
         {
           role: "user",
-          content: `Mi respuesta a la pregunta ${question} es: ${answer}`
+          content: `Mi respuesta a la pregunta ${pregunta} es: ${selectedOptions.join(", ")}`
         }
       ],
       max_tokens: 100,
@@ -85,27 +92,50 @@ export default function Desarrollo({ competencia, nivelPregunta }) {
     }
   };
 
-  const handleInputChange = (event) => {
-    setAnswer(event.target.value);
+  const handleOptionChange = (event) => {
+    const value = event.target.value;
+    if (currentQuestion.multiple) {
+      if (selectedOptions.includes(value)) {
+        setSelectedOptions(selectedOptions.filter(option => option !== value));
+      } else {
+        setSelectedOptions([...selectedOptions, value]);
+      }
+    } else {
+      setSelectedOptions([value]);
+    }
   };
 
   const handleSubmit = () => {
-    analyzeAnswer();
+    verifyAnswer();
   };
 
   return (
     <Container sx={{ textAlign: "center", marginTop: "30px" }}>
-      <Typography variant="h5" gutterBottom>
-        {question}
+      <Typography variant="h1" gutterBottom>
+        {currentQuestion.pregunta}
       </Typography>
       <Box component="form" noValidate autoComplete="off" sx={{ mt: 2 }}>
-        <TextField
-          variant="outlined"
-          fullWidth
-          label="Escribe tu respuesta aquí"
-          value={answer}
-          onChange={handleInputChange}
-        />
+        {currentQuestion.multiple ? (
+          currentQuestion.opciones?.map((option, index) => (
+            <FormControlLabel
+              key={index}
+              control={
+                <Checkbox
+                  checked={selectedOptions.includes(option)}
+                  onChange={handleOptionChange}
+                  value={option}
+                />
+              }
+              label={option}
+            />
+          ))
+        ) : (
+          <RadioGroup value={selectedOptions[0] || ''} onChange={handleOptionChange}>
+            {currentQuestion.opciones?.map((option, index) => (
+              <FormControlLabel key={index} value={option} control={<Radio />} label={option} />
+            ))}
+          </RadioGroup>
+        )}
         <Button
           variant="contained"
           color="primary"

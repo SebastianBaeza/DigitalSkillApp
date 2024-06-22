@@ -19,7 +19,7 @@ return (
         <Typography sx={{marginBottom: "50px"}} variant="h1" gutterBottom>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</Typography>
             <Typography id="quien" sx={{marginTop: "20px"}} variant="h2" gutterBottom>HU's</Typography>
             <Button variant="contained" href="/">Entrypoint</Button>
-            <Button variant="contained" href="/HU1">HU1</Button>
+            <Button variant="contained" href="/HU01">HU1</Button>
             <Button variant="contained" href="/HUs/HU2">HU2</Button>
             <Button variant="contained" href="/HUs/HU3">HU3</Button>
             <Button variant="contained" href="/HUs/HU4">HU4</Button>

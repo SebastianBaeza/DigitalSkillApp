@@ -25,12 +25,10 @@ export default function Desarrollo({ competencia, nivelPregunta }) {
           role: "system",
           content: `
             Contexto:
-            Estás evaluando las habilidades de creación de contenidos digitales de las personas como parte del marco de competencias digitales. El enfoque está en su capacidad para crear y editar contenidos digitales en varios formatos y expresarse a través de medios digitales.
-            Descripción de la Competencia:
-            ${competencia}
+            Estás evaluando la competencia digital del usuario, basado en el modelo de competencia digital para la ciudadanía DigComp 2.2. Eres un experto en el tema, en especifico en la competencia ${competencia}. Se requiere que generes preguntas o valides la correctitud de las respuestas según corresponda al caso.
             Prompt:
             Pregunta para Medir la Competencia
-            Crea una pregunta que se pueda utilizar para medir la competencia de una persona en la creación de contenidos digitales. La pregunta debe estar estructurada en texto plano, para cubrir el nivel de competencia ${nivelPregunta}, con respuestas proporcionadas de la misma forma. Se deben crear preguntas que hagan pensar al usuario, por tanto, se debe evitar mientras sea posible preguntar al usuario la percepcion que tiene de sus propios conocimientos. Debes solamente expresar la pregunta, y mantener la información extra internamente.
+            Crea una pregunta que se pueda utilizar para medir la competencia de una persona en la competencia digital mencionada. La pregunta debe estar estructurada en texto plano, para cubrir el nivel ${nivelPregunta} de la competencia correspondiente, con respuestas proporcionadas de la misma forma. Se deben crear preguntas que hagan pensar al usuario, por tanto, se debe evitar mientras sea posible preguntar al usuario la percepcion que tiene de sus propios conocimientos.
           `
         }
       ],
@@ -60,13 +58,10 @@ export default function Desarrollo({ competencia, nivelPregunta }) {
           role: "system",
           content: `
             Contexto:
-            Estás evaluando las habilidades de creación de contenidos digitales de las personas como parte del marco de competencias digitales. El enfoque está en su capacidad para crear y editar contenidos digitales en varios formatos y expresarse a través de medios digitales.
-            Descripción de la Competencia:
-            ${competencia}
-            Esta competencia implica la capacidad de crear y editar contenidos digitales en diversos formatos. Incluye la habilidad de expresarse eficazmente a través de medios digitales. Los niveles de esta competencia van desde la identificación y selección básica de formas simples de contenido digital hasta la resolución avanzada de problemas y la innovación en la creación de contenidos.
+            Estás evaluando la competencia digital del usuario, basado en el modelo de competencia digital para la ciudadanía DigComp 2.2. Eres un experto en el tema, en especifico en la competencia ${competencia}. Se requiere que generes preguntas o valides la correctitud de las respuestas según corresponda al caso.
             Prompt:
             Analisis de respuesta
-            Ante una pregunta entregada, evaluar (según tus propios conocimientos y el marco de competencias) el grado de exito del usuario, ubicandolo en 3 estados distintos: Fracaso, o grado 1 o 2 según el logro de la respuesta para el nivel correspondiente de la pregunta.
+            Ante una pregunta entregada, evaluar (según tus propios conocimientos y el marco de competencias) el grado de exito del usuario para el nivel ${nivelPregunta}, ubicandolo en 3 estados distintos: Fracaso, o grado 1 o 2 según el logro de la respuesta para el nivel correspondiente de la pregunta.
           `
         },
         {

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { PptTextBox } from './PptTextBox';
+import ResizableTextBox from './ResizableTextBox';
+import PptSlide from './PptSlide';
 
 export function PptEditor ({ slide }) {
   const [content, setContent] = useState(slide.content);
@@ -11,7 +13,9 @@ export function PptEditor ({ slide }) {
   return (
     <div className="ppt-editor">
       <h2>{slide.title}</h2>
-      <PptTextBox initialText={content} onUpdate={handleContentUpdate} />
+      <ResizableTextBox />
+      <ResizableTextBox />
+      <ResizableTextBox />
     </div>
   );
 };

@@ -26,6 +26,10 @@ export function HU05 () {
         setCurrentSlide(newSlide);
     };
 
+    const deleteSlide = () => {
+        setSlides(slides.filter(slide => slide.id !== currentSlide.id));
+    };
+
     const onPaste = () => {
         try {
           const clipboardData = navigator.clipboard.readText();
@@ -39,7 +43,7 @@ export function HU05 () {
         <>
             <Title name="Historia 5" />
             <PptToolbar setMenuOption={setMenuOption}/>
-            <PptSecondaryMenu addSlide={addSlide} onPaste={onPaste} menuOption={menuOption} />
+            <PptSecondaryMenu addSlide={addSlide} onPaste={onPaste} deleteSlide={deleteSlide} menuOption={menuOption} />
             <div className="ppt-slides-container">
                 <PptSidebar slides={slides} setCurrentSlide={setCurrentSlide}/>
                 <PptEditor slide={currentSlide} />

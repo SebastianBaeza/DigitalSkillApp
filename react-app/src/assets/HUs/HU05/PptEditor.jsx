@@ -16,6 +16,7 @@ export function PptEditor ({ slide }) {
       <ResizableTextBox />
       <ResizableTextBox />
       <ResizableTextBox />
+      <img src='https://gogocatrina.com/wp-content/uploads/2021/11/smiling-friends-adult-swim.jpg' style={{height:"260px", width: "400px"}}/>
     </div>
   );
 };

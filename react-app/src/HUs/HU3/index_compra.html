@@ -213,6 +213,85 @@
             text-decoration: none;
             cursor: pointer;
         }
+        .fake-warning-fixed {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            z-index: 1000; 
+        }
+        .fake-warning-fixed:hover {
+            background-color: darkred;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+            position: relative;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .fake-page-form {
+            text-align: left;
+        }
+
+        .fake-page-form label {
+            display: block;
+            margin: 10px 0;
+        }
+
+        .fake-page-form button {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .fake-page-form button:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
@@ -326,6 +405,21 @@
         </div>
     </div>
 
+    <div id="fake-page-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('fake-page-modal')">&times;</span>
+            <h2>Reportar Página Falsa</h2>
+            <form class="fake-page-form">
+                <label><input type="checkbox" name="suspicion" value="Anuncio sospechoso"> Anuncio sospechoso</label>
+                <label><input type="checkbox" name="suspicion" value="URL extraña"> URL extraña</label>
+                <label><input type="checkbox" name="suspicion" value="Precios inusualmente bajos"> Precios inusualmente bajos</label>
+                <label><input type="checkbox" name="suspicion" value="Información de producto errado"> Información de producto errado</label>
+                <label><input type="checkbox" name="suspicion" value="Información de contacto faltante"> Información de contacto faltante</label>
+                <button type="button" onclick="endEvaluation()">Terminar Evaluación</button>
+            </form>
+        </div>
+    </div>
+
     <footer>
         <p>&copy; 2024 Página de Compras. Todos los derechos reservados.</p>
         <div class="advertisement" id="footer-ad">
@@ -375,6 +469,7 @@
                 closeModal('credit-card-modal');
                 cart = [];
                 renderCart();
+                document.getElementById('fake-page-modal').style.display = 'block';
             } else {
                 alert('Datos de tarjeta inválidos. Por favor, revise e intente nuevamente.');
             }
@@ -422,9 +517,9 @@
 
 
 
-        const publicidadFake_arriba = true;
+        const publicidadFake_arriba = false;
         const publicidadFake_abajo = false;
-        const celularGratis = true;
+        const celularGratis = false;
         const audifonosGratis = false;
 
 
@@ -459,7 +554,7 @@
             warningButton.textContent = '¡Es una pagina falsa!';
             warningButton.classList.add('fake-warning-fixed');
             warningButton.onclick = function() {
-                alert('Esta página es falsa');
+                document.getElementById('fake-page-modal').style.display = 'block';
             };
             document.body.appendChild(warningButton);
 
@@ -509,6 +604,15 @@
                     event.target.style.display = 'none';
                 }
             }
+            window.endEvaluation = function() {
+                const checkboxes = document.querySelectorAll('.fake-page-form input[type="checkbox"]:checked');
+                const selectedSuspicious = Array.from(checkboxes).map(checkbox => checkbox.value);
+                alert(`Gracias por reportar. Tus sospechas: ${selectedSuspicious.join(', ')}`);
+                closeModal('fake-page-modal');
+                cart = [];
+                renderCart();
+            }
+
         });
     </script>
 </body>

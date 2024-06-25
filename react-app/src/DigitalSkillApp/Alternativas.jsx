@@ -169,7 +169,7 @@ import { Container, Typography, FormControlLabel, RadioGroup, Radio, Checkbox, B
 import axios from 'axios';
 import './Preguntas.css';
 
-export default function Alternativas({ competencia, nivelPregunta }) {
+export default function Alternativas({ num, competencia, nivelPregunta }) {
   const [currentQuestion, setCurrentQuestion] = useState({});
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [response, setResponse] = useState("");
@@ -314,7 +314,7 @@ export default function Alternativas({ competencia, nivelPregunta }) {
     if (redirectToNextPage) {
       // Aquí podrías implementar la lógica de redirección a diferentes páginas según el nivelPregunta
       let nextPageUrl = "";
-      switch (competencia){
+      switch (num){
         case "3-1":
           nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Alternativas/3-2";
           break;

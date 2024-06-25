@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Title } from "./assets/HUs/HU05/Title";
 import { PptToolbar } from "./assets/HUs/HU05/PptToolbar";
@@ -20,6 +20,8 @@ export function HU05 () {
     const [currentSlide, setCurrentSlide] = useState(slides[0]);
 
     const [menuOption, setMenuOption] = useState('inicio');
+
+    const [isOpen, setIsOpen] = useState(false);
     
     const addSlide = () => {
         const newSlide = {
@@ -81,10 +83,34 @@ export function HU05 () {
         return false;
     };
 
+    const togglePopup = () => {
+        setIsOpen(!isOpen);
+    };
+
+    const closePopup = (e) => {
+        if (e.target.className === 'popup-overlay') {
+            setIsOpen(false);
+        }
+    };
+
+    useEffect(() => {
+        const handleOutsideClick = (e) => {
+            // No cierres la ventana emergente si el clic proviene del botón o de la ventana emergente misma
+            if (isOpen && !document.getElementById('popup').contains(e.target) && e.target.id !== 'help-button') {
+                setIsOpen(false);
+            }
+        };
+
+        document.addEventListener('click', handleOutsideClick);
+        return () => {
+            document.removeEventListener('click', handleOutsideClick);
+        };
+    }, [isOpen]);
+
     return (
         <>
             <Title name="Historia 5" />
-            <PptToolbar setMenuOption={setMenuOption}/>
+            <PptToolbar setMenuOption={setMenuOption} />
             <PptSecondaryMenu addSlide={addSlide} evaluateTest={evaluateTest} deleteSlide={deleteSlide} addText={addText} menuOption={menuOption} />
             <div className="ppt-slides-container">
                 <PptSidebar slides={slides} setCurrentSlide={setCurrentSlide}/>

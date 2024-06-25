@@ -32,9 +32,6 @@ export default function Maze( ) {
     for (let row = 0; row < maze.length; row++) {
       for (let col = 0; col < maze[row].length; col++) {
         switch (maze[row][col]) {
-          case 0:
-            ctx.fillStyle = 'black';
-            break;
           case 1:
             ctx.fillStyle = 'white';
             break;
@@ -46,6 +43,7 @@ export default function Maze( ) {
             ctx.fillStyle = 'green';
             break;
           default:
+            ctx.fillStyle = 'black';
             break;
         }
         ctx.fillRect(col * cellSize, row * cellSize, cellSize, cellSize);

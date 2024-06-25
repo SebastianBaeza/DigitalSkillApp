@@ -3,7 +3,6 @@ import 'blockly/blocks';
 import BlocksJson from './Blocks.json';
 import 'blockly/javascript';
 import { JavascriptGenerator } from 'blockly/javascript';
-// import maze_moveForward from './MazeFunctions';
 
 export function Blocks() {
   try {
@@ -27,8 +26,9 @@ export function Blocks() {
 
 
   // Generadores de código
-  JavascriptGenerator["maze_moveForward"] = function(block) {
-    console.log("Generando código para el bloque moveForward");
+  JavascriptGenerator['maze_moveForward'] = function(block) {
+    // Generate JavaScript for moving forward.
+    console.log("Ejecutando Bloque: maze_moveForward \nblock_id_" + block.id)
     return `moveForward('block_id_${block.id}');\n`;
   };
 }

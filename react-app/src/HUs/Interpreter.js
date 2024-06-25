@@ -60,8 +60,10 @@ export function initInterpreter(interpreter, globalObject) {
     console.log("wrap: ",name);
     interpreter.setProperty(globalObject, name, interpreter.createNativeFunction(wrapper, false));
     console.log("result: ",interpreter);
+    console.log("globalObject: ",interpreter.getProperty(name));
     }
 }
+
 /**
  * Attempt to move pegman forward
  * @param {number} direction Direction to move forward.

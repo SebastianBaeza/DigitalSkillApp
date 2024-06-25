@@ -6,7 +6,7 @@ import './index.css';
 import Interpreter from 'js-interpreter';
 import {initInterpreter} from './Interpreter.js';
 
-import { toolboxXML, Blocks } from './Blocks';
+import { toolboxXML, Blocks } from './Blocks.js';
 // import Maze from './Maze.jsx';
 
 export default function HU01() {
@@ -19,18 +19,24 @@ export default function HU01() {
     
     const codeDiv = document.getElementById('generatedCode').firstChild;
     const outputDiv = document.getElementById('output');
-    const ws = Blockly.inject(blocklyDiv, { toolbox : toolboxXML });
+    const ws = Blockly.inject(blocklyDiv, { toolbox : toolboxXML, trashcan: true});
+    javascriptGenerator.addReservedWords('moveForward,moveBackward,turnRight,turnLeft,isPathForward,isPathRight,isPathBackward,isPathLeft');
 
     // Función para resetear los divs de código y output, mostrar el código generado y ejecutarlo
     const runCode = () => {
-      const code = javascriptGenerator.workspaceToCode(ws);
-      const interpreter = new Interpreter(code, initInterpreter);
-      console.log("Interpretador Generado:\n",interpreter);
+
+      const code = getCode(ws);
+      console.log("Codigo generado:\n",code)
+      const code1 = javascriptGenerator.workspaceToCode(ws);
+      console.log("Codigo generado 1:\n",code1)
+      const interpreter = new Interpreter(code1, initInterpreter);
+    
+    
       codeDiv.innerText = code;
 
       outputDiv.innerHTML = '';
 
-      eval(code);
+      eval(code1);
     };
 
     // Cargar el estado inicial desde el almacenamiento y ejecutar el código
@@ -64,6 +70,27 @@ export default function HU01() {
       <div id="blocklyDiv" style={{ height: '480px', width: '600px' }}></div>
     </div>
   );
+}
+
+/**
+ * Get the user's code (XML or JS) from the editor (Blockly or ACE).
+ * @returns {string} XML or JS code.
+ */
+function getCode (ws) {
+  let text;
+    // Blockly editor.
+    const xml = Blockly.Xml.workspaceToDom(ws, true);
+    // Remove x/y coordinates from XML if there's only one block stack. There's no reason to store this, removing it helps with anonymity.
+    if (ws.getTopBlocks(false).length === 1 && xml.querySelector) {
+      const block = xml.querySelector('block');
+      if (block) {
+        block.removeAttribute('x');
+        block.removeAttribute('y');
+      }
+    }
+    text = Blockly.Xml.domToText(xml);
+  
+  return text;
 }
 // import { useEffect } from 'react';
 // import * as Blockly from 'blockly';

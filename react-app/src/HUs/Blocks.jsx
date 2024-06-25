@@ -28,8 +28,8 @@ export function Blocks() {
 
   // Generadores de código
   JavascriptGenerator["maze_moveForward"] = function(block) {
-    console.log("Generando código para el bloque maze_moveForward");
-    return `maze_moveForward('block_id_${block.id}');\n`;
+    console.log("Generando código para el bloque moveForward");
+    return `moveForward('block_id_${block.id}');\n`;
   };
 }
 
@@ -37,3 +37,4 @@ export const toolboxXML = `
   <xml xmlns="http://www.w3.org/1999/xhtml">
     ${BlocksJson.map(blockDef => `<block type="${blockDef.type}"/>`).join('')}
   </xml>`;
+  console.log("toolboxXML:\n",toolboxXML);

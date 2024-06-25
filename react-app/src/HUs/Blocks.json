@@ -1,6 +1,6 @@
 [
     {
-        "type": "maze_moveForward",
+        "type": "moveForward",
         "message0": "avanzar",
         "previousStatement": null,
         "nextStatement": null,

@@ -2,22 +2,28 @@
 /* eslint-disable react/prop-types */
 // src/components/Maze.js
 import { useEffect, useRef, useState } from 'react';
-// import { maze_moveForward} from './MazeFunctions.js';  // Importa las funciones
 
-export default function Maze({ code }) {
+// const finish = { x: 5, y: 4 };
+/**
+ * Constants for cardinal directions.  Subsequent code assumes these are in the range 0..3 and that opposites have an absolute difference of 2.
+ * @enum {number}
+ */
+const DirectionType = {UP: 0,RIGTH: 1,DOWN: 2,LEFT: 3,};
+
+const maze = [
+  [0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 2, 1, 3, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0]
+];
+
+export default function Maze( ) {
   const canvasRef = useRef(null);
   const cellSize = 40;
-  const [player, setPlayer] = useState({ x: 1, y: 1, direction: 'right' });
-
-  let maze = [
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 2, 1, 3, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0]
-  ];
+  const [player, setPlayer] = useState({ x: 0, y: 0, direction: DirectionType.RIGHT });
 
   useEffect(() => { drawMaze(); }, [player]);
 
@@ -33,8 +39,7 @@ export default function Maze({ code }) {
             ctx.fillStyle = 'white';
             break;
           case 2:
-            player.x = col;
-            player.y = row;
+            setPlayer({ x: col, y: row, direction: DirectionType.RIGHT });
             ctx.fillStyle = 'red';
             break;
           case 3:
@@ -48,33 +53,5 @@ export default function Maze({ code }) {
     }
   };
 
-  useEffect(() => {
-    let isCancelled = false; // Flag to check if the component is unmounted
-
-    if (code) {
-      const moveFunctions = {
-        maze_moveForward: () => maze_moveForward(player, setPlayer, maze),
-      };
-
-      // Wrap the dynamic code execution in a try-catch block for safety
-      try {
-        const runCode = new Function('maze_moveForward', code);
-        if (!isCancelled) { // Check if the component is still mounted
-          runCode(moveFunctions.moveForward);
-        }
-      } catch (error) {
-        console.error('Error executing user code:', error);
-      }
-    }
-
-    // Cleanup function to set isCancelled to true when the component unmounts
-    return () => {
-      isCancelled = true;
-    };
-  }, [code, player, setPlayer]); // Add player and setPlayer to the dependency array
-
   return <canvas ref={canvasRef} width="400" height="400" />;
 }
-
-// eslint-disable-next-line react-refresh/only-export-components
-// export { maze_moveForward};  // Exporta las funciones para su uso en otros componentes

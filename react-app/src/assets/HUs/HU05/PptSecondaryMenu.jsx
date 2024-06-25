@@ -3,12 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClipboard } from '@fortawesome/free-regular-svg-icons';
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 
-export function PptSecondaryMenu ({ addSlide, onPaste, deleteSlide, menuOption }) {
+export function PptSecondaryMenu ({ addSlide, evaluateTest, deleteSlide, menuOption }) {
   return (
     <div className="ppt-secondary-menu">
       {menuOption === 'inicio' && (
         <>
-          <button onClick={onPaste}>
+          <button>
             <div>
               <FontAwesomeIcon icon={faClipboard} />
             </div>
@@ -32,7 +32,7 @@ export function PptSecondaryMenu ({ addSlide, onPaste, deleteSlide, menuOption }
               Eliminar diapositiva actual
             </div>
           </button>
-          <button>Fuente</button>
+          <button onClick={evaluateTest}>Enviar</button>
         </>
       )}
       {menuOption === 'insertar' && (

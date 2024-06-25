@@ -9,7 +9,15 @@ import './assets/HUs/HU05/styles/HU05.css';
 
 export function HU05 () {
     const [slides, setSlides] = useState([
-        { id: 1, title: 'Slide 1', content: 'Contenido de la diapositiva 1' }
+        { id: 1,
+            content: [
+              {
+                type: 'text',
+                content: 'Haga click para cambiar el texto',
+                position: { top: 300, left: 760 },
+              }
+            ] 
+        }
     ]);
     
     const [currentSlide, setCurrentSlide] = useState(slides[0]);
@@ -19,8 +27,13 @@ export function HU05 () {
     const addSlide = () => {
         const newSlide = {
           id: slides.length + 1,
-          title: `Slide ${slides.length + 1}`,
-          content: ''
+          content: [
+            {
+              type: 'text',
+              content: 'Haga click para cambiar el texto',
+              position: { top: 300, left: 760 },
+            }
+          ]
         };
         setSlides([...slides, newSlide]);
         setCurrentSlide(newSlide);
@@ -28,22 +41,28 @@ export function HU05 () {
 
     const deleteSlide = () => {
         setSlides(slides.filter(slide => slide.id !== currentSlide.id));
+
+        if (slides.length > 1) {
+            setCurrentSlide(slides[0]);
+        } else {
+            setCurrentSlide(null);
+        }
     };
 
-    const onPaste = () => {
-        try {
-          const clipboardData = navigator.clipboard.readText();
-          onPaste(clipboardData);
-        } catch (error) {
-          console.error('Error al pegar desde el portapapeles:', error);
-        } 
+    const evaluateTest = () => {
+        for (const slide of slides) {
+            if (slide.content.length === 0) {
+                console.log(false);
+            }
+        }
+        console.log(true);
     };
 
     return (
         <>
             <Title name="Historia 5" />
             <PptToolbar setMenuOption={setMenuOption}/>
-            <PptSecondaryMenu addSlide={addSlide} onPaste={onPaste} deleteSlide={deleteSlide} menuOption={menuOption} />
+            <PptSecondaryMenu addSlide={addSlide} evaluateTest={evaluateTest} deleteSlide={deleteSlide} menuOption={menuOption} />
             <div className="ppt-slides-container">
                 <PptSidebar slides={slides} setCurrentSlide={setCurrentSlide}/>
                 <PptEditor slide={currentSlide} />

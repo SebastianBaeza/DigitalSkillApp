@@ -7,6 +7,7 @@ export default function Desarrollo({ competencia, nivelPregunta }) {
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   const [response, setResponse] = useState("");
+  const [redirectToNextPage, setRedirectToNextPage] = useState(false);
 
   const api_key = "";
   const model_id = "gpt-4";
@@ -144,28 +145,65 @@ export default function Desarrollo({ competencia, nivelPregunta }) {
     const responseContent = result.data.choices[0].message.content;
     setResponse(responseContent);
     downloadResponse(responseContent);
-    history.push('/nextPage'); // Reemplaza '/nextPage' con la ruta de tu siguiente página
+    setRedirectToNextPage(true);
     } catch (error) {
       console.error("Error en la solicitud:", error);
     }
   };
 
   const downloadResponse = (responseContent) => {
-  const element = document.createElement("a");
-  const file = new Blob([responseContent], { type: 'text/plain' });
-  element.href = URL.createObjectURL(file);
-  element.download = "response.txt";
-  document.body.appendChild(element);
-  element.click();
+    const element = document.createElement("a");
+    const file = new Blob([responseContent], { type: 'text/plain' });
+    element.href = URL.createObjectURL(file);
+    element.download = "response.txt";
+    document.body.appendChild(element);
+    element.click();
   };
 
   const handleInputChange = (event) => {
-  setAnswer(event.target.value);
+    setAnswer(event.target.value);
   };
 
   const handleSubmit = () => {
-  analyzeAnswer();
+    analyzeAnswer();
   };
+
+  useEffect(() => {
+    if (redirectToNextPage) {
+      // Aquí podrías implementar la lógica de redirección a diferentes páginas según el nivelPregunta
+      let nextPageUrl = "";
+      switch (competencia){
+        case "3-1":
+          nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Desarrollo/3-2";
+          break;
+        case "3-2":
+          nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Desarrollo/3-3";
+          break;
+        case "3-3":
+          nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Desarrollo/3-4";
+          break;
+          case "3-4":
+          nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Desarrollo/Resultados"; //O otro test, no se
+          break;
+        case "4-1":
+          nextPageUrl = "/DigitalSkillApp/Seguridad/" + nivelPregunta + "/Pregunta_Desarrollo/4-2";
+          break;
+        case "4-2":
+          nextPageUrl = "/DigitalSkillApp/Seguridad/" + nivelPregunta + "/Pregunta_Desarrollo/4-3";
+          break;
+        case "4-3":
+          nextPageUrl = "/DigitalSkillApp/Seguridad/" + nivelPregunta + "/Pregunta_Desarrollo/4-4";
+          break;
+        case "4-4":
+          nextPageUrl = "/DigitalSkillApp/Seguridad/" + nivelPregunta + "/Pregunta_Desarrollo/Resultados";
+          break;
+        default:
+          nextPageUrl = "/";
+          break;
+      }
+      window.location.href = nextPageUrl;
+    }
+  }, [redirectToNextPage, nivelPregunta]);
 
   return (
     <Container sx={{ textAlign: "center", marginTop: "30px" }}>

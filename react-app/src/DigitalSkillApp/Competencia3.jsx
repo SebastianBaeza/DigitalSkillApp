@@ -35,13 +35,13 @@ return (
                     <Button variant="contained" href="/DigitalSkillApp/Creacion_Contenido_Digital/Basico/Pregunta_Desarrollo/3-1">
                         Nivel Basico
                     </Button>
-                    <Button variant="contained" href="/DigitalSkillApp/Creacion_Contenido_Digital">
+                    <Button variant="contained" href="/DigitalSkillApp/Creacion_Contenido_Digital/Intermedio/Pregunta_Desarrollo/3-1">
                         Nivel Intermedio
                     </Button>
-                    <Button variant="contained" href="/DigitalSkillApp/Creacion_Contenido_Digital">
+                    <Button variant="contained" href="/DigitalSkillApp/Creacion_Contenido_Digital/Avanzado/Pregunta_Desarrollo/3-1">
                         Nivel Avanzado
                     </Button>
-                    <Button variant="contained" href="/DigitalSkillApp">
+                    <Button variant="contained" href="/">
                         Volver al inicio
                     </Button>
                 </Box>

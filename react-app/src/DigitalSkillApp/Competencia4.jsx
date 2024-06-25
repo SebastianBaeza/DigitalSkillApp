@@ -29,7 +29,7 @@ return (
           <Button variant="contained" href="/DigitalSkillApp/Seguridad">
               Nivel Avanzado
           </Button>
-          <Button variant="contained" href="/DigitalSkillApp">
+          <Button variant="contained" href="/">
               Volver al inicio
           </Button>
       </Box>

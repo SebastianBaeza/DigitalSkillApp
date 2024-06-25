@@ -3,7 +3,7 @@ import Entrypoint from './Entrypoint.jsx';
 import Competencia3 from './DigitalSkillApp/Competencia3.jsx';
 import Competencia4 from './DigitalSkillApp/Competencia4.jsx';
 import Desarrollo from './DigitalSkillApp/Desarrollo.jsx';
-import Alternativa from './DigitalSkillApp/Alternativas.jsx';
+import Alternativas from './DigitalSkillApp/Alternativas.jsx';
 // import Tests_3_1 from './DigitalSkillApp/Creacion_Contenido_Digital/3-1/Tests.jsx';
 // import Tests_3_2 from './DigitalSkillApp/Creacion_Contenido_Digital/3-2/Tests.jsx';
 // import Tests_3_3 from './DigitalSkillApp/Creacion_Contenido_Digital/3-3/Tests.jsx';
@@ -40,65 +40,65 @@ export function App () {
   return (
           <BrowserRouter>
             <Routes>
-              <Route path="/DigitalSkillApp" element={<Entrypoint />} />
+              <Route path="/" element={<Entrypoint />} />
               <Route path="/DigitalSkillApp/Creacion_Contenido_Digital" element={<Competencia3 />} />
               <Route path="/DigitalSkillApp/Seguridad" element={<Competencia4 />} />
               {/* <Route path="/DigitalSkillApp/Creacion_Contenido_Digital" element={<Tests_3_1 />} /> */}
-              <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Basico/Pregunta_Desarrollo/3-1" element={<Desarrollo competencia={competencia_3_1} nivelPregunta={"basico"} />} />
-              <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Intermedio/Pregunta_Desarrollo/3-1" element={<Desarrollo competencia={competencia_3_1} nivelPregunta={"intermedio"} />} />
-              <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Avanzado/Pregunta_Desarrollo/3-1" element={<Desarrollo competencia={competencia_3_1} nivelPregunta={"avanzado"} />} />
-              <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Basico/Pregunta_Alternativas/3-1" element={<Alternativa competencia={competencia_3_1} nivelPregunta={"basico"} />} />
-              <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Intermedio/Pregunta_Alternativas/3-1" element={<Alternativa competencia={competencia_3_1} nivelPregunta={"intermedio"} />} />
-              <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Avanzado/Pregunta_Alternativas/3-1" element={<Alternativa competencia={competencia_3_1} nivelPregunta={"avanzado"} />} />
+              <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Basico/Pregunta_Desarrollo/3-1" element={<Desarrollo competencia={competencia_3_1} nivelPregunta={"Basico"} />} />
+              <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Intermedio/Pregunta_Desarrollo/3-1" element={<Desarrollo competencia={competencia_3_1} nivelPregunta={"Intermedio"} />} />
+              <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Avanzado/Pregunta_Desarrollo/3-1" element={<Desarrollo competencia={competencia_3_1} nivelPregunta={"Avanzado"} />} />
+              <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Basico/Pregunta_Alternativas/3-1" element={<Alternativas competencia={competencia_3_1} nivelPregunta={"basico"} />} />
+              <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Intermedio/Pregunta_Alternativas/3-1" element={<Alternativas competencia={competencia_3_1} nivelPregunta={"intermedio"} />} />
+              <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Avanzado/Pregunta_Alternativas/3-1" element={<Alternativas competencia={competencia_3_1} nivelPregunta={"avanzado"} />} />
               {/* <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/3-2" element={<Tests_3_2 />} /> */}
               <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Basico/Pregunta_Desarrollo/3-2" element={<Desarrollo competencia={competencia_3_2} nivelPregunta={"basico"} />} />
               <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Intermedio/Pregunta_Desarrollo/3-2" element={<Desarrollo competencia={competencia_3_2} nivelPregunta={"intermedio"} />} />
               <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Avanzado/Pregunta_Desarrollo/3-2" element={<Desarrollo competencia={competencia_3_2} nivelPregunta={"avanzado"} />} />
-              <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Basico/Pregunta_Alternativas/3-2" element={<Alternativa competencia={competencia_3_2} nivelPregunta={"basico"} />} />
-              <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Intermedio/Pregunta_Alternativas/3-2" element={<Alternativa competencia={competencia_3_2} nivelPregunta={"intermedio"} />} />
-              <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Avanzado/Pregunta_Alternativas/3-2" element={<Alternativa competencia={competencia_3_2} nivelPregunta={"avanzado"} />} />
+              <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Basico/Pregunta_Alternativas/3-2" element={<Alternativas competencia={competencia_3_2} nivelPregunta={"basico"} />} />
+              <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Intermedio/Pregunta_Alternativas/3-2" element={<Alternativas competencia={competencia_3_2} nivelPregunta={"intermedio"} />} />
+              <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Avanzado/Pregunta_Alternativas/3-2" element={<Alternativas competencia={competencia_3_2} nivelPregunta={"avanzado"} />} />
               {/* <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/3-3" element={<Tests_3_3 />} /> */}
               <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Basico/Pregunta_Desarrollo/3-3" element={<Desarrollo competencia={competencia_3_3} nivelPregunta={"basico"} />} />
               <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Intermedio/Pregunta_Desarrollo/3-3" element={<Desarrollo competencia={competencia_3_3} nivelPregunta={"intermedio"} />} />
               <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Avanzado/Pregunta_Desarrollo/3-3" element={<Desarrollo competencia={competencia_3_3} nivelPregunta={"avanzado"} />} />
-              <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Basico/Pregunta_Alternativas/3-3" element={<Alternativa competencia={competencia_3_3} nivelPregunta={"basico"} />} />
-              <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Intermedio/Pregunta_Alternativas/3-3" element={<Alternativa competencia={competencia_3_3} nivelPregunta={"intermedio"} />} />
-              <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Avanzado/Pregunta_Alternativas/3-3" element={<Alternativa competencia={competencia_3_3} nivelPregunta={"avanzado"} />} />
+              <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Basico/Pregunta_Alternativas/3-3" element={<Alternativas competencia={competencia_3_3} nivelPregunta={"basico"} />} />
+              <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Intermedio/Pregunta_Alternativas/3-3" element={<Alternativas competencia={competencia_3_3} nivelPregunta={"intermedio"} />} />
+              <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Avanzado/Pregunta_Alternativas/3-3" element={<Alternativas competencia={competencia_3_3} nivelPregunta={"avanzado"} />} />
               {/* <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/3-4" element={<Tests_3_4 />} /> */}
               <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Basico/Pregunta_Desarrollo/3-4" element={<Desarrollo competencia={competencia_3_4} nivelPregunta={"basico"} />} />
               <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Intermedio/Pregunta_Desarrollo/3-4" element={<Desarrollo competencia={competencia_3_4} nivelPregunta={"intermedio"} />} />
               <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Avanzado/Pregunta_Desarrollo/3-4" element={<Desarrollo competencia={competencia_3_4} nivelPregunta={"avanzado"} />} />
-              <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Basico/Pregunta_Alternativas/3-4" element={<Alternativa competencia={competencia_3_4} nivelPregunta={"basico"} />} />
-              <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Intermedio/Pregunta_Alternativas/3-4" element={<Alternativa competencia={competencia_3_4} nivelPregunta={"intermedio"} />} />
-              <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Avanzado/Pregunta_Alternativas/3-4" element={<Alternativa competencia={competencia_3_4} nivelPregunta={"avanzado"} />} />
+              <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Basico/Pregunta_Alternativas/3-4" element={<Alternativas competencia={competencia_3_4} nivelPregunta={"basico"} />} />
+              <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Intermedio/Pregunta_Alternativas/3-4" element={<Alternativas competencia={competencia_3_4} nivelPregunta={"intermedio"} />} />
+              <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Avanzado/Pregunta_Alternativas/3-4" element={<Alternativas competencia={competencia_3_4} nivelPregunta={"avanzado"} />} />
               {/* <Route path="/DigitalSkillApp/Seguridad" element={<Tests_4_1 />} /> */}
               <Route path="/DigitalSkillApp/Seguridad/Basico/Pregunta_Desarrollo/4-1" element={<Desarrollo competencia={competencia_4_1} nivelPregunta={"Basico"}  />} />
               <Route path="/DigitalSkillApp/Seguridad/Intermedio/Pregunta_Desarrollo/4-1" element={<Desarrollo competencia={competencia_4_1} nivelPregunta={"Intermedio"}  />} />
               <Route path="/DigitalSkillApp/Seguridad/Avanzado/Pregunta_Desarrollo/4-1" element={<Desarrollo competencia={competencia_4_1} nivelPregunta={"Avanzado"}  />} />
-              <Route path="/DigitalSkillApp/Seguridad/Basico/Pregunta_Alternativa/4-1" element={<Alternativa competencia={competencia_4_1} nivelPregunta={"Basico"}  />} />
-              <Route path="/DigitalSkillApp/Seguridad/Intermedio/Pregunta_Alternativa/4-1" element={<Alternativa competencia={competencia_4_1} nivelPregunta={"Intermedio"}  />} />
-              <Route path="/DigitalSkillApp/Seguridad/Avanzado/Pregunta_Alternativa/4-1" element={<Alternativa competencia={competencia_4_1} nivelPregunta={"Avanzado"}  />} />
+              <Route path="/DigitalSkillApp/Seguridad/Basico/Pregunta_Alternativa/4-1" element={<Alternativas competencia={competencia_4_1} nivelPregunta={"Basico"}  />} />
+              <Route path="/DigitalSkillApp/Seguridad/Intermedio/Pregunta_Alternativa/4-1" element={<Alternativas competencia={competencia_4_1} nivelPregunta={"Intermedio"}  />} />
+              <Route path="/DigitalSkillApp/Seguridad/Avanzado/Pregunta_Alternativa/4-1" element={<Alternativas competencia={competencia_4_1} nivelPregunta={"Avanzado"}  />} />
               {/* <Route path="/DigitalSkillApp/Seguridad" element={<Tests_4_2 />} /> */}
               <Route path="/DigitalSkillApp/Seguridad/Basico/Pregunta_Desarrollo/4-2" element={<Desarrollo competencia={competencia_4_2} nivelPregunta={"Basico"}  />} />
               <Route path="/DigitalSkillApp/Seguridad/Intermedio/Pregunta_Desarrollo/4-2" element={<Desarrollo competencia={competencia_4_2} nivelPregunta={"Intermedio"}  />} />
               <Route path="/DigitalSkillApp/Seguridad/Avanzado/Pregunta_Desarrollo/4-2" element={<Desarrollo competencia={competencia_4_2} nivelPregunta={"Avanzado"}  />} />
-              <Route path="/DigitalSkillApp/Seguridad/Basico/Pregunta_Alternativa/4-2" element={<Alternativa competencia={competencia_4_2} nivelPregunta={"Basico"}  />} />
-              <Route path="/DigitalSkillApp/Seguridad/Intermedio/Pregunta_Alternativa/4-2" element={<Alternativa competencia={competencia_4_2} nivelPregunta={"Intermedio"}  />} />
-              <Route path="/DigitalSkillApp/Seguridad/Avanzado/Pregunta_Alternativa/4-2" element={<Alternativa competencia={competencia_4_2} nivelPregunta={"Avanzado"}  />} />
+              <Route path="/DigitalSkillApp/Seguridad/Basico/Pregunta_Alternativa/4-2" element={<Alternativas competencia={competencia_4_2} nivelPregunta={"Basico"}  />} />
+              <Route path="/DigitalSkillApp/Seguridad/Intermedio/Pregunta_Alternativa/4-2" element={<Alternativas competencia={competencia_4_2} nivelPregunta={"Intermedio"}  />} />
+              <Route path="/DigitalSkillApp/Seguridad/Avanzado/Pregunta_Alternativa/4-2" element={<Alternativas competencia={competencia_4_2} nivelPregunta={"Avanzado"}  />} />
               {/* <Route path="/DigitalSkillApp/Seguridad" element={<Tests_4_3 />} /> */}
               <Route path="/DigitalSkillApp/Seguridad/Basico/Pregunta_Desarrollo/4-3" element={<Desarrollo competencia={competencia_4_3} nivelPregunta={"Basico"}  />} />
               <Route path="/DigitalSkillApp/Seguridad/Intermedio/Pregunta_Desarrollo/4-3" element={<Desarrollo competencia={competencia_4_3} nivelPregunta={"Intermedio"}  />} />
               <Route path="/DigitalSkillApp/Seguridad/Avanzado/Pregunta_Desarrollo/4-3" element={<Desarrollo competencia={competencia_4_3} nivelPregunta={"Avanzado"}  />} />
-              <Route path="/DigitalSkillApp/Seguridad/Basico/Pregunta_Alternativa/4-3" element={<Alternativa competencia={competencia_4_3} nivelPregunta={"Basico"}  />} />
-              <Route path="/DigitalSkillApp/Seguridad/Intermedio/Pregunta_Alternativa/4-3" element={<Alternativa competencia={competencia_4_3} nivelPregunta={"Intermedio"}  />} />
-              <Route path="/DigitalSkillApp/Seguridad/Avanzado/Pregunta_Alternativa/4-3" element={<Alternativa competencia={competencia_4_3} nivelPregunta={"Avanzado"}  />} />
+              <Route path="/DigitalSkillApp/Seguridad/Basico/Pregunta_Alternativa/4-3" element={<Alternativas competencia={competencia_4_3} nivelPregunta={"Basico"}  />} />
+              <Route path="/DigitalSkillApp/Seguridad/Intermedio/Pregunta_Alternativa/4-3" element={<Alternativas competencia={competencia_4_3} nivelPregunta={"Intermedio"}  />} />
+              <Route path="/DigitalSkillApp/Seguridad/Avanzado/Pregunta_Alternativa/4-3" element={<Alternativas competencia={competencia_4_3} nivelPregunta={"Avanzado"}  />} />
               {/* <Route path="/DigitalSkillApp/Seguridad" element={<Tests_4_4 />} /> */}
               <Route path="/DigitalSkillApp/Seguridad/Basico/Pregunta_Desarrollo/4-4" element={<Desarrollo competencia={competencia_4_4} nivelPregunta={"Basico"}  />} />
               <Route path="/DigitalSkillApp/Seguridad/Intermedio/Pregunta_Desarrollo/4-4" element={<Desarrollo competencia={competencia_4_4} nivelPregunta={"Intermedio"}  />} />
               <Route path="/DigitalSkillApp/Seguridad/Avanzado/Pregunta_Desarrollo/4-4" element={<Desarrollo competencia={competencia_4_4} nivelPregunta={"Avanzado"}  />} />
-              <Route path="/DigitalSkillApp/Seguridad/Basico/Pregunta_Alternativa/4-4" element={<Alternativa competencia={competencia_4_4} nivelPregunta={"Basico"}  />} />
-              <Route path="/DigitalSkillApp/Seguridad/Intermedio/Pregunta_Alternativa/4-4" element={<Alternativa competencia={competencia_4_4} nivelPregunta={"Intermedio"}  />} />
-              <Route path="/DigitalSkillApp/Seguridad/Avanzado/Pregunta_Alternativa/4-4" element={<Alternativa competencia={competencia_4_4} nivelPregunta={"Avanzado"}  />} />
+              <Route path="/DigitalSkillApp/Seguridad/Basico/Pregunta_Alternativa/4-4" element={<Alternativas competencia={competencia_4_4} nivelPregunta={"Basico"}  />} />
+              <Route path="/DigitalSkillApp/Seguridad/Intermedio/Pregunta_Alternativa/4-4" element={<Alternativas competencia={competencia_4_4} nivelPregunta={"Intermedio"}  />} />
+              <Route path="/DigitalSkillApp/Seguridad/Avanzado/Pregunta_Alternativa/4-4" element={<Alternativas competencia={competencia_4_4} nivelPregunta={"Avanzado"}  />} />
             
             </Routes>
           </BrowserRouter>

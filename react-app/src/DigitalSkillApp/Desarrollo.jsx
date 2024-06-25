@@ -3,7 +3,7 @@ import { Container, Typography, TextField, Button, Box } from '@mui/material';
 import axios from 'axios';
 import './Preguntas.css';
 
-export default function Desarrollo({ competencia, nivelPregunta }) {
+export default function Desarrollo({ num, competencia, nivelPregunta }) {
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   const [response, setResponse] = useState("");
@@ -72,17 +72,7 @@ export default function Desarrollo({ competencia, nivelPregunta }) {
       temperature: 0.7,
       top_p: 1.0
     };
-
-//     try {
-//       const result = await axios.post("https://api.openai.com/v1/chat/completions", request_data, {
-//         headers: {
-//           "Content-Type": "application/json",
-//           "Authorization": `Bearer ${api_key}`
-//         }
-//       });
-//       setResponse(result.data.choices[0].message.content);
-//     } catch (error) {
-//       console.error("Error en la solicitud:", error);
+  //  console.error("Error en la solicitud:", error);
 //     }
 //   };
 
@@ -116,6 +106,16 @@ export default function Desarrollo({ competencia, nivelPregunta }) {
 //           Guardar Respuesta
 //         </Button>
 //       </Box>
+//     try {
+//       const result = await axios.post("https://api.openai.com/v1/chat/completions", request_data, {
+//         headers: {
+//           "Content-Type": "application/json",
+//           "Authorization": `Bearer ${api_key}`
+//         }
+//       });
+//       setResponse(result.data.choices[0].message.content);
+//     } catch (error) {
+//    
 //       {response && (
 //         <Box sx={{ mt: 2 }}>
 //           <Typography variant="h6" gutterBottom>
@@ -145,6 +145,7 @@ export default function Desarrollo({ competencia, nivelPregunta }) {
     const responseContent = result.data.choices[0].message.content;
     setResponse(responseContent);
     downloadResponse(responseContent);
+    // saveResponseToServer(responseContent);
     setRedirectToNextPage(true);
     } catch (error) {
       console.error("Error en la solicitud:", error);
@@ -159,6 +160,13 @@ export default function Desarrollo({ competencia, nivelPregunta }) {
     document.body.appendChild(element);
     element.click();
   };
+  // const saveResponseToServer = async (responseContent) => {
+  //   try {
+  //     await axios.post('http://localhost:3001/save-response', { response: responseContent });
+  //   } catch (error) {
+  //     console.error('Error al guardar la respuesta en el servidor:', error);
+  //   }
+  // };
 
   const handleInputChange = (event) => {
     setAnswer(event.target.value);
@@ -172,7 +180,8 @@ export default function Desarrollo({ competencia, nivelPregunta }) {
     if (redirectToNextPage) {
       // Aquí podrías implementar la lógica de redirección a diferentes páginas según el nivelPregunta
       let nextPageUrl = "";
-      switch (competencia){
+      // console.log(competencia);
+      switch (num){
         case "3-1":
           nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Desarrollo/3-2";
           break;
@@ -182,7 +191,7 @@ export default function Desarrollo({ competencia, nivelPregunta }) {
         case "3-3":
           nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Desarrollo/3-4";
           break;
-          case "3-4":
+        case "3-4":
           nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Desarrollo/Resultados"; //O otro test, no se
           break;
         case "4-1":

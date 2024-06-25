@@ -1,6 +1,6 @@
 import * as React from "react";
 import {useEffect, useState} from 'react';
-import { Container, Typography, Grid, Button} from "@mui/material";
+import { Container, Typography, Box, Button} from "@mui/material";
 
 export default function Entrypoint() {
     const [user, setUser] = useState(null);
@@ -14,15 +14,25 @@ export default function Entrypoint() {
     }, [user, loged]);
   
 return (
-    <>
-	<Container sx={{textAlign: "center", marginTop: "30px"}}>
-		<Typography sx={{marginBottom: "50px"}} variant="h1" gutterBottom>SEGURIDAD</Typography>
-        {/* <Typography id="quien" sx={{marginTop: "20px"}} variant="h2" gutterBottom>HU's</Typography> */}
-        <Button variant="contained" href="/">Volver al inicio</Button>
-        <Button variant="contained" href="/DigitalSkillApp/Seguridad/4-1">4.1</Button>
-        <Button variant="contained" href="/DigitalSkillApp/Seguridad/4-2">4.2</Button>
-        <Button variant="contained" href="/DigitalSkillApp/Seguridad/4-3">4.3</Button>
-        <Button variant="contained" href="/DigitalSkillApp/Seguridad/4-4">4.4</Button>
-	</Container>
-    </>
+  <>
+  <Container sx={{ textAlign: "center", marginTop: "30px" }}>
+      <Typography sx={{ marginBottom: "50px" }} variant="h1" gutterBottom>
+          Creación de Contenido Digital
+      </Typography>
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, alignItems: 'center' }}>
+          <Button variant="contained" href="/DigitalSkillApp/Seguridad">
+              Nivel Basico
+          </Button>
+          <Button variant="contained" href="/DigitalSkillApp/Seguridad">
+              Nivel Intermedio
+          </Button>
+          <Button variant="contained" href="/DigitalSkillApp/Seguridad">
+              Nivel Avanzado
+          </Button>
+          <Button variant="contained" href="/DigitalSkillApp">
+              Volver al inicio
+          </Button>
+      </Box>
+  </Container>
+</>
 )}

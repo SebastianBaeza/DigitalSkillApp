@@ -3,7 +3,7 @@ import { Container, Typography, FormControlLabel, RadioGroup, Radio, Checkbox, B
 import axios from 'axios';
 import './Preguntas.css';
 
-export default function HU8({ competencia, nivelPregunta }) {
+export default function Alternativas({ competencia, nivelPregunta }) {
   const [currentQuestion, setCurrentQuestion] = useState({});
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [response, setResponse] = useState("");
@@ -26,7 +26,7 @@ export default function HU8({ competencia, nivelPregunta }) {
             Estás evaluando la competencia digital del usuario, basado en el modelo de competencia digital para la ciudadanía DigComp 2.2. Eres un experto en el tema, en especifico en la competencia ${competencia}. Se requiere que generes preguntas o valides la correctitud de las respuestas según corresponda al caso.
             Prompt:
             Pregunta para Medir la Competencia
-            Crea una pregunta que se pueda utilizar para medir la competencia de una persona en la competencia digital mencionada. La pregunta debe estar estructurada en texto plano, para cubrir el nivel ${nivelPregunta} de la competencia correspondiente, con respuestas proporcionadas de la misma forma. Se deben crear preguntas que hagan pensar al usuario, por tanto, se debe evitar preguntar al usuario la percepcion que tiene de sus propios conocimientos. Las preguntas deben permitir al usuario elegir entre 5 alternativas, de las cuales una o multiples pueden ser correctas. El objetivo es comprobar el conocimiento del usuario, por lo que se requiere que las preguntas no den pistas, sino que las respuestas requieran que se base completamente en sus conocimientos del tema. La pregunta a generar puede tratar temas a lo largo de toda la competencia ${competencia}, por lo que trata de variar el contenido, a fin de siempre probar el conocimiento del usuario.
+            Crea una pregunta que se pueda utilizar para medir la competencia de una persona en la competencia digital mencionada. La pregunta debe estar estructurada en texto plano, para cubrir el nivel ${nivelPregunta} de la competencia correspondiente, con respuestas proporcionadas de la misma forma. Se deben crear preguntas que hagan pensar al usuario, por tanto, se debe evitar preguntar al usuario la percepcion que tiene de sus propios conocimientos. Las preguntas deben permitir al usuario elegir entre 5 alternativas, de las cuales una o multiples pueden ser correctas. El objetivo es comprobar el conocimiento del usuario, por lo que se requiere que las preguntas no den pistas, para que el usuario se base completamente en sus conocimientos del tema. La pregunta a generar puede tratar temas a lo largo de toda la competencia ${competencia}, por lo que trata de variar el contenido, a fin de siempre probar el conocimiento del usuario.
           `
         }
       ],

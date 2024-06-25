@@ -1,22 +1,19 @@
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Title } from "./assets/HUs/HU05/Title";
 import { PptToolbar } from "./assets/HUs/HU05/PptToolbar";
 import { PptSidebar } from "./assets/HUs/HU05/PptSidebar";
 import { PptEditor } from "./assets/HUs/HU05/PptEditor";
 import { PptSecondaryMenu } from "./assets/HUs/HU05/PptSecondaryMenu";
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import './assets/HUs/HU05/styles/HU05.css';
+import { text } from '@fortawesome/fontawesome-svg-core';
 
 export function HU05 () {
     const [slides, setSlides] = useState([
         { id: 1,
-            content: [
-              {
-                type: 'text',
-                content: 'Haga click para cambiar el texto',
-                position: { top: 300, left: 760 },
-              }
-            ] 
+            content: [] 
         }
     ]);
     
@@ -27,16 +24,31 @@ export function HU05 () {
     const addSlide = () => {
         const newSlide = {
           id: slides.length + 1,
-          content: [
-            {
-              type: 'text',
-              content: 'Haga click para cambiar el texto',
-              position: { top: 300, left: 760 },
-            }
-          ]
+          content: []
         };
         setSlides([...slides, newSlide]);
         setCurrentSlide(newSlide);
+    };
+
+    const addText = () => {
+        const newText = {
+            id: currentSlide.content.length + 1,
+            type: 'text',
+            content: 'Haga click para cambiar el texto',
+            position: { top: 300, left: 760 },
+        };
+
+        const updatedSlide = {
+            ...currentSlide,
+            content: [...currentSlide.content, newText],
+        };
+
+        const updatedSlides = slides.map(slide =>
+            slide.id === currentSlide.id ? updatedSlide : slide
+        );
+
+        setSlides(updatedSlides);
+        setCurrentSlide(updatedSlide);
     };
 
     const deleteSlide = () => {
@@ -50,22 +62,41 @@ export function HU05 () {
     };
 
     const evaluateTest = () => {
+        console.log(slides);
+        if (slides.length === 0) {
+            console.log(false);
+            alert("Ha fallado la prueba");
+            return false;
+        }
+
         for (const slide of slides) {
-            if (slide.content.length === 0) {
-                console.log(false);
+            if (slide.content.length != 0) {
+                console.log(true);
+                alert("Felicidades, lo ha logrado");
+                return true;
             }
         }
-        console.log(true);
+        console.log(false);
+        alert("Ha fallado la prueba");
+        return false;
     };
 
     return (
         <>
             <Title name="Historia 5" />
             <PptToolbar setMenuOption={setMenuOption}/>
-            <PptSecondaryMenu addSlide={addSlide} evaluateTest={evaluateTest} deleteSlide={deleteSlide} menuOption={menuOption} />
+            <PptSecondaryMenu addSlide={addSlide} evaluateTest={evaluateTest} deleteSlide={deleteSlide} addText={addText} menuOption={menuOption} />
             <div className="ppt-slides-container">
                 <PptSidebar slides={slides} setCurrentSlide={setCurrentSlide}/>
-                <PptEditor slide={currentSlide} />
+                {currentSlide ? <PptEditor slide={currentSlide} /> : 
+                <button onClick={addSlide} className='ppt-add-button'>
+                    <div>
+                    <FontAwesomeIcon icon={faPlus} />
+                    </div>
+                    <div>
+                    Añadir diapositiva
+                    </div>
+                </button>}
             </div>
         </>
     )

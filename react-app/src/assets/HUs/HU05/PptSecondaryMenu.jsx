@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClipboard } from '@fortawesome/free-regular-svg-icons';
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 
-export function PptSecondaryMenu ({ addSlide, evaluateTest, deleteSlide, menuOption }) {
+export function PptSecondaryMenu ({ addSlide, evaluateTest, deleteSlide, addText, menuOption }) {
   return (
     <div className="ppt-secondary-menu">
       {menuOption === 'inicio' && (
@@ -37,7 +37,7 @@ export function PptSecondaryMenu ({ addSlide, evaluateTest, deleteSlide, menuOpt
       )}
       {menuOption === 'insertar' && (
         <>
-          <button>Insertar Texto</button>
+          <button onClick={addText}>Insertar Texto</button>
           <button>Insertar Imagen</button>
           <button>Insertar Forma</button>
         </>

@@ -7,11 +7,13 @@ const PptSlide = ({ slide }) => {
       {slide.content.map((element) => {
         if (element.type === 'text') {
           return (
-            <ResizableTextBox initialContent={element.content}/>
+            <ResizableTextBox
+              initialContent={element.content}
+            />
           );
         } else if (element.type === 'image') {
           return (
-            <h1>IMAGEN</h1>
+            <h1 key={index}>IMAGEN</h1>
           );
         }
         return null;

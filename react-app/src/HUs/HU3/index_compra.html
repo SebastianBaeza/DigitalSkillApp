@@ -357,11 +357,13 @@
                 <button onclick="addToCart('Audífonos Samsung', audifonosGratis ? 0 : 305000)">Añadir al Carrito</button>
             </div>
             <div class="product">
-                <img src="https://via.placeholder.com/300x200" alt="Producto 3">
+                <div class="advertisement_2">
+                    <img src="MouseGamer.jpg" alt="Producto 3">
+                </div>
                 <h3>Mouse Gamer</h3>
                 <p>Mouse gamer ultra preciso con iluminación RGB, sensor de 16,000 DPI, botones programables y diseño ergonómico para dominación total en cada partida.</p>
-                <p>Precio: $0</p>
-                <button onclick="addToCart('Mouse Gamer', 0)">Añadir al Carrito</button>
+                <p>Precio: $6.000</p>
+                <button onclick="addToCart('Mouse Gamer', 6000)">Añadir al Carrito</button>
             </div>
         </section>
         <section id="cart" class="cart">
@@ -515,14 +517,10 @@
             document.getElementById('sidebar-reminder').style.display = 'block';
         }
 
-
-
-        const publicidadFake_arriba = false;
-        const publicidadFake_abajo = false;
-        const celularGratis = false;
-        const audifonosGratis = false;
-
-
+        const publicidadFake_arriba = Math.random() >= 0.5;
+        const publicidadFake_abajo = Math.random() >= 0.5;
+        const celularGratis = Math.random() >= 0.5;
+        const audifonosGratis = Math.random() >= 0.5;
 
         document.addEventListener("DOMContentLoaded", function() {
             if (publicidadFake_arriba) {
@@ -607,7 +605,18 @@
             window.endEvaluation = function() {
                 const checkboxes = document.querySelectorAll('.fake-page-form input[type="checkbox"]:checked');
                 const selectedSuspicious = Array.from(checkboxes).map(checkbox => checkbox.value);
-                alert(`Gracias por reportar. Tus sospechas: ${selectedSuspicious.join(', ')}`);
+
+                const isPublicidadFake_Correcta = ((publicidadFake_arriba || publicidadFake_abajo) && selectedSuspicious.includes('Anuncio sospechoso')) || (!(publicidadFake_arriba || publicidadFake_abajo) && !selectedSuspicious.includes('Anuncio sospechoso'));
+                const isObjetoGratisCorrecto = ((celularGratis ||audifonosGratis) && selectedSuspicious.includes('Precios inusualmente bajos')) || (!(celularGratis || audifonosGratis) && !selectedSuspicious.includes('Precios inusualmente bajos'));
+
+                let aciertos = 0;
+                if (isPublicidadFake_Correcta) aciertos++;
+                if (isObjetoGratisCorrecto) aciertos++;
+
+                const totalPreguntas = 2;
+                const puntaje = (aciertos / totalPreguntas) * 100; 
+
+                alert(`Gracias por reportar. Tus sospechas: ${selectedSuspicious.join(', ')}. Puntaje de acierto: ${puntaje}%`);
                 closeModal('fake-page-modal');
                 cart = [];
                 renderCart();

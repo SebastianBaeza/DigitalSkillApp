@@ -97,9 +97,9 @@
             border-radius: 4px;
             cursor: pointer;
             margin: 20px;
-            position: absolute;
+            position: fixed;
             right: 0;
-            bottom: 60px; /* Just above the footer */
+            bottom: 5px; 
         }
         .license-info-button:hover {
             background-color: darkblue;
@@ -166,12 +166,18 @@
         .modal button:hover {
             background-color: #45a049;
         }
+
+        .result-item img {
+            max-width: 300px;
+            max-height: 300px;
+        }
+
     </style>
 </head>
 <body>
     <div id="welcome-page" style="display: flex; justify-content: center; align-items: center; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); color: white; z-index: 10000; flex-direction: column; text-align: center;">
         <h1>Evaluación de Creative Commons</h1>
-        <p>Instrucciones: Debe buscar la licencia que tiene el trabajo de fotografia paisaje.</p>
+        <p>Instrucciones: Debe buscar la licencia indicado en el recordatorio</p>
         <button onclick="startEvaluation()">Comenzar</button>
     </div>
     <header>
@@ -185,7 +191,7 @@
     <div class="container">
         <div id="sidebar-reminder" style="display: none; position: fixed; top: 5%; right: 0; background-color: #80b382; color: white; padding: 10px; border-radius: 10px 0 0 10px;">
             <h3>Recordatorio:</h3>
-            <p>Debe buscar la licencia del trabajo de fotografia paisaje</p>
+            <p id="sidebar-instruction-text"></p>
         </div>
         <div class="search-bar">
             <input type="text" id="search" placeholder="Buscar trabajos licenciados...">
@@ -211,26 +217,26 @@
         const works = [
             {
                 title: "Fotografía de Paisaje",
-                description: "Hermosa fotografía de un paisaje montañoso.",
-                imageUrl: "https://via.placeholder.com/300",
+                description: "Hermosa fotografía de un paisaje de playa.",
+                imageUrl: "Paisaje.jpg",
                 license: "CC BY"
             },
             {
                 title: "Música Ambiental",
                 description: "Pieza musical relajante para uso libre.",
-                imageUrl: "https://via.placeholder.com/300",
+                imageUrl: "MusicaAmbiental.jpg",
                 license: "CC BY-SA"
             },
             {
                 title: "Artículo Científico",
                 description: "Investigación sobre el cambio climático.",
-                imageUrl: "https://via.placeholder.com/300",
+                imageUrl: "articuloCientifico.jpg",
                 license: "CC BY-NC"
             },
             {
                 title: "Video Educativo",
                 description: "Tutorial sobre programación web.",
-                imageUrl: "https://via.placeholder.com/300",
+                imageUrl: "videoEducativo.jpg",
                 license: "CC BY-ND"
             }
         ];
@@ -271,15 +277,34 @@
             document.getElementById(modalId).style.display = 'none';
         }
 
+        let correctAnswer = '';
+
         function submitQuestion() {
-            const question = document.getElementById('license-question').value;
+            const question = document.getElementById('license-question').value.trim().toUpperCase();
             let answer = '';
+            let accuracyPercentage = 0;
+            let correctLettersCount = 0;
+            for (let i = 0; i < correctAnswer.length; i++) {
+                if (correctAnswer[i] === question[i]) {
+                    correctLettersCount++;
+                }
+            }
+            accuracyPercentage = (correctLettersCount / correctAnswer.length) * 100;
             closeModal('license-info-modal');
+
+            alert(`Porcentaje de acierto: ${accuracyPercentage}%`);
         }
 
         function startEvaluation() {
             document.getElementById('welcome-page').style.display = 'none';
             document.getElementById('sidebar-reminder').style.display = 'block';
+
+            const randomIndex = Math.floor(Math.random() * works.length);
+            const randomWork = works[randomIndex];
+            const query = randomWork.title.toLowerCase();
+            correctAnswer = randomWork.license;
+
+            document.getElementById('sidebar-instruction-text').innerText = `Debe buscar la licencia que tiene el trabajo de "${query}".`;
         }
     </script>
 </body>

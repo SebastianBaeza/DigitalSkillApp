@@ -20,13 +20,13 @@ return (
           Creación de Contenido Digital
       </Typography>
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, alignItems: 'center' }}>
-          <Button variant="contained" href="/DigitalSkillApp/Seguridad">
+          <Button variant="contained" href="/DigitalSkillApp/Seguridad/Basico/Pregunta_Alternativas/4-1">
               Nivel Basico
           </Button>
-          <Button variant="contained" href="/DigitalSkillApp/Seguridad">
+          <Button variant="contained" href="/DigitalSkillApp/Seguridad/Intermedio/Pregunta_Alternativas/4-1">
               Nivel Intermedio
           </Button>
-          <Button variant="contained" href="/DigitalSkillApp/Seguridad">
+          <Button variant="contained" href="/DigitalSkillApp/Seguridad/Avanzado/Pregunta_Alternativas/4-1">
               Nivel Avanzado
           </Button>
           <Button variant="contained" href="/">

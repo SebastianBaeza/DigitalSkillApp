@@ -32,13 +32,13 @@ return (
                     Creación de Contenido Digital
                 </Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, alignItems: 'center' }}>
-                    <Button variant="contained" href="/DigitalSkillApp/Creacion_Contenido_Digital/Basico/Pregunta_Desarrollo/3-1">
+                    <Button variant="contained" href="/DigitalSkillApp/Creacion_Contenido_Digital/Basico/Pregunta_Alternativas/3-1">
                         Nivel Basico
                     </Button>
-                    <Button variant="contained" href="/DigitalSkillApp/Creacion_Contenido_Digital/Intermedio/Pregunta_Desarrollo/3-1">
+                    <Button variant="contained" href="/DigitalSkillApp/Creacion_Contenido_Digital/Intermedio/Pregunta_Alternativas/3-1">
                         Nivel Intermedio
                     </Button>
-                    <Button variant="contained" href="/DigitalSkillApp/Creacion_Contenido_Digital/Avanzado/Pregunta_Desarrollo/3-1">
+                    <Button variant="contained" href="/DigitalSkillApp/Creacion_Contenido_Digital/Avanzado/Pregunta_Alternativas/3-1">
                         Nivel Avanzado
                     </Button>
                     <Button variant="contained" href="/">

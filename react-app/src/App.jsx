@@ -4,14 +4,9 @@ import Competencia3 from './DigitalSkillApp/Competencia3.jsx';
 import Competencia4 from './DigitalSkillApp/Competencia4.jsx';
 import Desarrollo from './DigitalSkillApp/Desarrollo.jsx';
 import Alternativas from './DigitalSkillApp/Alternativas.jsx';
-// import Tests_3_1 from './DigitalSkillApp/Creacion_Contenido_Digital/3-1/Tests.jsx';
-// import Tests_3_2 from './DigitalSkillApp/Creacion_Contenido_Digital/3-2/Tests.jsx';
-// import Tests_3_3 from './DigitalSkillApp/Creacion_Contenido_Digital/3-3/Tests.jsx';
-// import Tests_3_4 from './DigitalSkillApp/Creacion_Contenido_Digital/3-4/Tests.jsx';
-// import Tests_4_1 from './DigitalSkillApp/Seguridad/4-1/Tests.jsx';
-// import Tests_4_2 from './DigitalSkillApp/Seguridad/4-2/Tests.jsx';
-// import Tests_4_3 from './DigitalSkillApp/Seguridad/4-3/Tests.jsx';
-// import Tests_4_4 from './DigitalSkillApp/Seguridad/4-4/Tests.jsx';
+import Simulador_Web from './DigitalSkillApp/Seguridad/Simulacion_Web/Pagina_Compra.jsx';
+import Simulador_Ergonomia from './DigitalSkillApp/Seguridad/Simulacion_Ergonomia/WorkstationSimulation.jsx';
+
 import './App.css';
 
 
@@ -99,6 +94,8 @@ export function App () {
               <Route path="/DigitalSkillApp/Seguridad/Basico/Pregunta_Alternativa/4-4" element={<Alternativas num={"4-4"} competencia={competencia_4_4} nivelPregunta={"Basico"}  />} />
               <Route path="/DigitalSkillApp/Seguridad/Intermedio/Pregunta_Alternativa/4-4" element={<Alternativas num={"4-4"} competencia={competencia_4_4} nivelPregunta={"Intermedio"}  />} />
               <Route path="/DigitalSkillApp/Seguridad/Avanzado/Pregunta_Alternativa/4-4" element={<Alternativas num={"4-4"} competencia={competencia_4_4} nivelPregunta={"Avanzado"}  />} />
+              <Route path="/DigitalSkillApp/Seguridad/Simulador_Ergonomia" element={<Simulador_Ergonomia/>} />
+              <Route path="/DigitalSkillApp/Seguridad/Simulador_Web" element={<Simulador_Web/>} />
             
             </Routes>
           </BrowserRouter>

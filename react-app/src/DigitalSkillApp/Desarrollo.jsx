@@ -74,69 +74,6 @@ export default function Desarrollo({ num, competencia, nivelPregunta }) {
       temperature: 0.7,
       top_p: 1.0
     };
-  //  console.error("Error en la solicitud:", error);
-//     }
-//   };
-
-//   const handleInputChange = (event) => {
-//     setAnswer(event.target.value);
-//   };
-
-//   const handleSubmit = () => {
-//     analyzeAnswer();
-//   };
-
-//   return (
-//     <Container sx={{ textAlign: "center", marginTop: "30px" }}>
-//       <Typography variant="h5" gutterBottom>
-//         {question}
-//       </Typography>
-//       <Box component="form" noValidate autoComplete="off" sx={{ mt: 2 }}>
-//         <TextField
-//           variant="outlined"
-//           fullWidth
-//           label="Escribe tu respuesta aquí"
-//           value={answer}
-//           onChange={handleInputChange}
-//         />
-//         <Button
-//           variant="contained"
-//           color="primary"
-//           sx={{ mt: 2 }}
-//           onClick={handleSubmit}
-//         >
-//           Guardar Respuesta
-//         </Button>
-//       </Box>
-//     try {
-//       const result = await axios.post("https://api.openai.com/v1/chat/completions", request_data, {
-//         headers: {
-//           "Content-Type": "application/json",
-//           "Authorization": `Bearer ${api_key}`
-//         }
-//       });
-//       setResponse(result.data.choices[0].message.content);
-//     } catch (error) {
-//    
-//       {response && (
-//         <Box sx={{ mt: 2 }}>
-//           <Typography variant="h6" gutterBottom>
-//             Respuesta del asistente:
-//           </Typography>
-//           <Typography variant="body1">{response}</Typography>
-//         </Box>
-//       )}
-//       <Button
-//         variant="contained"
-//         color="primary"
-//         sx={{ mt: 2 }}
-//         href="/"
-//       >
-//         Volver al inicio
-//       </Button>
-//     </Container>
-//   );
-// }
   try {
     const result = await axios.post("https://api.openai.com/v1/chat/completions", request_data, {
       headers: {
@@ -147,7 +84,6 @@ export default function Desarrollo({ num, competencia, nivelPregunta }) {
     const responseContent = result.data.choices[0].message.content;
     setResponse(responseContent);
     downloadResponse(responseContent);
-    // saveResponseToServer(responseContent);
     setRedirectToNextPage(true);
     } catch (error) {
       console.error("Error en la solicitud:", error);

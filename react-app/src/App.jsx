@@ -7,10 +7,10 @@ import Alternativas from './DigitalSkillApp/Alternativas.jsx';
 // import Simulador_Bloques from './DigitalSkillApp/Creacion_Contenido_Digital/Bloques/.jsx';
 // import Simulador_Codigo from './DigitalSkillApp/Creacion_Contenido_Digital/Codigo/.jsx';
 // import Simulador_CC from './DigitalSkillApp/Creacion_Contenido_Digital/Simulacion_CC/.jsx';
-// import Simulador_Powerpoint from './DigitalSkillApp/Creacion_Contenido_Digital/Simulacion_Contenido_Digital/.jsx';
-import Simulador_Web from './DigitalSkillApp/Seguridad/Simulacion_Web/index_compra.jsx';
+import Simulador_Powerpoint from './DigitalSkillApp/Creacion_Contenido_Digital/Simulacion_Contenido_Digital/HU05.jsx';
 
-import Simulador_Ergonomia from './DigitalSkillApp/Seguridad/Simulacion_Ergonomia/App.jsx';
+// import Simulador_Ergonomia from './DigitalSkillApp/Seguridad/Simulacion_Ergonomia/App.jsx';
+import Simulador_Web from './DigitalSkillApp/Seguridad/Simulacion_Web/index_compra.jsx';
 import Simulador_Correos from './DigitalSkillApp/Seguridad/Simulacion_Correos/App.jsx';
 import Simulador_Ergonomia from './DigitalSkillApp/Seguridad/Simulacion_Ergonomia/WorkstationSimulation.jsx';
 
@@ -76,8 +76,8 @@ export function App () {
               
               {/* <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/" element={<Simulador_Bloques/>} />
               <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/" element={<Simulador_Codigo/>} />
-              <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/" element={<Simulador_CC/>} />
-              <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/" element={<Simulador_Powerpoint/>} /> */}
+              <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/" element={<Simulador_CC/>} /> */}
+              <Route path="/DigitalSkillApp/Creacion_Contenido_Digital/Simulador_Powerpoint" element={<Simulador_Powerpoint/>} />
 
               <Route path="/DigitalSkillApp/Seguridad/Basico/Pregunta_Desarrollo/4-1" element={<Desarrollo num={"4-1"} competencia={competencia_4_1} nivelPregunta={"Basico"}  />} />
               <Route path="/DigitalSkillApp/Seguridad/Intermedio/Pregunta_Desarrollo/4-1" element={<Desarrollo num={"4-1"} competencia={competencia_4_1} nivelPregunta={"Intermedio"}  />} />
@@ -108,11 +108,9 @@ export function App () {
               <Route path="/DigitalSkillApp/Seguridad/Avanzado/Pregunta_Alternativas/4-4" element={<Alternativas num={"4-4"} competencia={competencia_4_4} nivelPregunta={"Avanzado"}  />} />
               
               <Route path="/DigitalSkillApp/Seguridad/Simulador_Ergonomia" element={<Simulador_Ergonomia/>} />
-              {/* <Route path="/DigitalSkillApp/Seguridad/Simulador_Web" element={<Simulador_Web/>} /> */}
+              <Route path="/DigitalSkillApp/Seguridad/Simulador_Web" element={<Simulador_Web/>} />
               <Route path="/DigitalSkillApp/Seguridad/Simulador_Correos" element={<Simulador_Correos/>} />
             </Routes>
           </BrowserRouter>
   );
 }
-
-// export default App();

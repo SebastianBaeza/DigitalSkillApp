@@ -1,41 +1,53 @@
-import { Container, Typography, Button, TextField } from '@mui/material';
+import { Container, Typography, Button, TextField,Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Stack } from '@mui/material';
 import UsePython from './Python/RunPyCode';
 import './index.css';
+import { useState } from 'react';
 
 export default function HU02() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const runCode = async (event) => {
     event.preventDefault();
-    const outputDiv = document.getElementById('output');
     const codePy = event.target.elements.pythonCode.value; // Obtener el valor del input directamente
     console.log("codigo a enviar:",codePy);
     try {
       const codigo = await UsePython(codePy);
-      if (codigo !== undefined) {
-        outputDiv.innerHTML = codigo;
+      if (codigo !== '>') {
+        const outputDiv = document.getElementById('output');
+        outputDiv.innerHTML = '> '+(codigo===null?'':codigo);
+        if (codigo[0] == 'Hola Mundo!') {
+          setIsModalOpen(true);
+        }
       }
     } catch (error) {
       console.error('Error executing Python code:', error);
     }
-  };
+  }
+  //Función que renderiza el modal
+  const renderModal = () => (
+    <Dialog open={isModalOpen} onClose={() => setIsModalOpen(false)}>
+      <DialogTitle>Felicidades!</DialogTitle>
+      <DialogContent>
+        <DialogContentText>El valor es el correcto!</DialogContentText>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={() => setIsModalOpen(false)} href='/' >Seguir</Button>
+      </DialogActions>
+    </Dialog>
+  );
 
   return (
-    <div id="pageContainer">
-      <form onSubmit={runCode}>
-        <TextField
-          name="pythonCode"
-          label="Enter Python Code"
-          multiline
-          rows={4}
-          variant="outlined"
-          fullWidth
-          margin="normal"
-        />
-        <Button variant="contained" color="primary" type="submit">
-          Run Code
-        </Button>
-      </form>
-      <Typography variant="h6">Console:</Typography>
-      <Container id="output"></Container>
-    </div>
+    <>
+      {renderModal()}
+      <Typography variant="h4">Instrucciones: Imprime "Hola Mundo!"</Typography>
+      <Stack id="pageContainer">
+        <form onSubmit={runCode}>
+          <TextField name="pythonCode" label="Enter Python Code" multiline rows={4} variant="outlined" fullWidth margin="normal"/>
+          <Button variant="contained" color="primary" type="submit">Run Code</Button>
+        </form>
+          <Typography variant="h6">Console:</Typography>
+          <Container id="output">{'>'}</Container>
+      </Stack>
+    </>
+    
   );
 }

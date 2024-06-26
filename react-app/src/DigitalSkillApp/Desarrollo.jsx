@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Container, Typography, TextField, Button, Box } from '@mui/material';
 import axios from 'axios';
 import './Preguntas.css';
@@ -10,9 +10,8 @@ export default function Desarrollo({ num, competencia, nivelPregunta }) {
   const [redirectToNextPage, setRedirectToNextPage] = useState(false);
 
   const api_key = "";
-  // const model_id = "gpt-4";
-  const model_id = "gpt-3.5";
-
+  const model_id = "gpt-4";
+  // const model_id = "gpt-3.5";
 
   useEffect(() => {
     generateQuestion();
@@ -98,13 +97,6 @@ export default function Desarrollo({ num, competencia, nivelPregunta }) {
     document.body.appendChild(element);
     element.click();
   };
-  // const saveResponseToServer = async (responseContent) => {
-  //   try {
-  //     await axios.post('http://localhost:3001/save-response', { response: responseContent });
-  //   } catch (error) {
-  //     console.error('Error al guardar la respuesta en el servidor:', error);
-  //   }
-  // };
 
   const handleInputChange = (event) => {
     setAnswer(event.target.value);
@@ -118,7 +110,6 @@ export default function Desarrollo({ num, competencia, nivelPregunta }) {
     if (redirectToNextPage) {
       // Aquí podrías implementar la lógica de redirección a diferentes páginas según el nivelPregunta
       let nextPageUrl = "";
-      // console.log(competencia);
       switch (num){
         case "3-1":
           nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/Simulacion_Powerpoint";
@@ -154,34 +145,12 @@ export default function Desarrollo({ num, competencia, nivelPregunta }) {
 
   return (
     <Container sx={{ textAlign: "center", marginTop: "30px" }}>
-      <Typography variant="h5" gutterBottom>
-        {question}
-      </Typography>
+      <Typography variant="h5" gutterBottom>{question}</Typography>
       <Box component="form" noValidate autoComplete="off" sx={{ mt: 2 }}>
-        <TextField
-          variant="outlined"
-          fullWidth
-          label="Escribe tu respuesta aquí"
-          value={answer}
-          onChange={handleInputChange}
-        />
-        <Button
-          variant="contained"
-          color="primary"
-          sx={{ mt: 2 }}
-          onClick={handleSubmit}
-        >
-          Guardar Respuesta
-        </Button>
+        <TextField variant="outlined" fullWidth label="Escribe tu respuesta aquí" value={answer} onChange={handleInputChange}/>
+        <Button variant="contained" color="primary" sx={{ mt: 2 }} onClick={handleSubmit}>Guardar Respuesta</Button>
       </Box>
-      <Button
-        variant="contained"
-        color="primary"
-        sx={{ mt: 2 }}
-        href="/"
-      >
-        Volver al inicio
-      </Button>
+      <Button variant="contained" color="primary" sx={{ mt: 2 }}href="/">Volver al inicio</Button>
     </Container>
   );
 }

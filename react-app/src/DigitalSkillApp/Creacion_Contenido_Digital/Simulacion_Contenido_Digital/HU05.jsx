@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Title } from "./assets/HUs/HU05/Title";
 import { PptToolbar } from "./assets/HUs/HU05/PptToolbar";
@@ -7,10 +7,7 @@ import { PptEditor } from "./assets/HUs/HU05/PptEditor";
 import { PptSecondaryMenu } from "./assets/HUs/HU05/PptSecondaryMenu";
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
+import {Box,Button,Typography,Modal} from '@mui/material/';
 
 import './assets/HUs/HU05/styles/HU05.css';
 
@@ -33,7 +30,6 @@ export default function Simulador_Powerpoint() {
     const [counter, setCounter] = useState(0);
     const [isApproved, setIsApproved] = useState(null);
 
-
     useEffect(() => {
         let timer = null;
         if (showCounter) {
@@ -55,11 +51,7 @@ export default function Simulador_Powerpoint() {
 
     const handleClose = () => setOpen(false);
 
-    const [slides, setSlides] = useState([
-        { id: 1,
-            content: [] 
-        }
-    ]);
+    const [slides, setSlides] = useState([{ id: 1,content: [] }]);
     
     const [currentSlide, setCurrentSlide] = useState(slides[0]);
     const [currentContent, setCurrentContent] = useState('');
@@ -126,16 +118,9 @@ export default function Simulador_Powerpoint() {
         <>
             {instruction && (
             <div>
-                <Modal
-                    open={instruction}
-                    onClose={handleInstructionClose}
-                    aria-labelledby="modal-modal-title"
-                    aria-describedby="modal-modal-description"
-                >
+                <Modal open={instruction} onClose={handleInstructionClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
                     <Box sx={style}>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Instrucción: Realice una presentación que contenga texto.
-                    </Typography>
+                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>Instrucción: Realice una presentación que contenga texto.</Typography>
                     <Button
                         variant="contained"
                         onClick={handleInstructionClose}
@@ -185,46 +170,24 @@ export default function Simulador_Powerpoint() {
                 <PptSidebar slides={slides} setCurrentSlide={setCurrentSlide}/>
                 {currentSlide ? <PptEditor slide={currentSlide} content={currentContent} setCurrentContent={setCurrentContent}/> : 
                 <button onClick={addSlide} className='ppt-add-button'>
-                    <div>
-                    <FontAwesomeIcon icon={faPlus} />
-                    </div>
-                    <div>
-                    Añadir diapositiva
-                    </div>
+                    <div><FontAwesomeIcon icon={faPlus} /></div>
+                    <div>Añadir diapositiva</div>
                 </button>}
             </div>
             { isApproved ? 
             <div>
-                <Modal
-                    open={open}
-                    onClose={handleClose}
-                    aria-labelledby="modal-modal-title"
-                    aria-describedby="modal-modal-description"
-                >
+                <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
                     <Box sx={style}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Prueba superada
-                    </Typography>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Tiempo transcurrido: {counter} segundos
-                    </Typography>
+                    <Typography id="modal-modal-title" variant="h6" component="h2">Prueba superada</Typography>
+                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>Tiempo transcurrido: {counter} segundos</Typography>
                     </Box>
                 </Modal>
             </div> : 
             <div>
-                <Modal
-                    open={open}
-                    onClose={handleClose}
-                    aria-labelledby="modal-modal-title"
-                    aria-describedby="modal-modal-description"
-                >
+                <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
                     <Box sx={style}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Prueba no superada
-                    </Typography>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Tiempo transcurrido: {counter} segundos
-                    </Typography>
+                    <Typography id="modal-modal-title" variant="h6" component="h2">Prueba no superada</Typography>
+                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>Tiempo transcurrido: {counter} segundos</Typography>
                     </Box>
                 </Modal>
             </div>

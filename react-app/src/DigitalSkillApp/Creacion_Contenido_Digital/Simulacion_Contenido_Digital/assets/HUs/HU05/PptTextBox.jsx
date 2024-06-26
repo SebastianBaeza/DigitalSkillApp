@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
-export function PptTextBox ({ initialText, onUpdate }) {
+export default function PptTextBox ({ initialText, onUpdate }) {
 	const [text, setText] = useState(initialText);
 
 	const handleChange = (e) => {
@@ -9,13 +9,6 @@ export function PptTextBox ({ initialText, onUpdate }) {
   };
 
   return (
-    <textarea
-      className="ppt-text-box"
-      value={text}
-      onChange={handleChange}
-      placeholder="Escribe algo..."
-    />
+    <textarea className="ppt-text-box" value={text} onChange={handleChange} placeholder="Escribe algo..."/>
   );
-};
-
-export default PptTextBox;
+}

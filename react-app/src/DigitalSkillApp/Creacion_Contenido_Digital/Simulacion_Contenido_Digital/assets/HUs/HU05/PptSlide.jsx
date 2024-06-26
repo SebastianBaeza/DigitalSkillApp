@@ -1,4 +1,3 @@
-import React from 'react';
 import ResizableTextBox from './ResizableTextBox';
 
 const PptSlide = ({ slide }) => {
@@ -7,9 +6,7 @@ const PptSlide = ({ slide }) => {
       {slide.content.map((element) => {
         if (element.type === 'text') {
           return (
-            <ResizableTextBox
-              initialContent={element.content}
-            />
+            <ResizableTextBox initialContent={element.content}/>
           );
         } else if (element.type === 'image') {
           return (

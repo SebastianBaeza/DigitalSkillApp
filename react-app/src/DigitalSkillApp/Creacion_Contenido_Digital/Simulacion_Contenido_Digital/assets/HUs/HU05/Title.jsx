@@ -15,18 +15,12 @@ export function Title ({ name, evaluateTest }) {
         if (reason === 'clickaway') {
           return;
         }
-    
         setOpen(false);
     };
     
     const action = (
         <>
-          <IconButton
-            size="small"
-            aria-label="close"
-            color="inherit"
-            onClick={handleClose}
-          >
+          <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
             <CloseIcon fontSize="small" />
           </IconButton>
         </>
@@ -50,15 +44,7 @@ export function Title ({ name, evaluateTest }) {
                     textTransform: 'none',
                     fontFamily: 'Arial'
                 }} onClick={handleClick}>Instrucción</Button>
-                <Snackbar sx={{
-                    color: 'blue' 
-                    }}
-                    open={open}
-                    autoHideDuration={6000}
-                    onClose={handleClose}
-                    message="Realice una presentación que contenga texto"
-                    action={action}
-                />
+                <Snackbar sx={{color: 'blue' }} open={open} autoHideDuration={6000} onClose={handleClose} message="Realice una presentación que contenga texto" action={action}/>
             </div>
             {name}
             <button className="ppt-title-finished" onClick={evaluateTest}>Finalizar test</button>

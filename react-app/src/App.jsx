@@ -16,7 +16,6 @@ import Simulador_Correos_Enviados from './DigitalSkillApp/Seguridad/Simulacion_C
 import Simulador_Correos_Instrucciones from './DigitalSkillApp/Seguridad/Simulacion_Correos/instrucciones.jsx';
 import Simulador_Correos_Basurero from './DigitalSkillApp/Seguridad/Simulacion_Correos/basurero.jsx';
 
-import './App.css';
 
 
 export function App () {

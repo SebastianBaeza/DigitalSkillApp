@@ -1,4 +1,3 @@
-import * as React from "react";
 import {useEffect, useState} from 'react';
 import { Container, Typography, Box, Button} from "@mui/material";
 
@@ -16,22 +15,12 @@ export default function Entrypoint() {
 return (
   <>
   <Container sx={{ textAlign: "center", marginTop: "30px" }}>
-      <Typography sx={{ marginBottom: "50px" }} variant="h1" gutterBottom>
-          Creación de Contenido Digital
-      </Typography>
+      <Typography sx={{ marginBottom: "50px" }} variant="h1" gutterBottom>Creación de Contenido Digital</Typography>
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, alignItems: 'center' }}>
-          <Button variant="contained" href="/DigitalSkillApp/Seguridad/Basico/Pregunta_Alternativas/4-1">
-              Nivel Basico
-          </Button>
-          <Button variant="contained" href="/DigitalSkillApp/Seguridad/Intermedio/Pregunta_Alternativas/4-1">
-              Nivel Intermedio
-          </Button>
-          <Button variant="contained" href="/DigitalSkillApp/Seguridad/Avanzado/Pregunta_Alternativas/4-1">
-              Nivel Avanzado
-          </Button>
-          <Button variant="contained" href="/">
-              Volver al inicio
-          </Button>
+        <Button variant="contained" href="/DigitalSkillApp/Seguridad/Basico/Pregunta_Alternativas/4-1">Nivel Basico</Button>
+        <Button variant="contained" href="/DigitalSkillApp/Seguridad/Intermedio/Pregunta_Alternativas/4-1">Nivel Intermedio</Button>
+        <Button variant="contained" href="/DigitalSkillApp/Seguridad/Avanzado/Pregunta_Alternativas/4-1">Nivel Avanzado</Button>
+        <Button variant="contained" href="/">Volver al inicio</Button>
       </Box>
   </Container>
 </>

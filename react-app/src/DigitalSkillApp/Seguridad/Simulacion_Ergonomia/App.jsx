@@ -1,4 +1,3 @@
-import React from 'react';
 import WorkstationSimulation from './WorkstationSimulation.jsx';
 import './App.css';
 

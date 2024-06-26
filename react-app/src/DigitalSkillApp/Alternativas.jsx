@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Container, Typography, FormControlLabel, RadioGroup, Radio, Checkbox, Button, Box } from '@mui/material';
 import axios from 'axios';
 import './Preguntas.css';
@@ -9,7 +9,7 @@ export default function Alternativas({ num, competencia, nivelPregunta }) {
   const [response, setResponse] = useState("");
   const [redirectToNextPage, setRedirectToNextPage] = useState(false);
 
-  const api_key = "";
+  const api_key = ""; //Soy una api key
   // const model_id = "gpt-4";
   const model_id = "gpt-3.5";
 
@@ -159,48 +159,26 @@ export default function Alternativas({ num, competencia, nivelPregunta }) {
 
   return (
     <Container sx={{ textAlign: "center", marginTop: "30px" }}>
-      <Typography variant="h5" gutterBottom>
-        {currentQuestion.pregunta}
-      </Typography>
+      <Typography variant="h5" gutterBottom>{currentQuestion.pregunta}</Typography>
       <Box component="form" noValidate autoComplete="off" sx={{ mt: 2 }}>
         {currentQuestion.multiple ? (
           currentQuestion.opciones?.map((option, index) => (
             <FormControlLabel
               key={index}
               control={
-                <Checkbox
-                  checked={selectedOptions.includes(option)}
-                  onChange={handleOptionChange}
-                  value={option}
-                />
+                <Checkbox checked={selectedOptions.includes(option)} onChange={handleOptionChange} value={option}/>
               }
               label={option}
             />
           ))
         ) : (
           <RadioGroup value={selectedOptions[0] || ''} onChange={handleOptionChange}>
-            {currentQuestion.opciones?.map((option, index) => (
-              <FormControlLabel key={index} value={option} control={<Radio />} label={option} />
-            ))}
+            {currentQuestion.opciones?.map((option, index) => (<FormControlLabel key={index} value={option} control={<Radio />} label={option} />))}
           </RadioGroup>
         )}
-        <Button
-          variant="contained"
-          color="primary"
-          sx={{ mt: 2 }}
-          onClick={handleSubmit}
-        >
-          Guardar Respuesta
-        </Button>
+        <Button variant="contained" color="primary" sx={{ mt: 2 }} onClick={handleSubmit}>Guardar Respuesta</Button>
       </Box>
-      <Button
-        variant="contained"
-        color="primary"
-        sx={{ mt: 2 }}
-        href="/"
-      >
-        Volver al inicio
-      </Button>
+      <Button variant="contained" color="primary" sx={{ mt: 2 }} href="/">Volver al inicio</Button>
     </Container>
   );
 }

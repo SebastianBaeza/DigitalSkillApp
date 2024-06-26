@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './styles/Ayuda.css';
 
 export function PptToolbar ({ setMenuOption}) {
@@ -9,22 +9,22 @@ export function PptToolbar ({ setMenuOption}) {
   };
 
   const closePopup = (e) => {
-      if (e.target.className === 'popup-overlay') {
-          setIsOpen(false);
-      }
+    if (e.target.className === 'popup-overlay') {
+        setIsOpen(false);
+    }
   };
 
   useEffect(() => {
       const handleOutsideClick = (e) => {
-          // No cierres la ventana emergente si el clic proviene del botón o de la ventana emergente misma
-          if (isOpen && !document.getElementById('popup').contains(e.target) && e.target.id !== 'help-button') {
-              setIsOpen(false);
-          }
+        // No cierres la ventana emergente si el clic proviene del botón o de la ventana emergente misma
+        if (isOpen && !document.getElementById('popup').contains(e.target) && e.target.id !== 'help-button') {
+          setIsOpen(false);
+        }
       };
 
       document.addEventListener('click', handleOutsideClick);
       return () => {
-          document.removeEventListener('click', handleOutsideClick);
+        document.removeEventListener('click', handleOutsideClick);
       };
   }, [isOpen]);
 
@@ -44,18 +44,10 @@ export function PptToolbar ({ setMenuOption}) {
       {isOpen && (
         <div className="popup-overlay" onClick={closePopup}>
           <div id="popup" className="popup-content">
-              <iframe
-                src="https://npy5yesnxt173mlnc905e.chat.copilot.live/"
-                title="Help"
-                width="600"
-                height="400"
-                style={{ border: 'none' }}
-              ></iframe>
+            <iframe src="https://npy5yesnxt173mlnc905e.chat.copilot.live/" title="Help" width="600" height="400" style={{ border: 'none' }}/>
           </div>
         </div>
       )}     
     </div>
   );
-};
-
-export default PptToolbar;
+}

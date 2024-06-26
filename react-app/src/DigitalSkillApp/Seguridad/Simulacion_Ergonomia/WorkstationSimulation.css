@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* align-items: flex-start; */
   justify-content: space-between;
   gap: 16px;
 }
@@ -12,10 +11,7 @@
   flex-direction: column;
   gap: 16px;
   width: 200px;
-  /* position: absolute; */
-  /* left: 20%; */
   top: 250px;
-  /* margin-right: 150px; */
 }
 
 .simulation-view {
@@ -56,18 +52,15 @@
 .desk {
   position: relative; /* Permite posicionar screen dentro de desk */
   z-index: 3;
-
 }
 
 .screen {
   position: absolute;
   top: 23%;
   left: 57%;
-  /* border: solid; */
   transform: translateX(-50%);
   transform-origin: center; /* Rotación desde el centro inferior */
   z-index: 1; /* Asegura que screen esté encima de desk */  
-
 }
 
 .person {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Slider, Typography, Button, Modal, Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import './WorkstationSimulation.css';
@@ -221,9 +221,7 @@ const WorkstationSimulation = () => {
           borderRadius: 4,
           zIndex: 9999,
         }}>
-          <Typography variant="body2" gutterBottom>
-            Tiempo transcurrido: {counter} segundos
-          </Typography>
+          <Typography variant="body2" gutterBottom>Tiempo transcurrido: {counter} segundos</Typography>
         </Box>
       )}
       <div className="simulation">
@@ -239,12 +237,8 @@ const WorkstationSimulation = () => {
           }}
         >
           <Box sx={{ bgcolor: 'background.paper', p: 4, minWidth: 300, borderRadius: 4 }}>
-            <Typography variant="h5" id="modal-title" gutterBottom>
-              ¡Prepárate para el siguiente test!
-            </Typography>
-            <Typography variant="body1" id="modal-description" gutterBottom>
-              Ajusta los siguientes parámetros para mejorar la ergonomía:
-            </Typography>
+            <Typography variant="h5" id="modal-title" gutterBottom>¡Prepárate para el siguiente test!</Typography>
+            <Typography variant="body1" id="modal-description" gutterBottom>Ajusta los siguientes parámetros para mejorar la ergonomía:</Typography>
             <Typography variant="body2" gutterBottom>
               <strong>Altura de la Silla:</strong> Ajusta la altura de la silla para asegurar que los ojos de la persona estén a la altura adecuada respecto a la parte superior de la pantalla.
             </Typography>
@@ -287,15 +281,9 @@ const WorkstationSimulation = () => {
           }}
         >
           <Box sx={{ bgcolor: 'background.paper', p: 4, minWidth: 300, borderRadius: 4, textAlign: 'center' }}>
-            <Typography variant="h5" id="finish-modal-title" gutterBottom>
-              ¡Test Finalizado!
-            </Typography>
-            <Typography variant="body1" id="finish-modal-description">
-              Tu tiempo fue de {counter} segundos.
-            </Typography>
-            <Typography variant="h6" id="finish-modal-score" gutterBottom>
-              Tu calificación es: {score}
-            </Typography>
+            <Typography variant="h5" id="finish-modal-title" gutterBottom>¡Test Finalizado!</Typography>
+            <Typography variant="body1" id="finish-modal-description">Tu tiempo fue de {counter} segundos.</Typography>
+            <Typography variant="h6" id="finish-modal-score" gutterBottom>Tu calificación es: {score}</Typography>
             <Button
               variant="contained"
               onClick={handleCloseFinishPopup}
@@ -388,15 +376,12 @@ const WorkstationSimulation = () => {
           </div>
         </div>
         <Box sx={{
-          // position: 'absolute',
-          // top: '40%', // Ajusta la posición vertical
           right: 20,
           width: 300, // Ajusta el ancho del cuadro
           bgcolor: 'rgba(255, 255, 255, 0.8)',
           p: 2,
           borderRadius: 4,
-          // transform: 'translateY(-50%)', // Centra verticalmente
-          overflow: 'hidden', // Evita el desplazamiento vertical
+          overflow: 'hidden' // Evita el desplazamiento vertical
         }}>
           <Typography variant="body2" gutterBottom>
             <strong>Altura de la Silla:</strong> Ajusta la altura de la silla para asegurar que los ojos de la persona estén a la altura adecuada respecto a la parte superior de la pantalla.
@@ -412,11 +397,7 @@ const WorkstationSimulation = () => {
           </Typography>
         </Box>
       </div>
-      <Button
-        variant="contained"
-        onClick={handleFinishTest}
-        sx={{ position: 'absolute', bottom: 20, right: 20, backgroundColor: '#3a8589', '&:hover': { backgroundColor: '#2e6f72' } }}
-      >
+      <Button variant="contained" onClick={handleFinishTest} sx={{ position: 'absolute', bottom: 20, right: 20, backgroundColor: '#3a8589', '&:hover': { backgroundColor: '#2e6f72' } }}>
         Finalizar Test
       </Button>
     </>

@@ -1,36 +1,23 @@
-import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClipboard } from '@fortawesome/free-regular-svg-icons';
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 
-export function PptSecondaryMenu ({ addSlide, evaluateTest, deleteSlide, addText, menuOption }) {
+export function PptSecondaryMenu ({ addSlide, deleteSlide, addText, menuOption }) {
   return (
     <div className="ppt-secondary-menu">
       {menuOption === 'inicio' && (
         <>
           <button>
-            <div>
-              <FontAwesomeIcon icon={faClipboard} />
-            </div>
-            <div>
-              Pegar
-            </div>
+            <div><FontAwesomeIcon icon={faClipboard} /></div>
+            <div>Pegar</div>
           </button>
           <button onClick={addSlide}>
-            <div>
-              <FontAwesomeIcon icon={faPlus} />
-            </div>
-            <div>
-              Añadir diapositiva
-            </div>
+            <div><FontAwesomeIcon icon={faPlus} /></div>
+            <div>Añadir diapositiva</div>
           </button>
           <button onClick={deleteSlide}>
-            <div>
-              <FontAwesomeIcon icon={faMinus} />
-            </div>
-            <div>
-              Eliminar diapositiva actual
-            </div>
+            <div><FontAwesomeIcon icon={faMinus} /></div>
+            <div>Eliminar diapositiva actual</div>
           </button>
         </>
       )}
@@ -106,6 +93,6 @@ export function PptSecondaryMenu ({ addSlide, evaluateTest, deleteSlide, addText
       )}
     </div>
   );
-};
+}
 
 export default PptSecondaryMenu;

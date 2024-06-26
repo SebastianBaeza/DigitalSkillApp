@@ -3,7 +3,7 @@ import './correo.css';
 import DestacarTexto from './destacar'; // Asegúrate de importar DestacarTexto desde donde esté definido
 import downloadIcon from './download-icon.png'; // Importa la imagen para el botón de descarga
 
-const Bandeja = ({ correos, moveToTrash }) => {
+const Bandeja = ({ correos, moveToTrash, setCronometroRunning }) => {
     const [selectedCorreos, setSelectedCorreos] = useState([]);
     const [selectedCorreo, setSelectedCorreo] = useState(null);
     const [highlightedText, setHighlightedText] = useState({}); // Estado para el texto resaltado

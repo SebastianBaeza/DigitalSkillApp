@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulación de Creative Commons</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .container {
+            padding: 20px;
+            flex: 1;
+        }
+        .search-bar {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .search-bar input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .search-bar button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .search-bar button:hover {
+            background-color: #45a049;
+        }
+        .results {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .result-item {
+            width: 30%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .result-item img {
+            max-width: 100%;
+            height: auto;
+        }
+        .result-item h3 {
+            margin-bottom: 10px;
+        }
+        .result-item p {
+            margin-bottom: 10px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .license-info-button {
+            background-color: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 20px;
+            position: fixed;
+            right: 0;
+            bottom: 5px; 
+        }
+        .license-info-button:hover {
+            background-color: darkblue;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+            position: relative;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            cursor: pointer;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .modal input[type="text"] {
+            padding: 10px;
+            width: calc(100% - 24px);
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .modal button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .modal button:hover {
+            background-color: #45a049;
+        }
+        .result-item img {
+            max-width: 300px;
+            max-height: 300px;
+        }
+        #sidebar-reminder {
+            display: none; 
+            position: fixed; 
+            top: 5%; 
+            right: 0; 
+            background-color: #80b382; 
+            color: white; 
+            padding: 10px; 
+            border-radius: 10px 0 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Simulación de Creative Commons</h1>
+    </header>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="#about">Acerca de</a>
+        <a href="#contact">Contacto</a>
+    </nav>
+    <div class="container">
+        <div id="sidebar-reminder">
+            <h3>Recordatorio:</h3>
+            <p id="sidebar-instruction-text"></p>
+        </div>
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Buscar trabajos licenciados...">
+            <button onclick="searchWorks()">Buscar</button>
+        </div>
+        <div class="results" id="results"></div>
+    </div>
+    <button class="license-info-button" onclick="showLicenseInfoModal()">Respuesta sobre Licencia</button>
+    <footer>
+        <p>&copy; 2024 Simulación de Creative Commons. Todos los derechos reservados.</p>
+    </footer>
+
+    <div id="license-info-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('license-info-modal')">&times;</span>
+            <h2>¿A que licencia pertenece al autor?</h2>
+            <input type="text" id="license-question" placeholder="Escribe tu respuesta...">
+            <button onclick="submitQuestion()">Enviar</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const query = params.get('query');
+
+            if (query) {
+                document.getElementById('search').value = query;
+                document.getElementById('sidebar-instruction-text').innerText = query;
+                document.getElementById('sidebar-reminder').style.display = 'block';
+                searchWorks();
+            }
+        });
+
+        const works = [
+            {
+                title: "Fotografía de Paisaje",
+                description: "Hermosa fotografía de un paisaje de playa.",
+                imageUrl: "Paisaje.jpg",
+                license: "CC BY"
+            },
+            {
+                title: "Música Ambiental",
+                description: "Pieza musical relajante para uso libre.",
+                imageUrl: "MusicaAmbiental.jpg",
+                license: "CC BY-SA"
+            },
+            {
+                title: "Artículo Científico",
+                description: "Investigación sobre el cambio climático.",
+                imageUrl: "articuloCientifico.jpg",
+                license: "CC BY-NC"
+            },
+            {
+                title: "Video Educativo",
+                description: "Tutorial sobre programación web.",
+                imageUrl: "videoEducativo.jpg",
+                license: "CC BY-ND"
+            }
+        ];
+
+        function searchWorks() {
+            const query = document.getElementById('search').value.toLowerCase();
+            const resultsContainer = document.getElementById('results');
+            resultsContainer.innerHTML = '';
+
+            const filteredWorks = works.filter(work => 
+                work.title.toLowerCase().includes(query) || 
+                work.description.toLowerCase().includes(query) ||
+                work.license.toLowerCase().includes(query)
+            );
+
+            if (filteredWorks.length > 0) {
+                filteredWorks.forEach(work => {
+                    const resultItem = document.createElement('div');
+                    resultItem.className = 'result-item';
+                    resultItem.innerHTML = `
+                        <img src="${work.imageUrl}" alt="${work.title}">
+                        <h3>${work.title}</h3>
+                        <p>${work.description}</p>
+                        <p><strong>Licencia:</strong> ${work.license}</p>
+                    `;
+                    resultsContainer.appendChild(resultItem);
+                });
+            } else {
+                resultsContainer.innerHTML = '<p>No se encontraron trabajos.</p>';
+            }
+        }
+
+        function showLicenseInfoModal() {
+            document.getElementById('license-info-modal').style.display = 'block';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        function submitQuestion() {
+            const userAnswer = document.getElementById('license-question').value.trim();
+            const correctAnswer = localStorage.getItem('correctAnswer');
+
+            if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+                alert('¡Correcto! La licencia es ' + correctAnswer);
+            } else {
+                alert('Incorrecto. La licencia correcta es ' + correctAnswer);
+            }
+
+            closeModal('license-info-modal');
+        }
+    </script>
+</body>
+</html>

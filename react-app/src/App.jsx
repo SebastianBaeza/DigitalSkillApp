@@ -11,7 +11,10 @@ import Simulador_Powerpoint from './DigitalSkillApp/Creacion_Contenido_Digital/S
 
 import Simulador_Ergonomia from './DigitalSkillApp/Seguridad/Simulacion_Ergonomia/App.jsx';
 import Simulador_Web from './DigitalSkillApp/Seguridad/Simulacion_Web/index_compra.jsx';
-// import Simulador_Correos from './DigitalSkillApp/Seguridad/Simulacion_Correos/App.jsx';
+import Simulador_Correos_Bandeja from './DigitalSkillApp/Seguridad/Simulacion_Correos/App.jsx';
+import Simulador_Correos_Enviados from './DigitalSkillApp/Seguridad/Simulacion_Correos/bandeja.jsx';
+import Simulador_Correos_Instrucciones from './DigitalSkillApp/Seguridad/Simulacion_Correos/instrucciones.jsx';
+import Simulador_Correos_Basurero from './DigitalSkillApp/Seguridad/Simulacion_Correos/basurero.jsx';
 
 import './App.css';
 
@@ -108,7 +111,10 @@ export function App () {
               
               <Route path="/DigitalSkillApp/Seguridad/Simulador_Ergonomia" element={<Simulador_Ergonomia/>} />
               <Route path="/DigitalSkillApp/Seguridad/Simulador_Web" element={<Simulador_Web/>} />
-              {/* <Route path="/DigitalSkillApp/Seguridad/Simulador_Correos" element={<Simulador_Correos/>} /> */}
+              <Route path="/DigitalSkillApp/Seguridad/Simulador_Correos/Bandeja" element={<Simulador_Correos_Bandeja/>} />
+              <Route path="/DigitalSkillApp/Seguridad/Simulador_Correos/Enviados" element={<Simulador_Correos_Enviados/>} />
+              <Route path="/DigitalSkillApp/Seguridad/Simulador_Correos/Basurero" element={<Simulador_Correos_Basurero/>} />
+              <Route path="/DigitalSkillApp/Seguridad/Simulador_Correos/Instrucciones" element={<Simulador_Correos_Instrucciones/>} />
             </Routes>
           </BrowserRouter>
   );

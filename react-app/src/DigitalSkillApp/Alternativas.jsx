@@ -315,29 +315,56 @@ export default function Alternativas({ num, competencia, nivelPregunta }) {
       // Aquí podrías implementar la lógica de redirección a diferentes páginas según el nivelPregunta
       let nextPageUrl = "";
       switch (num){
+        // case "3-1":
+        //   nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Alternativas/3-2";
+        //   break;
+        // case "3-2":
+        //   nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Alternativas/3-3";
+        //   break;
+        // case "3-3":
+        //   nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Alternativas/3-4";
+        //   break;
+        //   case "3-4":
+        //   nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Alternativas/Resultados"; //O otro test, no se
+        //   break;
+        // case "4-1":
+        //   nextPageUrl = "/DigitalSkillApp/Seguridad/" + nivelPregunta + "/Pregunta_Alternativas/4-2";
+        //   break;
+        // case "4-2":
+        //   nextPageUrl = "/DigitalSkillApp/Seguridad/" + nivelPregunta + "/Pregunta_Alternativas/4-3";
+        //   break;
+        // case "4-3":
+        //   nextPageUrl = "/DigitalSkillApp/Seguridad/" + nivelPregunta + "/Pregunta_Alternativas/4-4";
+        //   break;
+        // case "4-4":
+        //   nextPageUrl = "/DigitalSkillApp/Seguridad/" + nivelPregunta + "/Pregunta_Alternativas/Resultados";
+        //   break;
+        // default:
+        //   nextPageUrl = "/";
+        //   break;
         case "3-1":
-          nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Alternativas/3-2";
+          nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Desarrollo/3-1";
           break;
         case "3-2":
-          nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Alternativas/3-3";
+          nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Desarrollo/3-2";
           break;
         case "3-3":
-          nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Alternativas/3-4";
+          nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Desarrollo/3-3";
           break;
           case "3-4":
-          nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Alternativas/Resultados"; //O otro test, no se
+          nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/Bloques";
           break;
         case "4-1":
-          nextPageUrl = "/DigitalSkillApp/Seguridad/" + nivelPregunta + "/Pregunta_Alternativas/4-2";
+          nextPageUrl = "/DigitalSkillApp/Seguridad/" + nivelPregunta + "/Pregunta_Desarrollo/4-1";
           break;
-        case "4-2":
-          nextPageUrl = "/DigitalSkillApp/Seguridad/" + nivelPregunta + "/Pregunta_Alternativas/4-3";
-          break;
+        // case "4-2":
+        //   nextPageUrl = "/DigitalSkillApp/Seguridad/" + nivelPregunta + "/Pregunta_Alternativas/4-3";
+        //   break;
         case "4-3":
-          nextPageUrl = "/DigitalSkillApp/Seguridad/" + nivelPregunta + "/Pregunta_Alternativas/4-4";
+          nextPageUrl = "/DigitalSkillApp/Seguridad/" + nivelPregunta + "/Pregunta_Desarrollo/4-3";
           break;
         case "4-4":
-          nextPageUrl = "/DigitalSkillApp/Seguridad/" + nivelPregunta + "/Pregunta_Alternativas/Resultados";
+          nextPageUrl = "/DigitalSkillApp/Seguridad/" + nivelPregunta + "/Pregunta_Desarrollo/4-4";
           break;
         default:
           nextPageUrl = "/";

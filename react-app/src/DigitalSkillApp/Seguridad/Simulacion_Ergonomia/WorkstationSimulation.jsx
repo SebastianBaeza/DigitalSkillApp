@@ -73,6 +73,7 @@ const WorkstationSimulation = () => {
   const [showFinishPopup, setShowFinishPopup] = useState(false);
   const [score, setScore] = useState(0);
   const [slidersDisabled, setSlidersDisabled] = useState(false);
+  const [redirectToNextPage, setRedirectToNextPage] = useState(false);
 
   useEffect(() => {
     let timer = null;
@@ -122,6 +123,7 @@ const WorkstationSimulation = () => {
     setShowFinishPopup(true);
     setShowCounter(false);
     setSlidersDisabled(true); // Deshabilita los sliders al finalizar el test
+    setRedirectToNextPage(true);
   };
 
   const convertScreenDistanceToReal = (value) => {
@@ -198,83 +200,17 @@ const WorkstationSimulation = () => {
     setScore(finalScore);
   };
 
+  useEffect(() => {
+    if (redirectToNextPage) {
+      // Aquí podrías implementar la lógica de redirección a diferentes páginas según el nivelPregunta
+      let nextPageUrl = "/DigitalSkillApp/Seguridad/Basico/Pregunta_Alternativas/4-4";
+      window.location.href = nextPageUrl;
+    }
+  }, [redirectToNextPage]);
+
   return (
-    <div className="simulation">
-      <Modal
-        open={showPopup}
-        onClose={handleClosePopup}
-        aria-labelledby="modal-title"
-        aria-describedby="modal-description"
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <Box sx={{ bgcolor: 'background.paper', p: 4, minWidth: 300, borderRadius: 4 }}>
-          <Typography variant="h5" id="modal-title" gutterBottom>
-            ¡Prepárate para el siguiente test!
-          </Typography>
-          <Typography variant="body1" id="modal-description" gutterBottom>
-            Ajusta los siguientes parámetros para mejorar la ergonomía:
-          </Typography>
-          <Typography variant="body2" gutterBottom>
-            <strong>Altura de la Silla:</strong> Ajusta la altura de la silla para asegurar que los ojos de la persona estén a la altura adecuada respecto a la parte superior de la pantalla.
-          </Typography>
-          <Typography variant="body2" gutterBottom>
-            <strong>Distancia Pantalla:</strong> Configura la posición de la persona, asegurando que esté a una distancia óptima del monitor.
-          </Typography>
-          <Typography variant="body2" gutterBottom>
-            <strong>Ángulo de la Pantalla:</strong> Modifica el ángulo de la pantalla para reducir el brillo y minimizar la fatiga visual, manteniéndola en una posición cómoda.
-          </Typography>
-          <Typography variant="body2" gutterBottom>
-            <strong>Curvatura de la Espalda:</strong> Ajusta la curvatura de la espalda para mantener una postura ergonómica, asegurando una alineación adecuada.
-          </Typography>
-          <Button
-            variant="contained"
-            onClick={handleClosePopup}
-            sx={{
-              mt: 2,
-              mx: 'auto',
-              display: 'block',
-              backgroundColor: '#3a8589', // Color de fondo del botón OK
-              '&:hover': {
-                backgroundColor: '#2e6f72', // Color de fondo al pasar el ratón
-              },
-            }}
-          >
-            OK
-          </Button>
-        </Box>
-      </Modal>
-
-      {showCounter && (
-        <Box sx={{
-          position: 'absolute',
-          top: '40%', // Ajusta la posición vertical
-          right: 20,
-          width: 300, // Ajusta el ancho del cuadro
-          bgcolor: 'rgba(255, 255, 255, 0.8)',
-          p: 2,
-          borderRadius: 4,
-          transform: 'translateY(-50%)', // Centra verticalmente
-          overflow: 'hidden', // Evita el desplazamiento vertical
-        }}>
-          <Typography variant="body2" gutterBottom>
-            <strong>Altura de la Silla:</strong> Ajusta la altura de la silla para asegurar que los ojos de la persona estén a la altura adecuada respecto a la parte superior de la pantalla.
-          </Typography>
-          <Typography variant="body2" gutterBottom>
-            <strong>Distancia Pantalla:</strong> Configura la posición de la persona, asegurando que esté a una distancia óptima del monitor.
-          </Typography>
-          <Typography variant="body2" gutterBottom>
-            <strong>Ángulo de la Pantalla:</strong> Modifica el ángulo de la pantalla para reducir el brillo y minimizar la fatiga visual, manteniéndola en una posición cómoda.
-          </Typography>
-          <Typography variant="body2" gutterBottom>
-            <strong>Curvatura de la Espalda:</strong> Ajusta la curvatura de la espalda para mantener una postura ergonómica, asegurando una alineación adecuada.
-          </Typography>
-        </Box>
-      )}
-
+    <>
+      <h1>Simulación Interactiva de Ergonometría</h1>
       {showCounter && (
         <Box sx={{
           position: 'absolute',
@@ -290,101 +226,192 @@ const WorkstationSimulation = () => {
           </Typography>
         </Box>
       )}
+      <div className="simulation">
+        <Modal
+          open={showPopup}
+          onClose={handleClosePopup}
+          aria-labelledby="modal-title"
+          aria-describedby="modal-description"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Box sx={{ bgcolor: 'background.paper', p: 4, minWidth: 300, borderRadius: 4 }}>
+            <Typography variant="h5" id="modal-title" gutterBottom>
+              ¡Prepárate para el siguiente test!
+            </Typography>
+            <Typography variant="body1" id="modal-description" gutterBottom>
+              Ajusta los siguientes parámetros para mejorar la ergonomía:
+            </Typography>
+            <Typography variant="body2" gutterBottom>
+              <strong>Altura de la Silla:</strong> Ajusta la altura de la silla para asegurar que los ojos de la persona estén a la altura adecuada respecto a la parte superior de la pantalla.
+            </Typography>
+            <Typography variant="body2" gutterBottom>
+              <strong>Distancia Pantalla:</strong> Configura la posición de la persona, asegurando que esté a una distancia óptima del monitor.
+            </Typography>
+            <Typography variant="body2" gutterBottom>
+              <strong>Ángulo de la Pantalla:</strong> Modifica el ángulo de la pantalla para reducir el brillo y minimizar la fatiga visual, manteniéndola en una posición cómoda.
+            </Typography>
+            <Typography variant="body2" gutterBottom>
+              <strong>Curvatura de la Espalda:</strong> Ajusta la curvatura de la espalda para mantener una postura ergonómica, asegurando una alineación adecuada.
+            </Typography>
+            <Button
+              variant="contained"
+              onClick={handleClosePopup}
+              sx={{
+                mt: 2,
+                mx: 'auto',
+                display: 'block',
+                backgroundColor: '#3a8589', // Color de fondo del botón OK
+                '&:hover': {
+                  backgroundColor: '#2e6f72', // Color de fondo al pasar el ratón
+                },
+              }}
+            >
+              OK
+            </Button>
+          </Box>
+        </Modal>
 
+        <Modal
+          open={showFinishPopup}
+          onClose={handleCloseFinishPopup}
+          aria-labelledby="finish-modal-title"
+          aria-describedby="finish-modal-description"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Box sx={{ bgcolor: 'background.paper', p: 4, minWidth: 300, borderRadius: 4, textAlign: 'center' }}>
+            <Typography variant="h5" id="finish-modal-title" gutterBottom>
+              ¡Test Finalizado!
+            </Typography>
+            <Typography variant="body1" id="finish-modal-description">
+              Tu tiempo fue de {counter} segundos.
+            </Typography>
+            <Typography variant="h6" id="finish-modal-score" gutterBottom>
+              Tu calificación es: {score}
+            </Typography>
+            <Button
+              variant="contained"
+              onClick={handleCloseFinishPopup}
+              sx={{
+                mt: 2,
+                mx: 'auto',
+                display: 'block',
+                backgroundColor: '#3a8589', // Color de fondo del botón Cerrar
+                '&:hover': {
+                  backgroundColor: '#2e6f72', // Color de fondo al pasar el ratón
+                },
+              }}
+            >
+              Cerrar
+            </Button>
+          </Box>
+        </Modal>
 
-      <Modal
-        open={showFinishPopup}
-        onClose={handleCloseFinishPopup}
-        aria-labelledby="finish-modal-title"
-        aria-describedby="finish-modal-description"
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <Box sx={{ bgcolor: 'background.paper', p: 4, minWidth: 300, borderRadius: 4, textAlign: 'center' }}>
-          <Typography variant="h5" id="finish-modal-title" gutterBottom>
-            ¡Test Finalizado!
+        <div className="controls">
+          <Typography gutterBottom>Altura Silla (cm)</Typography>
+          <CustomSlider
+            value={chairHeight}
+            onChange={handleChairHeightChange}
+            aria-labelledby="chair-height"
+            min={0}
+            max={40}
+            step={1}
+            valueLabelDisplay="auto"
+            valueLabelFormat={convertChairHeightToReal}
+            disabled={slidersDisabled}
+          />
+
+          <Typography gutterBottom>Distancia Pantalla (cm)</Typography>
+          <CustomSlider
+            value={screenDistance}
+            onChange={handleScreenDistanceChange}
+            aria-labelledby="screen-distance"
+            min={-55}
+            max={55}
+            step={1}
+            valueLabelDisplay="auto"
+            valueLabelFormat={convertScreenDistanceToReal}
+            disabled={slidersDisabled}
+          />
+
+          <Typography gutterBottom>Ángulo Pantalla (grados)</Typography>
+          <CustomSlider
+            value={screenAngle}
+            onChange={handleScreenAngleChange}
+            aria-labelledby="screen-angle"
+            min={-25}
+            max={25}
+            step={1}
+            valueLabelDisplay="auto"
+            valueLabelFormat={convertScreenAngleToReal}
+            disabled={slidersDisabled}
+          />
+
+          <Typography gutterBottom>Curvatura de la Espalda</Typography>
+          <CustomSlider
+            value={posture}
+            onChange={handlePostureChange}
+            aria-labelledby="posture"
+            min={-50}
+            max={50}
+            step={1}
+            valueLabelDisplay="off"
+            valueLabelFormat={convertPostureToReal}
+            disabled={slidersDisabled}
+          />
+        </div>
+
+        <div className="simulation-view">
+          <div className="workspace">
+            <div className="person" style={{ transform: `translateY(-${chairHeight}px) translateX(${screenDistance}px)` }}>
+              <img src={`/person${personImage}.png`} alt={`person${personImage}`} />
+            </div>
+            <div className="chair-bottom" style={{ transform: `translateX(${screenDistance}px)` }}>
+              <img src="/chair-bottom.png" alt="chair-bottom" />
+            </div>
+            <div className="chair-top" style={{ transform: `translateX(${screenDistance}px) translateY(-${chairHeight}px)` }}>
+              <img src="/chair-top.png" alt="chair-top" />
+            </div>
+            <div className="desk">
+              <img src="/desk.png" alt="desk" />
+              <div className="screen" style={{ transform: `rotate(${screenAngle}deg)` }}>
+                <img src="/screen.png" alt="screen" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <Box sx={{
+          // position: 'absolute',
+          // top: '40%', // Ajusta la posición vertical
+          right: 20,
+          width: 300, // Ajusta el ancho del cuadro
+          bgcolor: 'rgba(255, 255, 255, 0.8)',
+          p: 2,
+          borderRadius: 4,
+          // transform: 'translateY(-50%)', // Centra verticalmente
+          overflow: 'hidden', // Evita el desplazamiento vertical
+        }}>
+          <Typography variant="body2" gutterBottom>
+            <strong>Altura de la Silla:</strong> Ajusta la altura de la silla para asegurar que los ojos de la persona estén a la altura adecuada respecto a la parte superior de la pantalla.
           </Typography>
-          <Typography variant="body1" id="finish-modal-description">
-            Tu tiempo fue de {counter} segundos.
+          <Typography variant="body2" gutterBottom>
+            <strong>Distancia Pantalla:</strong> Configura la posición de la persona, asegurando que esté a una distancia óptima del monitor.
           </Typography>
-          <Typography variant="h6" id="finish-modal-score" gutterBottom>
-            Tu calificación es: {score}
+          <Typography variant="body2" gutterBottom>
+            <strong>Ángulo de la Pantalla:</strong> Modifica el ángulo de la pantalla para reducir el brillo y minimizar la fatiga visual, manteniéndola en una posición cómoda.
           </Typography>
-          <Button
-            variant="contained"
-            onClick={handleCloseFinishPopup}
-            sx={{
-              mt: 2,
-              mx: 'auto',
-              display: 'block',
-              backgroundColor: '#3a8589', // Color de fondo del botón Cerrar
-              '&:hover': {
-                backgroundColor: '#2e6f72', // Color de fondo al pasar el ratón
-              },
-            }}
-          >
-            Cerrar
-          </Button>
+          <Typography variant="body2" gutterBottom>
+            <strong>Curvatura de la Espalda:</strong> Ajusta la curvatura de la espalda para mantener una postura ergonómica, asegurando una alineación adecuada.
+          </Typography>
         </Box>
-      </Modal>
-
-      <div className="controls">
-        <Typography gutterBottom>Altura Silla (cm)</Typography>
-        <CustomSlider
-          value={chairHeight}
-          onChange={handleChairHeightChange}
-          aria-labelledby="chair-height"
-          min={0}
-          max={40}
-          step={1}
-          valueLabelDisplay="auto"
-          valueLabelFormat={convertChairHeightToReal}
-          disabled={slidersDisabled}
-        />
-
-        <Typography gutterBottom>Distancia Pantalla (cm)</Typography>
-        <CustomSlider
-          value={screenDistance}
-          onChange={handleScreenDistanceChange}
-          aria-labelledby="screen-distance"
-          min={-55}
-          max={55}
-          step={1}
-          valueLabelDisplay="auto"
-          valueLabelFormat={convertScreenDistanceToReal}
-          disabled={slidersDisabled}
-        />
-
-        <Typography gutterBottom>Ángulo Pantalla (grados)</Typography>
-        <CustomSlider
-          value={screenAngle}
-          onChange={handleScreenAngleChange}
-          aria-labelledby="screen-angle"
-          min={-25}
-          max={25}
-          step={1}
-          valueLabelDisplay="auto"
-          valueLabelFormat={convertScreenAngleToReal}
-          disabled={slidersDisabled}
-        />
-
-        <Typography gutterBottom>Curvatura de la Espalda</Typography>
-        <CustomSlider
-          value={posture}
-          onChange={handlePostureChange}
-          aria-labelledby="posture"
-          min={-50}
-          max={50}
-          step={1}
-          valueLabelDisplay="off"
-          valueLabelFormat={convertPostureToReal}
-          disabled={slidersDisabled}
-        />
       </div>
-
       <Button
         variant="contained"
         onClick={handleFinishTest}
@@ -392,27 +419,7 @@ const WorkstationSimulation = () => {
       >
         Finalizar Test
       </Button>
-
-      <div className="simulation-view">
-        <div className="workspace">
-          <div className="person" style={{ transform: `translateY(-${chairHeight}px) translateX(${screenDistance}px)` }}>
-            <img src={`/person${personImage}.png`} alt={`person${personImage}`} />
-          </div>
-          <div className="chair-bottom" style={{ transform: `translateX(${screenDistance}px)` }}>
-            <img src="/chair-bottom.png" alt="chair-bottom" />
-          </div>
-          <div className="chair-top" style={{ transform: `translateX(${screenDistance}px) translateY(-${chairHeight}px)` }}>
-            <img src="/chair-top.png" alt="chair-top" />
-          </div>
-          <div className="desk">
-            <img src="/desk.png" alt="desk" />
-            <div className="screen" style={{ transform: `rotate(${screenAngle}deg)` }}>
-              <img src="/screen.png" alt="screen" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
 

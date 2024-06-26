@@ -10,7 +10,9 @@ export default function Desarrollo({ num, competencia, nivelPregunta }) {
   const [redirectToNextPage, setRedirectToNextPage] = useState(false);
 
   const api_key = "";
-  const model_id = "gpt-4";
+  // const model_id = "gpt-4";
+  const model_id = "gpt-3.5";
+
 
   useEffect(() => {
     generateQuestion();
@@ -182,33 +184,6 @@ export default function Desarrollo({ num, competencia, nivelPregunta }) {
       let nextPageUrl = "";
       // console.log(competencia);
       switch (num){
-        // case "3-1":
-        //   nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Desarrollo/3-2";
-        //   break;
-        // case "3-2":
-        //   nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Desarrollo/3-3";
-        //   break;
-        // case "3-3":
-        //   nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Desarrollo/3-4";
-        //   break;
-        // case "3-4":
-        //   nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Desarrollo/Resultados"; //O otro test, no se
-        //   break;
-        // case "4-1":
-        //   nextPageUrl = "/DigitalSkillApp/Seguridad/" + nivelPregunta + "/Pregunta_Desarrollo/4-2";
-        //   break;
-        // case "4-2":
-        //   nextPageUrl = "/DigitalSkillApp/Seguridad/" + nivelPregunta + "/Pregunta_Desarrollo/4-3";
-        //   break;
-        // case "4-3":
-        //   nextPageUrl = "/DigitalSkillApp/Seguridad/" + nivelPregunta + "/Pregunta_Desarrollo/4-4";
-        //   break;
-        // case "4-4":
-        //   nextPageUrl = "/DigitalSkillApp/Seguridad/" + nivelPregunta + "/Pregunta_Desarrollo/Resultados";
-        //   break;
-        // default:
-        //   nextPageUrl = "/";
-        //   break;
         case "3-1":
           nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/Simulacion_Powerpoint";
           break;

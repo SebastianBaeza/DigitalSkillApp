@@ -1,7 +1,9 @@
 .simulation {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
+  /* align-items: flex-start; */
+  justify-content: space-between;
   gap: 16px;
 }
 
@@ -10,9 +12,10 @@
   flex-direction: column;
   gap: 16px;
   width: 200px;
-  position: absolute;
-  left: 240px; /* Ajustar según sea necesario */
+  /* position: absolute; */
+  /* left: 20%; */
   top: 250px;
+  /* margin-right: 150px; */
 }
 
 .simulation-view {
@@ -58,8 +61,9 @@
 
 .screen {
   position: absolute;
-  top: 22.2%; /* Ajusta este valor para bajar la pantalla */
-  left: 58%;
+  top: 23%;
+  left: 57%;
+  /* border: solid; */
   transform: translateX(-50%);
   transform-origin: center; /* Rotación desde el centro inferior */
   z-index: 1; /* Asegura que screen esté encima de desk */  
@@ -72,15 +76,16 @@
 
 .person img{
   width: 100%; /* Ajustar el tamaño del escritorio */
-  max-width: 700px; /* Asegurar que el ancho máximo sea proporcional */
+  max-width: 100%; /* Asegurar que el ancho máximo sea proporcional */
 }
 
 .desk img{
   width: 100%; /* Ajustar el tamaño del escritorio */
-  max-width: 800px; /* Asegurar que el ancho máximo sea proporcional */
+  max-width: 100%; /* Asegurar que el ancho máximo sea proporcional */
 }
 
 .screen img {
   width: 90%; /* Ajustar el tamaño de la pantalla */
-  max-width: 800px; /* Asegurar que el ancho máximo sea proporcional */
+  max-width: 50%; /* Asegurar que el ancho máximo sea proporcional */
+  transform: rotate(-15deg);
 }

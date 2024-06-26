@@ -1,0 +1,124 @@
+.pagina {
+    display: flex;
+    height: 100vh;
+    padding: 20px;
+}
+
+.bandeja-lista {
+    width: 250px;
+    background-color: #f0f0f0;
+    padding: 15px;
+    margin-right: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.titulo {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.bandeja-lista ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.bandeja-lista li {
+    padding: 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.bandeja-lista li:hover {
+    background-color: #e0e0e0;
+}
+
+.bandeja-lista li.selected {
+    background-color: #d0d0d0;
+    font-weight: bold;
+}
+
+.correo-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.move-trash-button,
+.move-inbox-button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #d9534f;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.move-trash-button:hover,
+.move-inbox-button:hover {
+    background-color: #c9302c;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+.highlight-options {
+    margin-top: 10px;
+}
+
+.highlight-options button {
+    margin-right: 10px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.highlight-options button:hover {
+    background-color: #0056b3;
+}
+
+span[data-range-start] {
+    background-color: yellow;
+    cursor: pointer;
+    position: relative;
+}
+
+span[data-range-start]:hover {
+    background-color: lightyellow;
+}
+
+span[data-range-start]:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: red; /* Cambia el color de acuerdo a tus preferencias */
+    bottom: 0;
+    left: 0;
+}
+
+/* correo.css */
+
+.download-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin-left: 5px; /* Ajusta el margen según tu diseño */
+    padding: 0; /* Quita el padding predeterminado */
+}
+
+.download-button img {
+    width: 40px; /* Ajusta el tamaño del icono */
+    height: auto; /* Mantén la proporción */
+}

@@ -4,7 +4,7 @@ import Competencia3 from './DigitalSkillApp/Competencia3.jsx';
 import Competencia4 from './DigitalSkillApp/Competencia4.jsx';
 import Desarrollo from './DigitalSkillApp/Desarrollo.jsx';
 import Alternativas from './DigitalSkillApp/Alternativas.jsx';
-import Simulador_Web from './DigitalSkillApp/Seguridad/Simulacion_Web/Pagina_Compra.jsx';
+import Simulador_Web from './DigitalSkillApp/Seguridad/Simulacion_Web/index_compra.jsx';
 import Simulador_Ergonomia from './DigitalSkillApp/Seguridad/Simulacion_Ergonomia/WorkstationSimulation.jsx';
 
 import './App.css';

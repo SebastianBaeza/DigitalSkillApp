@@ -11,7 +11,7 @@ export function Title ({ name, evaluateTest }) {
         setOpen(true);
     };
     
-    const handleClose = (event, reason) => {
+    const handleClose = (reason) => {
         if (reason === 'clickaway') {
           return;
         }

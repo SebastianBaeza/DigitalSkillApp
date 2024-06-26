@@ -11,6 +11,8 @@ import Alternativas from './DigitalSkillApp/Alternativas.jsx';
 // import Simulador_Web from './DigitalSkillApp/Seguridad/Simulacion_Web/.jsx';
 import Simulador_Ergonomia from './DigitalSkillApp/Seguridad/Simulacion_Ergonomia/App.jsx';
 import Simulador_Correos from './DigitalSkillApp/Seguridad/Simulacion_Correos/App.jsx';
+import Simulador_Web from './DigitalSkillApp/Seguridad/Simulacion_Web/index_compra.jsx';
+import Simulador_Ergonomia from './DigitalSkillApp/Seguridad/Simulacion_Ergonomia/WorkstationSimulation.jsx';
 
 import './App.css';
 

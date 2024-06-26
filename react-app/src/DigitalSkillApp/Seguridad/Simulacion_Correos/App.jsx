@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+// import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+// import { BrowserRouter as Route, Routes, Link } from 'react-router-dom';
 import axios from 'axios'; // Importamos axios para hacer peticiones HTTP
 import './App.css';
 import Bandeja from './bandeja';

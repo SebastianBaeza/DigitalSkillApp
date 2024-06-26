@@ -5,12 +5,14 @@ import { PptToolbar } from "./assets/HUs/HU05/PptToolbar";
 import { PptSidebar } from "./assets/HUs/HU05/PptSidebar";
 import { PptEditor } from "./assets/HUs/HU05/PptEditor";
 import { PptSecondaryMenu } from "./assets/HUs/HU05/PptSecondaryMenu";
+import Dropdown from './assets/HUs/HU05/Dropdown';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import './assets/HUs/HU05/styles/HU05.css';
-import { text } from '@fortawesome/fontawesome-svg-core';
 
 export function HU05 () {
+    
+
     const [slides, setSlides] = useState([
         { id: 1,
             content: [] 
@@ -20,8 +22,6 @@ export function HU05 () {
     const [currentSlide, setCurrentSlide] = useState(slides[0]);
 
     const [menuOption, setMenuOption] = useState('inicio');
-
-    const [isOpen, setIsOpen] = useState(false);
     
     const addSlide = () => {
         const newSlide = {
@@ -83,35 +83,11 @@ export function HU05 () {
         return false;
     };
 
-    const togglePopup = () => {
-        setIsOpen(!isOpen);
-    };
-
-    const closePopup = (e) => {
-        if (e.target.className === 'popup-overlay') {
-            setIsOpen(false);
-        }
-    };
-
-    useEffect(() => {
-        const handleOutsideClick = (e) => {
-            // No cierres la ventana emergente si el clic proviene del botón o de la ventana emergente misma
-            if (isOpen && !document.getElementById('popup').contains(e.target) && e.target.id !== 'help-button') {
-                setIsOpen(false);
-            }
-        };
-
-        document.addEventListener('click', handleOutsideClick);
-        return () => {
-            document.removeEventListener('click', handleOutsideClick);
-        };
-    }, [isOpen]);
-
     return (
         <>
-            <Title name="Historia 5" />
+            <Title name="Historia 5" evaluateTest={evaluateTest}/>
             <PptToolbar setMenuOption={setMenuOption} />
-            <PptSecondaryMenu addSlide={addSlide} evaluateTest={evaluateTest} deleteSlide={deleteSlide} addText={addText} menuOption={menuOption} />
+            <PptSecondaryMenu addSlide={addSlide} deleteSlide={deleteSlide} addText={addText} menuOption={menuOption} />
             <div className="ppt-slides-container">
                 <PptSidebar slides={slides} setCurrentSlide={setCurrentSlide}/>
                 {currentSlide ? <PptEditor slide={currentSlide} /> : 

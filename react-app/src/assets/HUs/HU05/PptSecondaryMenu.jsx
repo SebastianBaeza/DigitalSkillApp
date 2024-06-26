@@ -32,7 +32,6 @@ export function PptSecondaryMenu ({ addSlide, evaluateTest, deleteSlide, addText
               Eliminar diapositiva actual
             </div>
           </button>
-          <button onClick={evaluateTest}>Enviar</button>
         </>
       )}
       {menuOption === 'insertar' && (

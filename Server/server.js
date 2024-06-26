@@ -8,7 +8,6 @@ app.use(express.json());
 
 app.post('/run-python', (req, res) => {
     let { pythonCode } = req.body;
-    pythonCode = pythonCode + "print(num)";
     console.log("codigo:\n",pythonCode);
 
 

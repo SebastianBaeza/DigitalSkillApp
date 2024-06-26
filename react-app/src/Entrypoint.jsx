@@ -19,7 +19,7 @@ return (
             <Typography id="quien" sx={{marginTop: "20px"}} variant="h2" gutterBottom>HU</Typography>
             <Button variant="contained" href="/">Entrypoint</Button>
             <Button variant="contained" href="/HU01">HU1</Button>
-            <Button variant="contained" href="/HUs/HU2">HU2</Button>
+            <Button variant="contained" href="/HU02">HU2</Button>
             <Button variant="contained" href="/HUs/HU3">HU3</Button>
             <Button variant="contained" href="/HUs/HU4">HU4</Button>
             <Button variant="contained" href="/HUs/HU5">HU5</Button>

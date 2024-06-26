@@ -66,25 +66,3 @@ export function Title ({ name, evaluateTest }) {
         
     )
 }
-
-
-
-export default function SimpleSnackbar() {
-  
-
-  
-  
-
-  return (
-    <div>
-      <Button onClick={handleClick}>Open Snackbar</Button>
-      <Snackbar
-        open={open}
-        autoHideDuration={6000}
-        onClose={handleClose}
-        message="Note archived"
-        action={action}
-      />
-    </div>
-  );
-}

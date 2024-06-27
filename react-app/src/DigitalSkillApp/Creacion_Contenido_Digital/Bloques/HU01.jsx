@@ -99,7 +99,7 @@ export default function HU01() {
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={() => setIsModalOpen(false)} href='/' >Seguir</Button>
+        <Button onClick={() => setIsModalOpen(false)} href='/DigitalSkillApp/Creacion_Contenido_Digital/Codigo' >Seguir</Button>
       </DialogActions>
     </Dialog>
   );

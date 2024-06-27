@@ -80,7 +80,7 @@
 .screen img {
   width: 90%; /* Ajustar el tamaño de la pantalla */
   max-width: 50%; /* Asegurar que el ancho máximo sea proporcional */
-  transform: rotate(-15deg);
+  transform: rotate(-21deg);
 }
 
 .ergo {

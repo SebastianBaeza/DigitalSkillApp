@@ -128,7 +128,7 @@ export default function Compra () {
   };
 
   return (
-    <div>
+    <>
       {showWelcomePage && (
         <div
           id="welcome-page"
@@ -302,8 +302,6 @@ export default function Compra () {
         </div>
     </div>
     )}
-
-    
-    </div>
+    </>
   );
 }

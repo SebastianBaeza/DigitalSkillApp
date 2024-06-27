@@ -26,28 +26,29 @@ export default function HU02() {
   const renderModal = () => (
     <Dialog open={isModalOpen} onClose={() => setIsModalOpen(false)}>
       <DialogTitle>Felicidades!</DialogTitle>
-      <DialogContent>
-        <DialogContentText>El valor es el correcto!</DialogContentText>
-      </DialogContent>
-      <DialogActions>
-        <Button onClick={() => setIsModalOpen(false)} href='/' >Seguir</Button>
-      </DialogActions>
+      <DialogContent><DialogContentText>El valor es el correcto!</DialogContentText></DialogContent>
+      <DialogActions><Button onClick={() => setIsModalOpen(false)} href='/' >Seguir</Button></DialogActions>
     </Dialog>
   );
 
   return (
-    <>
+    <div className='CodePage'>
       {renderModal()}
-      <Typography variant="h4">Instrucciones: Imprime "Hola Mundo!"</Typography>
-      <Stack id="pageContainer">
-        <form onSubmit={runCode}>
-          <TextField name="pythonCode" label="Enter Python Code" multiline rows={4} variant="outlined" fullWidth margin="normal"/>
-          <Button variant="contained" color="primary" type="submit">Run Code</Button>
-        </form>
-          <Typography variant="h6">Console:</Typography>
-          <Container id="output">{'>'}</Container>
+      <Typography variant="h4" >Instrucciones: Imprime "Hola Mundo!"</Typography>
+      <Stack direction={'row-reverse'} id="pageContainer">
+        <Container id="blocklyDiv">
+          <Typography variant="h6">Input:</Typography>
+          <form onSubmit={runCode}>
+            <TextField name="pythonCode" label="Enter Python Code" multiline rows={4} variant="outlined" fullWidth margin="normal"/>
+            <Button variant="contained" color="primary" type="submit">Run Code</Button>
+          </form>
+        </Container>
+          <Container className='outputPane'>
+            <Typography variant="h6">Console:</Typography>
+            <Container id="output">{'>'}</Container>
+          </Container>
       </Stack>
-    </>
+    </div>
     
   );
 }

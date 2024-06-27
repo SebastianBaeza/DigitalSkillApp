@@ -109,12 +109,15 @@ export default function HU01() {
       {renderModal()}
       <Typography variant="h4">Instrucciones: Haz que el numero sea 3 veces menos al original</Typography>
       <div id="pageContainer">
-        
         <Container id="outputPane">
-          <pre id="generatedCode"><code></code></pre>
-          <Typography variant="h6">Console:</Typography>
-          <Container id="output"/>
-          <Button variant="contained" color="primary" onClick={runCode}>Run Code</Button>
+          <pre id="generatedCode">
+            <code/>
+          </pre>
+          <div className=''>
+            <Typography variant="h6">Console:</Typography>
+            <Container id="output"/>
+            <Button variant="contained" color="primary" onClick={runCode}>Run Code</Button>
+          </div>
         </Container>
         <div id="blocklyDiv"/>
       </div>

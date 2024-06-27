@@ -4,23 +4,10 @@ code {
   overflow: auto;
 }
 
-#pageContainer {
-  display: flex;
-  width:max-content;
-}
-
 #blocklyDiv {
   flex-basis: 100%;
-  width: fit-content;
   min-width: 500px;
-}
-
-#outputPane {
-  display: flex;
-  flex-direction: column;
-  width: 400px;
-  overflow: auto;
-  margin: 1rem;
+  height: 500px;
 }
 
 #generatedCode {
@@ -28,9 +15,6 @@ code {
   background-color: #fff;
 }
 
-#output {
-  background-color: black;
-  font-palette: monospace;
-  color: white;
-  height: 25%;
+.blocklySvg {
+  position: unset !important;
 }

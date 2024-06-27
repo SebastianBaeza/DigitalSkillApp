@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Container, Typography, TextField, Button, Box } from '@mui/material';
 import axios from 'axios';
+import { GlobalContext } from '../GlobalState';
 import './Preguntas.css';
 
 export default function Desarrollo({ num, competencia, nivelPregunta }) {
@@ -8,10 +9,11 @@ export default function Desarrollo({ num, competencia, nivelPregunta }) {
   const [answer, setAnswer] = useState("");
   const [response, setResponse] = useState("");
   const [redirectToNextPage, setRedirectToNextPage] = useState(false);
+  const { SumarPuntaje, globalState } = useContext(GlobalContext);
 
   const api_key = "";
   // const model_id = "gpt-4";
-  const model_id = "gpt-3.5";
+  const model_id = "gpt-3.5-turbo";
 
   useEffect(() => {
     generateQuestion();
@@ -28,7 +30,7 @@ export default function Desarrollo({ num, competencia, nivelPregunta }) {
             Estás evaluando la competencia digital del usuario, basado en el modelo de competencia digital para la ciudadanía DigComp 2.2. Eres un experto en el tema, en especifico en la competencia ${competencia}. Se requiere que generes preguntas o valides la correctitud de las respuestas según corresponda al caso.
             Prompt:
             Pregunta para Medir la Competencia
-            Crea una pregunta que se pueda utilizar para medir la competencia de una persona en la competencia digital mencionada. La pregunta debe estar estructurada en texto plano, para cubrir el nivel ${nivelPregunta} de la competencia correspondiente, con respuestas proporcionadas de la misma forma. Se deben crear preguntas que hagan pensar al usuario, por tanto, se debe evitar preguntar al usuario la percepcion que tiene de sus propios conocimientos, o preguntas que le permitan elegir entre multiples alternativas. El objetivo es comprobar el conocimiento del usuario, por lo que se requiere que redacte la respuesta basado completamente en sus conocimientos del tema. La pregunta a generar puede tratar temas a lo largo de toda la competencia ${competencia}, por lo que trata de variar el contenido, a fin de siempre probar el conocimiento del usuario.
+            No debes dar la respuesta a la pregunta, pues se requiere que el usuario responda sin que le den la respuesta. Crea una pregunta que se pueda utilizar para medir la competencia de una persona en la competencia digital mencionada. La pregunta debe estar estructurada en texto plano, para cubrir el nivel ${nivelPregunta} de la competencia correspondiente, con respuestas proporcionadas de la misma forma. Se deben crear preguntas que hagan pensar al usuario, por tanto, se debe evitar preguntar al usuario la percepcion que tiene de sus propios conocimientos, o preguntas que le permitan elegir entre multiples alternativas. El objetivo es comprobar el conocimiento del usuario, por lo que se requiere que redacte la respuesta basado completamente en sus conocimientos del tema. La pregunta a generar puede tratar temas a lo largo de toda la competencia ${competencia}, por lo que trata de variar el contenido, a fin de siempre probar el conocimiento del usuario.
           `
         }
       ],
@@ -61,7 +63,7 @@ export default function Desarrollo({ num, competencia, nivelPregunta }) {
             Estás evaluando la competencia digital del usuario, basado en el modelo de competencia digital para la ciudadanía DigComp 2.2. Eres un experto en el tema, en especifico en la competencia ${competencia}. Se requiere que generes preguntas o valides la correctitud de las respuestas según corresponda al caso.
             Prompt:
             Analisis de respuesta
-            Ante una pregunta entregada, evaluar (según tus propios conocimientos y el marco de competencias) el grado de exito del usuario para el nivel ${nivelPregunta}, clasificandolo con 3 puntajes distintos (y solo responde con el puntaje correspondiente): 0 (Fracaso, es decir, que no entiende la competencia a evaluar), 55 (llega al estado 1 del nivel ${nivelPregunta} de la competencia correspondiente) o 100 (llega al estado 2 del nivel ${nivelPregunta} de la competencia correspondiente) según el logro de la respuesta para el nivel correspondiente de la pregunta.
+            Ante una pregunta entregada, evaluar (según tus propios conocimientos y el marco de competencias) el grado de exito del usuario para el nivel ${nivelPregunta}, clasificandolo con puntajes distintos (y solo responde con el numero del puntaje correspondiente) entre los siguientes numeros: 0 (Fracaso, es decir, que no entiende la competencia a evaluar) y 100 (llega al estado 2 del nivel ${nivelPregunta} de la competencia correspondiente) según el logro de la respuesta para el nivel correspondiente de la pregunta.
           `
         },
         {
@@ -98,8 +100,10 @@ export default function Desarrollo({ num, competencia, nivelPregunta }) {
   //   element.click();
   // };
   const saveResult = (responseContent) => {
+    console.log(responseContent);
     let resultado = parseInt(responseContent,10);
-    SumarPuntaje(resultado);
+    console.log("Resultado: " + resultado);
+    SumarPuntaje(resultado, 1);
   };
 
   const handleInputChange = (event) => {
@@ -116,7 +120,7 @@ export default function Desarrollo({ num, competencia, nivelPregunta }) {
       let nextPageUrl = "";
       switch (num){
         case "3-1":
-          nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/Simulacion_Powerpoint";
+          nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/Simulador_Powerpoint";
           break;
         case "3-2":
           nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Alternativas/3-3";

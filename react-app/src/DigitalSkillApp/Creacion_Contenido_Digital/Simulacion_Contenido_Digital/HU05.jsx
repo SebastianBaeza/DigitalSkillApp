@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Title } from "./assets/HUs/HU05/Title";
 import { PptToolbar } from "./assets/HUs/HU05/PptToolbar";
@@ -6,6 +6,7 @@ import { PptSidebar } from "./assets/HUs/HU05/PptSidebar";
 import { PptEditor } from "./assets/HUs/HU05/PptEditor";
 import { PptSecondaryMenu } from "./assets/HUs/HU05/PptSecondaryMenu";
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { GlobalContext } from '../../../GlobalState';
 
 import {Box,Button,Typography,Modal} from '@mui/material/';
 
@@ -30,7 +31,8 @@ export default function Simulador_Powerpoint() {
     const [showCounter, setShowCounter] = useState(true);
     const [counter, setCounter] = useState(0);
     const [isApproved, setIsApproved] = useState(null);
-    const [redirectToNextPage, setRedirectToNextPage] = useState(false);
+    // const [redirectToNextPage, setRedirectToNextPage] = useState(false);
+    const { SumarPuntaje, globalState } = useContext(GlobalContext);
     
     useEffect(() => {
         let timer = null;
@@ -113,11 +115,13 @@ export default function Simulador_Powerpoint() {
                 setShowCounter(false);
                 setIsApproved(true);
                 setOpen(true);
+                SumarPuntaje(100,2);
                 return;
             }
         }
         setShowCounter(false);
         setIsApproved(false);
+        SumarPuntaje(0,2);
         setOpen(true);
         return;
     };

@@ -1,7 +1,7 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 
 import { GlobalProvider } from './GlobalState';
-import MiComponente from './MiComponente.jsx';
+// import MiComponente from './MiComponente.jsx';
 import Entrypoint from './Entrypoint.jsx';
 import Competencia3 from './DigitalSkillApp/Competencia3.jsx';
 import Competencia4 from './DigitalSkillApp/Competencia4.jsx';

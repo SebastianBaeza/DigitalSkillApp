@@ -34,7 +34,7 @@ export default function HU02() {
   return (
     <div className='CodePage'>
       {renderModal()}
-      <Typography variant="h4" >Instrucciones: Imprime "Hola Mundo!"</Typography>
+      <Typography variant="h4" className='Titulo' >Instrucciones: Imprime "Hola Mundo!"</Typography>
       <Stack direction={'row-reverse'} id="pageContainer">
         <Container id="blocklyDiv">
           <Typography variant="h6">Input:</Typography>

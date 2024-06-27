@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import './Simulador_CC.css';
+import { GlobalContext } from '../../../GlobalState';
 
 import paisajeImage from './assets/Paisaje.jpg';
 import musicaImage from './assets/MusicaAmbiental.jpg';

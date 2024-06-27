@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import {Button} from '@mui/material'; // Import Material-UI components
+import { Button } from '@mui/material'; // Import Material-UI components
 import { stopCronometro } from './globalVariables'; // Import the function to stop the timer
 
-const Basurero = ( trash, moveToInbox, setCronometroRunning ) => {
+const Basurero = ({ trash, moveToInbox, setCronometroRunning }) => { // Destructure props
     const [selectedCorreos, setSelectedCorreos] = useState([]);
     const [selectedCorreo, setSelectedCorreo] = useState(null);
     const [score, setScore] = useState(0);
@@ -33,7 +33,7 @@ const Basurero = ( trash, moveToInbox, setCronometroRunning ) => {
             const correctInTrash = trash.filter(correo => correctIds.includes(correo.id));
             const calculatedScore = Math.max((correctInTrash.length * 50) - (incorrectInTrash.length * 25), 0);
             console.log('Score:', calculatedScore);
-            setScore(calculatedScore);//o enviarlo a la base de datos
+            setScore(calculatedScore); // or send it to the database
             //window.location.href="/"; //redirigir a la página principal
         }
 

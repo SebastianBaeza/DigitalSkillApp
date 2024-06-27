@@ -11,6 +11,7 @@ import {Box,Button,Typography,Modal} from '@mui/material/';
 
 import './assets/HUs/HU05/styles/HU05.css';
 
+
 const style = {
     position: 'absolute',
     top: '50%',
@@ -29,7 +30,8 @@ export default function Simulador_Powerpoint() {
     const [showCounter, setShowCounter] = useState(true);
     const [counter, setCounter] = useState(0);
     const [isApproved, setIsApproved] = useState(null);
-
+    const [redirectToNextPage, setRedirectToNextPage] = useState(false);
+    
     useEffect(() => {
         let timer = null;
         if (showCounter) {
@@ -43,13 +45,19 @@ export default function Simulador_Powerpoint() {
         return () => {
           clearInterval(timer); // Limpia el intervalo al desmontar el componente
         };
+        // if (redirectToNextPage) {
+        //     window.location.href = "/DigitalSkillApp/Creacion_Contenido_Digital/Basico/Pregunta_Alternativas/3-2"
+        // }
     }, [showCounter]);
 
     const handleInstructionClose = () => setInstruction(false);
 
     const handleInstructionOpen = () => setInstruction(true);
 
-    const handleClose = () => setOpen(false);
+    const handleClose = () => {
+        setOpen(false);
+        window.location.assign("/DigitalSkillApp/Creacion_Contenido_Digital/Basico/Pregunta_Alternativas/3-2");
+    }
 
     const [slides, setSlides] = useState([{ id: 1,content: [] }]);
     

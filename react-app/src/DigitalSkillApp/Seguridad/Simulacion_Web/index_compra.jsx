@@ -123,8 +123,7 @@ export default function Compra () {
     const porcentaje = (aciertos / totalPreguntas) * 100;
     setPorcentajeAciertos(porcentaje);
     setShowPorcentajeAciertos(true);
-    
-
+    window.location.assign("/DigitalSkillApp/Seguridad/Simulador_Correos");
   };
 
   return (
@@ -184,7 +183,7 @@ export default function Compra () {
               <img src={audifonosImage} alt="Producto 2" />
             </div>
             <h3>Audífonos Samsung</h3>
-            <p>Chocolate Sahne Nuss de Milka, elaborado con delicioso chocolate con leche alpina y relleno de avellanas enteras, ofrece una experiencia cremosa y crujiente en cada bocado.</p>
+            <p>Audífonos Samsung con sonido nítido y diseño ergonómico. Incluyen micrófono integrado y control de volumen en el cable para mayor comodidad.</p>
             <p id="audifonos-price">Precio: {audifonosGratis ? '$0' : '$30.000'}</p>
             <button onClick={() => addToCart('Audífonos Samsung', audifonosGratis ? 0 : 30000)}>Añadir al Carrito</button>
           </div>

@@ -139,7 +139,7 @@ export default function Desarrollo({ num, competencia, nivelPregunta }) {
           nextPageUrl = "/";
           break;
       }
-      window.location.href = nextPageUrl;
+      window.location.assign(nextPageUrl);
     }
   }, [redirectToNextPage, nivelPregunta]);
 

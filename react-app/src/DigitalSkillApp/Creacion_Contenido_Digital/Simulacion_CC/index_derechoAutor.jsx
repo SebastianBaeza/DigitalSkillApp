@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import './App2.css';
 
-import paisajeImage from './Paisaje.jpg';
-import musicaImage from './MusicaAmbiental.jpg';
-import cientificoImage from './articuloCientifico.jpg';
-import educacionImage from './videoEducativo.jpg';
+import paisajeImage from './assets/Paisaje.jpg';
+import musicaImage from './assets/MusicaAmbiental.jpg';
+import cientificoImage from './assets/articuloCientifico.jpg';
+import educacionImage from './assets/videoEducativo.jpg';
 
 
 

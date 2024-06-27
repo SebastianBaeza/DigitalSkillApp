@@ -96,20 +96,12 @@ export default function Alternativas({ num, competencia, nivelPregunta }) {
       const responseContent = result.data.choices[0].message.content;
       setResponse(responseContent);
       saveResult(responseContent);
-      // setRedirectToNextPage(true);
+      setRedirectToNextPage(true);
     } catch (error) {
       console.error("Error en la solicitud:", error);
     }
   };
 
-  // const downloadResponse = (responseContent) => {
-  //   const element = document.createElement("a");
-  //   const file = new Blob([responseContent], { type: 'text/plain' });
-  //   element.href = URL.createObjectURL(file);
-  //   element.download = "response.txt";
-  //   document.body.appendChild(element);
-  //   element.click();
-  // };
   const saveResult = (responseContent) => {
     console.log(responseContent);
     let resultado = parseInt(responseContent,10);

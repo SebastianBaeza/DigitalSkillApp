@@ -11,6 +11,7 @@ export default function HU02() {
     console.log("codigo a enviar:",codePy);
     try {
       const codigo = await UsePython(codePy);
+      console.log(codigo);
       if (codigo !== '>') {
         const outputDiv = document.getElementById('output');
         outputDiv.innerHTML = '> '+(codigo===null?'':codigo);

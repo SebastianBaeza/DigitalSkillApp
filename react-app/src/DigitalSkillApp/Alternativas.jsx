@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Container, Typography, FormControlLabel, RadioGroup, Radio, Checkbox, Button, Box } from '@mui/material';
 import axios from 'axios';
+import { GlobalContext } from '../GlobalState';
 import './Preguntas.css';
 
 export default function Alternativas({ num, competencia, nivelPregunta }) {
@@ -8,10 +9,11 @@ export default function Alternativas({ num, competencia, nivelPregunta }) {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [response, setResponse] = useState("");
   const [redirectToNextPage, setRedirectToNextPage] = useState(false);
+  const { SumarPuntaje, globalState } = useContext(GlobalContext);
 
   const api_key = ""; //Soy una api key
   // const model_id = "gpt-4";
-  const model_id = "gpt-3.5";
+  const model_id = "gpt-3.5-turbo";
 
   useEffect(() => {
     generateQuestion();
@@ -28,7 +30,7 @@ export default function Alternativas({ num, competencia, nivelPregunta }) {
             Estás evaluando la competencia digital del usuario, basado en el modelo de competencia digital para la ciudadanía DigComp 2.2. Eres un experto en el tema, en especifico en la competencia ${competencia}. Se requiere que generes preguntas o valides la correctitud de las respuestas según corresponda al caso.
             Prompt:
             Pregunta para Medir la Competencia
-            Crea una pregunta que se pueda utilizar para medir la competencia de una persona en la competencia digital mencionada. La pregunta debe estar estructurada en texto plano, para cubrir el nivel ${nivelPregunta} de la competencia correspondiente, con respuestas proporcionadas de la misma forma. Se deben crear preguntas que hagan pensar al usuario, por tanto, se debe evitar preguntar al usuario la percepción que tiene de sus propios conocimientos. Las preguntas deben permitir al usuario elegir entre 5 alternativas, de las cuales una o múltiples pueden ser correctas. Las preguntas que tienen una sola respuesta deben empezar por "Pregunta:". Las preguntas que tienen múltiples respuestas deben empezar por "Multiple:". El objetivo es comprobar el conocimiento del usuario, por lo que se requiere que las preguntas no den pistas, para que el usuario se base completamente en sus conocimientos del tema. La pregunta a generar puede tratar temas a lo largo de toda la competencia ${competencia}, por lo que trata de variar el contenido, a fin de siempre probar el conocimiento del usuario.
+            Crea una pregunta que se pueda utilizar para medir la competencia de una persona en el eje mencionado. La pregunta debe estar estructurada en texto plano, para cubrir el nivel ${nivelPregunta} de la competencia correspondiente, con respuestas proporcionadas de la misma forma. Se deben crear preguntas que hagan pensar al usuario, por tanto, se debe evitar preguntar al usuario la percepción que tiene de sus propios conocimientos, o de la competencia en si misma. Las preguntas deben dar contexto real al usuario, pues el usuario no conoce ni entiende todos los detalles de la competencia, por eso prueba sus conocimientos. Las preguntas deben permitir al usuario elegir entre 5 alternativas, de las cuales al menos una respuesta debe ser correcta, aunque múltiples tambien pueden serlo. Las preguntas que tienen una sola respuesta deben empezar por "Pregunta:". Las preguntas que tienen múltiples respuestas deben empezar por "Multiple:". El objetivo es comprobar el conocimiento del usuario, por lo que se requiere que las preguntas no den pistas, para que el usuario se base completamente en sus conocimientos del tema. La pregunta a generar puede tratar temas a lo largo de toda la competencia ${competencia}, por lo que trata de variar el contenido, a fin de siempre probar el conocimiento del usuario.
           `
         }
       ],
@@ -45,11 +47,13 @@ export default function Alternativas({ num, competencia, nivelPregunta }) {
         }
       });
       const content = result.data.choices[0].message.content;
+      console.log(content);
       const lines = content.split("\n").filter(line => line.trim() !== "");
 
       const isMultiple = lines[0].toLowerCase().startsWith("multiple:");
-      const pregunta = isMultiple ? lines[0].replace(/^multiple:\s*/i, '') : lines[0].replace(/^pregunta:\s*/i, '');
-      const opciones = lines.slice(1, 6);
+      // const pregunta = isMultiple ? lines[0].replace(/^multiple:\s*/i, '') : lines[0].replace(/^pregunta:\s*/i, '');
+      const pregunta = lines[1];
+      const opciones = lines.slice(2, 7);
 
       setCurrentQuestion({ pregunta, opciones, multiple: isMultiple });
       setSelectedOptions([]);
@@ -69,7 +73,7 @@ export default function Alternativas({ num, competencia, nivelPregunta }) {
             Estás evaluando la competencia digital del usuario, basado en el modelo de competencia digital para la ciudadanía DigComp 2.2. Eres un experto en el tema, en especifico en la competencia ${competencia}. Se requiere que generes preguntas o valides la correctitud de las respuestas según corresponda al caso.
             Prompt:
             Análisis de respuesta
-            Ante una pregunta entregada, evaluar (según tus propios conocimientos y el marco de competencias) el grado de éxito del usuario para el nivel ${nivelPregunta}, ubicándolo en 3 estados distintos: Fracaso, o grado 1 o 2 según el logro de la respuesta para el nivel correspondiente de la pregunta.
+            Ante una pregunta entregada, evaluar (según tus propios conocimientos y el marco de competencias) el grado de exito del usuario para el nivel ${nivelPregunta}, clasificandolo con 2 puntajes distintos (y solo responde con el numero del puntaje correspondiente): 0 (Fracaso, es decir, que no entiende la competencia a evaluar) y 100 (llega al estado 2 del nivel ${nivelPregunta} de la competencia correspondiente) según el logro de la respuesta para el nivel correspondiente de la pregunta.
           `
         },
         {
@@ -91,20 +95,26 @@ export default function Alternativas({ num, competencia, nivelPregunta }) {
       });
       const responseContent = result.data.choices[0].message.content;
       setResponse(responseContent);
-      downloadResponse(responseContent);
-      setRedirectToNextPage(true);
+      saveResult(responseContent);
+      // setRedirectToNextPage(true);
     } catch (error) {
       console.error("Error en la solicitud:", error);
     }
   };
 
-  const downloadResponse = (responseContent) => {
-    const element = document.createElement("a");
-    const file = new Blob([responseContent], { type: 'text/plain' });
-    element.href = URL.createObjectURL(file);
-    element.download = "response.txt";
-    document.body.appendChild(element);
-    element.click();
+  // const downloadResponse = (responseContent) => {
+  //   const element = document.createElement("a");
+  //   const file = new Blob([responseContent], { type: 'text/plain' });
+  //   element.href = URL.createObjectURL(file);
+  //   element.download = "response.txt";
+  //   document.body.appendChild(element);
+  //   element.click();
+  // };
+  const saveResult = (responseContent) => {
+    console.log(responseContent);
+    let resultado = parseInt(responseContent,10);
+    console.log("Resultado: " + resultado);
+    SumarPuntaje(resultado, 1);
   };
 
   const handleOptionChange = (event) => {

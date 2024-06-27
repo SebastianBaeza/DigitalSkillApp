@@ -215,6 +215,8 @@ export default function Simulador_CC() {
   const [modalVisible, setModalVisible] = useState(false);
   const [accuracyPercentage, setAccuracyPercentage] = useState(null);
   const [showLicenseQuestion, setShowLicenseQuestion] = useState(false);
+  const [infoModalVisible, setInfoModalVisible] = useState(false);
+  const [infoModalContent, setInfoModalContent] = useState('');
 
   const works = [
     {
@@ -302,6 +304,16 @@ export default function Simulador_CC() {
     document.getElementById('sidebar-instruction-text').innerText = `Debe buscar la licencia que tiene el trabajo de "${query}".`;
   };
 
+  const openInfoModal = (title, content) => {
+    setInfoModalContent(
+      <div>
+        <h2>{title}</h2>
+        <p>{content}</p>
+      </div>
+    );
+    setInfoModalVisible(true);
+  };
+
   return (
     <div>
       <div
@@ -330,9 +342,9 @@ export default function Simulador_CC() {
         <h1>Simulación de Creative Commons</h1>
       </header>
       <nav>
-        <a href="#home">Inicio</a>
-        <a href="#about">Acerca de</a>
-        <a href="#contact">Contacto</a>
+        <a href="#home" onClick={() => openInfoModal('Inicio', 'Ayuda: Estas saliendo de la zona para completar la actividad.')}>Inicio</a>
+        <a href="#about" onClick={() => openInfoModal('Acerca de', 'Creative Commons es una organización global sin fines de lucro que habilita el intercambio y la reutilización del conocimiento y la creatividad a través de la provisión gratuita de herramientas legales. Fundada en 2001, nuestra misión es ayudar a los individuos y organizaciones a compartir y aprovechar su trabajo creativamente bajo términos legales claros y estándar, facilitando así la innovación y el acceso al conocimiento.')}>Acerca de</a>
+        <a href="#contact" onClick={() => openInfoModal('Contacto', 'Para ponerte en contacto con Creative Commons, puedes enviarnos un correo electrónico a info@creativecommons.org o llamarnos al +1 (123) 456-7890. Nuestra oficina principal está ubicada en 1234 Main St, Anytown. Estamos disponibles de lunes a viernes de 9:00 a.m. a 5:00 p.m.')}>Contacto</a>
       </nav>
       <div className="container">
         <div
@@ -391,6 +403,14 @@ export default function Simulador_CC() {
             <h2>¿A qué licencia pertenece la obra?</h2>
             <input type="text" id="license-question" placeholder="Escribe tu respuesta..." />
             <button onClick={submitQuestion}>Enviar</button>
+          </div>
+        </div>
+      )}
+      {infoModalVisible && (
+        <div className="modal" style={{ display: 'block' }}>
+          <div className="modal-content">
+            <span className="close" onClick={() => setInfoModalVisible(false)}>&times;</span>
+            {infoModalContent}
           </div>
         </div>
       )}

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import celularImage from './celular.jpg';
+import audifonosImage from './audifonos.jpg';
+import mouseImage from './MouseGamer.jpg';
+import anuncioImage from './boton_descargar.jpg';
 
 const App = () => {
   const [cart, setCart] = useState([]);
@@ -8,7 +11,7 @@ const App = () => {
   const [showRegisterModal, setShowRegisterModal] = useState(false);
   const [showCreditCardModal, setShowCreditCardModal] = useState(false);
   const [showFakePageForm, setShowFakePageForm] = useState(false);
-  const [showPorcentajeAciertos, setShowPorcentajeAciertos] = useState(false); // Estado para mostrar el formulario de evaluación
+  const [showPorcentajeAciertos, setShowPorcentajeAciertos] = useState(false); 
   const [showWelcomePage, setShowWelcomePage] = useState(true);
   const [publicidadFakeArriba, setPublicidadFakeArriba] = useState(Math.random() >= 0.5);
   const [publicidadFakeAbajo, setPublicidadFakeAbajo] = useState(Math.random() >= 0.5);
@@ -17,11 +20,9 @@ const App = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  // Estados para las sospechas basadas en valores aleatorios
   const [sospechaAnunciosSospechosos, setSospechaAnunciosSospechosos] = useState(false);
   const [sospechaPreciosSospechosos, setSospechaPreciosSospechosos] = useState(false);
 
-  // Estado para el porcentaje de aciertos
   const [porcentajeAciertos, setPorcentajeAciertos] = useState(0);
 
   useEffect(() => {
@@ -29,7 +30,7 @@ const App = () => {
     warningButton.textContent = '¡Es una pagina falsa!';
     warningButton.classList.add('fake-warning-fixed');
     warningButton.onclick = () => {
-      setShowFakePageForm(true); // Mostrar el formulario de evaluación al hacer clic
+      setShowFakePageForm(true); 
     };
     document.body.appendChild(warningButton);
     return () => {
@@ -68,7 +69,7 @@ const App = () => {
     alert('Pago procesado exitosamente. Gracias por su compra.');
     setCart([]);
     setShowCreditCardModal(false);
-    setShowFakePageForm(true); // Mostrar el formulario de evaluación después de la compra
+    setShowFakePageForm(true); 
   };
 
   const submitForm = (event) => {
@@ -129,7 +130,24 @@ const App = () => {
   return (
     <div>
       {showWelcomePage && (
-        <div id="welcome-page">
+        <div
+          id="welcome-page"
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+            color: 'white',
+            zIndex: 10000,
+            flexDirection: 'column',
+            textAlign: 'center',
+          }}
+        >
           <h1>Evaluación de Página Web</h1>
           <p>Instrucciones: Debe comprar al menos un producto de cada categoría.</p>
           <button onClick={() => setShowWelcomePage(false)}>Comenzar</button>
@@ -139,7 +157,7 @@ const App = () => {
         <h1>Página de Compras</h1>
         {publicidadFakeArriba && (
           <div className="advertisement">
-            <img src="boton_descargar.jpg" alt="Publicidad de Encabezado" />
+            <img src={anuncioImage} alt="Publicidad de Encabezado" />
           </div>
         )}
       </header>
@@ -163,7 +181,7 @@ const App = () => {
           </div>
           <div className="product">
             <div className="advertisement_2">
-              <img src="/audifonos.jpg" alt="Producto 2" />
+              <img src={audifonosImage} alt="Producto 2" />
             </div>
             <h3>Audífonos Samsung</h3>
             <p>Chocolate Sahne Nuss de Milka, elaborado con delicioso chocolate con leche alpina y relleno de avellanas enteras, ofrece una experiencia cremosa y crujiente en cada bocado.</p>
@@ -172,7 +190,7 @@ const App = () => {
           </div>
           <div className="product">
             <div className="advertisement_2">
-              <img src="MouseGamer.jpg" alt="Producto 3" />
+              <img src={mouseImage} alt="Producto 3" />
             </div>
             <h3>Mouse Gamer</h3>
             <p>Mouse gamer ultra preciso con iluminación RGB, sensor de 16,000 DPI, botones programables y diseño ergonómico para dominación total en cada partida.</p>
@@ -195,7 +213,7 @@ const App = () => {
         </section>
         {publicidadFakeAbajo && (
           <div className="advertisement">
-            <img src="./boton_descargar.jpg" alt="Publicidad de Pie de Página" />
+            <img src={anuncioImage} alt="Publicidad de Pie de Página" />
           </div>
         )}
       </div>
@@ -288,6 +306,4 @@ const App = () => {
     
     </div>
   );
-};
-
-export default App;
+};export default App;

@@ -10,8 +10,8 @@ export default function Desarrollo({ num, competencia, nivelPregunta }) {
   const [redirectToNextPage, setRedirectToNextPage] = useState(false);
 
   const api_key = "";
-  const model_id = "gpt-4";
-  // const model_id = "gpt-3.5";
+  // const model_id = "gpt-4";
+  const model_id = "gpt-3.5";
 
   useEffect(() => {
     generateQuestion();
@@ -61,7 +61,7 @@ export default function Desarrollo({ num, competencia, nivelPregunta }) {
             Estás evaluando la competencia digital del usuario, basado en el modelo de competencia digital para la ciudadanía DigComp 2.2. Eres un experto en el tema, en especifico en la competencia ${competencia}. Se requiere que generes preguntas o valides la correctitud de las respuestas según corresponda al caso.
             Prompt:
             Analisis de respuesta
-            Ante una pregunta entregada, evaluar (según tus propios conocimientos y el marco de competencias) el grado de exito del usuario para el nivel ${nivelPregunta}, ubicandolo en 3 estados distintos: Fracaso, o grado 1 o 2 según el logro de la respuesta para el nivel correspondiente de la pregunta.
+            Ante una pregunta entregada, evaluar (según tus propios conocimientos y el marco de competencias) el grado de exito del usuario para el nivel ${nivelPregunta}, clasificandolo con 3 puntajes distintos: 0 (Fracaso, es decir, que no entiende la competencia a evaluar), 55 (llega al estado 1 del nivel ${nivelPregunta} de la competencia correspondiente) o 100 (llega al estado 2 del nivel ${nivelPregunta} de la competencia correspondiente) según el logro de la respuesta para el nivel correspondiente de la pregunta.
           `
         },
         {

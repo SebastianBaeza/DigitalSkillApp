@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import './App2.css';
+import './Simulador_CC.css';
 
 import paisajeImage from './assets/Paisaje.jpg';
 import musicaImage from './assets/MusicaAmbiental.jpg';
@@ -8,7 +8,7 @@ import educacionImage from './assets/videoEducativo.jpg';
 
 
 
-const App = () => {
+export default function Simulador_CC() {
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredWorks, setFilteredWorks] = useState([]);
   const [correctAnswer, setCorrectAnswer] = useState('');
@@ -194,5 +194,3 @@ const App = () => {
     </div>
   );
 };
-
-export default App;

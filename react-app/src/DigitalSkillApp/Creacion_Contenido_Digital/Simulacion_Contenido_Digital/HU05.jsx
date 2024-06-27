@@ -115,7 +115,7 @@ export default function Simulador_Powerpoint() {
     };
 
     return (
-        <>
+        <div className='ppt'>
             {instruction && (
             <div>
                 <Modal open={instruction} onClose={handleInstructionClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
@@ -163,7 +163,7 @@ export default function Simulador_Powerpoint() {
                 onClick={handleInstructionOpen}>
                 Instrucción
             </Button>
-            <Title name="Historia 5" evaluateTest={evaluateTest}/>
+            <Title name="PowerPoint" evaluateTest={evaluateTest}/>
             <PptToolbar setMenuOption={setMenuOption} />
             <PptSecondaryMenu addSlide={addSlide} deleteSlide={deleteSlide} addText={addText} menuOption={menuOption} />
             <div className="ppt-slides-container">
@@ -192,6 +192,6 @@ export default function Simulador_Powerpoint() {
                 </Modal>
             </div>
             }
-        </>
+        </div>
     )
 }

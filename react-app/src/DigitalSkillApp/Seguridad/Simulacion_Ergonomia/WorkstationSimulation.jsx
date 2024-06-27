@@ -209,7 +209,7 @@ export default function WorkstationSimulation () {
   }, [redirectToNextPage]);
 
   return (
-    <>
+    <div className='ergo'>
       <h1>Simulación Interactiva de Ergonometría</h1>
       {showCounter && (
         <Box sx={{
@@ -400,6 +400,6 @@ export default function WorkstationSimulation () {
       <Button variant="contained" onClick={handleFinishTest} sx={{ position: 'absolute', bottom: 20, right: 20, backgroundColor: '#3a8589', '&:hover': { backgroundColor: '#2e6f72' } }}>
         Finalizar Test
       </Button>
-    </>
+    </div>
   );
 }

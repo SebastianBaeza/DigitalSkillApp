@@ -1,17 +1,17 @@
-body {
+/* body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-}
-header {
+} */
+/* header {
   background-color: #4CAF50;
   color: white;
   padding: 10px 0;
   text-align: center;
-}
+} */
 nav {
   display: flex;
   justify-content: center;
@@ -284,131 +284,7 @@ footer {
 
 .fake-page-form button:hover {
   background-color: #45a049;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  header {
-    background-color: #333;
-    color: #fff;
-    padding: 1rem;
-    text-align: center;
-  }
-  
-  nav {
-    background-color: #444;
-    color: #fff;
-    display: flex;
-    justify-content: space-around;
-    padding: 0.5rem;
-  }
-  
-  nav a {
-    color: #fff;
-    text-decoration: none;
-  }
-  
-  nav a:hover {
-    text-decoration: underline;
-  }
-  
-  .container {
-    display: flex;
-    justify-content: space-between;
-    padding: 2rem;
-  }
-  
-  .products, .cart, .contact-form {
-    width: 30%;
-  }
-  
-  .product, .cart-item {
-    border: 1px solid #ccc;
-    margin: 1rem 0;
-    padding: 1rem;
-    text-align: center;
-  }
-  
-  .product img, .advertisement img {
-    width: 100%;
-    height: auto;
-  }
-  
-  button {
-    background-color: #28a745;
-    border: none;
-    color: white;
-    cursor: pointer;
-    padding: 0.5rem 1rem;
-  }
-  
-  button:hover {
-    background-color: #218838;
-  }
-  
-  footer {
-    background-color: #333;
-    color: #fff;
-    padding: 1rem;
-    text-align: center;
-  }
-  
-  .advertisement {
-    margin: 1rem 0;
-    text-align: center;
-  }
-  
-  .advertisement_2 img {
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
-  }
-  
-  .modal {
-    display: none; /* Hidden by default */
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
-    padding-top: 60px;
-  }
-  
-  .modal-content {
-    background-color: #fefefe;
-    margin: 5% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-  }
-  
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .close:hover, .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  
-  .fake-warning-fixed {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    background-color: red;
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    z-index: 1000;
-  }

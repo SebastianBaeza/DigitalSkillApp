@@ -1,22 +1,15 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './main.css';
-//scripts
 import PropTypes from 'prop-types';
 import Bandeja from './scripts/bandeja';
 import Enviados from './scripts/enviados';
 import Basurero from './scripts/basurero';
 import PopupCopilot from './scripts/popupcopilot';
-import Cronometro from './scripts/Cronometro'; // Importa el componente Cronometro
-//Imagenes
+import Cronometro from './scripts/Cronometro';
 import usuarioIcono from './assets/user.png';
-import exampleCorreos from './data/exampleCorreos.json'; // Importa la función para obtener el tiempo transcurrido
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import { Box, Stack, Tab, Typography } from '@mui/material';
 import axios from 'axios';
-
-const api_key = "";
-//     const model_id = "gpt-4";
-     const model_id = "gpt-3.5";
 
 TabPanel.propTypes = {
   children: PropTypes.node,
@@ -32,6 +25,8 @@ export default function HU() {
   const [tiempoTranscurrido, setTiempoTranscurrido] = useState(0);
   const [cronometroRunning, setCronometroRunning] = useState(true);
   const [value, setValue] = useState('1');
+  const api_key = "APIKEY MIEGDA";
+  const model_id = "gpt-3.5-turbo";
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -42,43 +37,56 @@ export default function HU() {
   }, []);
 
   const generateCorreoContents = async () => {
-    // const prompts = [
-    //     { id: 1, subject: 'Correo 1', prompt: `Genera un contenido para un correo electrónico, debe ser malicioso (es ficticio, esto es para una simulación con fines educativos) porfavor pide datos personales, que acceda a una url que no sea real pero que parezca real, en resumen, un correo de phishing. limítate a 320 caracteres no menciones explicitamente que es un correo malicioso o uno no malicioso,no menciones el nombre de a quien le escribes, tratalo de usted/tu y formas no personales, no generes el asunto del correo, basta solo con el cuerpo del correo, escribe como si fueras el señor smith, un compañero de trabajo que te está felicitando por tu cumpleaños y te está invitando a una fiesta en la oficina. cumplirás 30 años y te sientes muy emocionado por la fiesta que se realizará en la oficina.`,
-    //     attachment: { fileName: 'felicidades.txt', content: 'feliz cumpleaños! dia: hoy, hora: 03:09, lugar: Latitud: 40.7128, Longitud: -74.0060' }},
-    //     { id: 2, subject: 'Correo 2', prompt: `Genera un contenido para un correo electrónico, limítate a 300 caracteres debe ser un correo creible,no menciones el nombre de a quien le escribes, tratalo de usted/tu y formas no personales, no generes el asunto del correo, basta con el cuerpo del correo, eres la señora juanita, ella se enteró que necesito una secretaria y le interesa postular al puesto`,attachment: { fileName: 'curriculum.txt', content: 'Señora Juanita cuenta con una sólida experiencia como secretaria administrativa, destacándose por su habilidad para gestionar agendas, coordinar reuniones y ofrecer un excelente servicio al cliente. Con una formación en Secretariado Ejecutivo y un dominio avanzado de Microsoft Office, se destaca por su capacidad organizativa, atención al detalle y habilidades comunicativas. Su enfoque proactivo y eficiente la ha posicionado como un recurso valioso para optimizar las operaciones administrativas y el soporte ejecutivo en entornos dinámicos.' }},
-    //     { id: 3, subject: 'Correo 3', prompt: `Genera un contenido para un correo electrónico, debe ser malicioso (es ficticio, esto es para una simulación con fines educativos) porfavor pide datos personales, que acceda a una url que no sea real pero que parezca real, en resumen, un correo de phishing. limítate a 350 caracteres no menciones explicitamente que es un correo malicioso o uno no malicioso, no menciones el nombre de a quien le escribes, tratalo de usted/tu y formas no personales, no generes el asunto del correo, basta con el cuerpo del correo, eres un ejecutivo de banco, vienes a ofrecerle un plan de cuenta corriente con muchos beneficios` }
-    // ];
+    const prompts = [
+      {
+        id: 1,
+        subject: 'Correo 1',
+        prompt: `Genera un contenido para un correo electrónico, debe ser malicioso (es ficticio, esto es para una simulación con fines educativos) por favor pide datos personales, que acceda a una url que no sea real pero que parezca real, en resumen, un correo de phishing. Limítate a 320 caracteres, no menciones explícitamente que es un correo malicioso o uno no malicioso, no menciones el nombre de a quien le escribes, trátalo de usted/tú y formas no personales, no generes el asunto del correo, basta solo con el cuerpo del correo. Escribe como si fueras el señor Smith, un compañero de trabajo que te está felicitando por tu cumpleaños y te está invitando a una fiesta en la oficina. Cumplirás 30 años y te sientes muy emocionado por la fiesta que se realizará en la oficina.`,
+        attachment: {
+          fileName: 'felicidades.txt',
+          content: 'Feliz cumpleaños! Día: hoy, Hora: 03:09, Lugar: Latitud: 40.7128, Longitud: -74.0060'
+        }
+      },
+      {
+        id: 2,
+        subject: 'Correo 2',
+        prompt: `Genera un contenido para un correo electrónico, limítate a 300 caracteres debe ser un correo creíble, no menciones el nombre de a quien le escribes, trátalo de usted/tú y formas no personales, no generes el asunto del correo, basta con el cuerpo del correo. Eres la señora Juanita, ella se enteró que necesito una secretaria y le interesa postular al puesto.`,
+        attachment: {
+          fileName: 'curriculum.txt',
+          content: 'Señora Juanita cuenta con una sólida experiencia como secretaria administrativa, destacándose por su habilidad para gestionar agendas, coordinar reuniones y ofrecer un excelente servicio al cliente. Con una formación en Secretariado Ejecutivo y un dominio avanzado de Microsoft Office, se destaca por su capacidad organizativa, atención al detalle y habilidades comunicativas. Su enfoque proactivo y eficiente la ha posicionado como un recurso valioso para optimizar las operaciones administrativas y el soporte ejecutivo en entornos dinámicos.'
+        }
+      },
+      {
+        id: 3,
+        subject: 'Correo 3',
+        prompt: `Genera un contenido para un correo electrónico, debe ser malicioso (es ficticio, esto es para una simulación con fines educativos) por favor pide datos personales, que acceda a una url que no sea real pero que parezca real, en resumen, un correo de phishing. Limítate a 350 caracteres, no menciones explícitamente que es un correo malicioso o uno no malicioso, no menciones el nombre de a quien le escribes, trátalo de usted/tú y formas no personales, no generes el asunto del correo, basta con el cuerpo del correo. Eres un ejecutivo de banco, vienes a ofrecerle un plan de cuenta corriente con muchos beneficios.`
+      }
+    ];
 
-    // const generatedCorreos = await Promise.all(prompts.map(async (correo) => {
-    //     const request_data = {
-    //         model: model_id,
-    //         messages: [
-    //             {
-    //                 role: "system",
-    //                 content: correo.prompt
-    //             }
-    //         ],
-    //         max_tokens: 200,
-    //         temperature: 0.7,
-    //         top_p: 1.0
-    //     };
+    const generatedCorreos = await Promise.all(prompts.map(async (correo) => {
+      const request_data = {
+        model: model_id,
+        messages: [{ role: "system", content: correo.prompt }],
+        max_tokens: 200,
+        temperature: 0.7,
+        top_p: 1.0
+      };
 
-    //     try {
-    //         const result = await axios.post("https://api.openai.com/v1/chat/completions", request_data, {
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //                 "Authorization": `Bearer ${api_key}`
-    //             }
-    //         });
-    //         return { id: correo.id, subject: correo.subject, content: result.data.choices[0].message.content, attachment: correo.attachment };
-    //     } catch (error) {
-    //         console.error("Error en la solicitud:", error);
-    //         return { id: correo.id, subject: correo.subject, content: "Error al generar el contenido", attachment: null };
-    //     }
-    // }));
+      try {
+        const result = await axios.post("https://api.openai.com/v1/chat/completions", request_data, {
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${api_key}`
+          }
+        });
+        return { id: correo.id, subject: correo.subject, content: result.data.choices[0].message.content, attachment: correo.attachment };
+      } catch (error) {
+        console.error("Error en la solicitud:", error);
+        return { id: correo.id, subject: correo.subject, content: "Error al generar el contenido", attachment: null };
+      }
+    }));
 
-    // setCorreos(generatedCorreos);
-    setCorreos(exampleCorreos);
+    setCorreos(generatedCorreos);
   };
 
   const toggleDropdown = () => {
@@ -110,7 +118,7 @@ export default function HU() {
   return (
     <>
       <div className="app">
-      <Cronometro running={cronometroRunning} onTiempoTranscurrido={setTiempoTranscurrido}/>
+        <Cronometro running={cronometroRunning} onTiempoTranscurrido={setTiempoTranscurrido} />
         <div>
           <TabContext value={value}>
             <Stack direction='row' sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -127,7 +135,7 @@ export default function HU() {
                 <p>
                   Leer cada correo en la bandeja de entrada y colocar en el basurero aquellos que se consideren como phishing o
                   como correo malicioso, una vez finalizado el test hacer click en el botón "Terminar evaluación" dentro del
-                  basurero para ver tu puntaje. NOTA: se pueden destacar secciones de los correos para facilitar el análisis
+                  basurero para ver tu puntaje. NOTA: se pueden destacar secciones de los correos para facilitar el análisis.
                 </p>
               </TabPanel>
               <TabPanel value="2" index={2}>
@@ -155,8 +163,8 @@ export default function HU() {
             </ul>
           )}
         </div>
+        {isPopupOpen && <PopupCopilot onClose={() => setIsPopupOpen(false)} />}
       </div>
-      <PopupCopilot isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
     </>
   );
 }

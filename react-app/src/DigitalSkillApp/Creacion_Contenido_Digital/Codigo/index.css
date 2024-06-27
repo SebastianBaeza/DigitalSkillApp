@@ -14,7 +14,6 @@ code {
   height: 25%;
   background-color: #fff;
 }
-
-/* .blocklySvg {
-  position: unset !important;
-} */
+.Titulo {
+  margin-bottom: 20px
+}

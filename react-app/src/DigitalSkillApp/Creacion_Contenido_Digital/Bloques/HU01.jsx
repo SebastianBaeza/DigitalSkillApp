@@ -7,7 +7,7 @@ import { pythonGenerator } from 'blockly/python';
 // import { save, load } from './serialization';
 import { toolbox } from './toolbox';
 import './';
-import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Container,  Typography,Button, Box } from '@mui/material';
+import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Container,  Typography,Button} from '@mui/material';
 
 import UsePython from './Python/RunPyCode';
 
@@ -107,13 +107,13 @@ export default function HU01() {
   return (
     <>
       {renderModal()}
-      <Typography variant="h4">Instrucciones: Haz que el numero sea 3 veces menos al original</Typography>
+      <Typography variant="h4" className='Titulo'>Instrucciones: Haz que el numero sea 3 veces menos al original</Typography>
       <div id="pageContainer">
         <Container id="outputPane">
           <pre id="generatedCode">
             <code/>
           </pre>
-          <div className=''>
+          <div style={{display:'contents'}}>
             <Typography variant="h6">Console:</Typography>
             <Container id="output"/>
             <Button variant="contained" color="primary" onClick={runCode}>Run Code</Button>

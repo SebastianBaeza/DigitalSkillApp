@@ -122,7 +122,9 @@ export default function Compra () {
 
     const porcentaje = (aciertos / totalPreguntas) * 100;
     setPorcentajeAciertos(porcentaje);
-    setShowPorcentajeAciertos(true);
+    let uwu=parseInt(sessionStorage.getItem("resultado"),10);
+    sessionStorage.setItem("resultado", (porcentaje*0.1667)+uwu);
+    // setShowPorcentajeAciertos(true);
     window.location.assign("/DigitalSkillApp/Seguridad/Simulador_Correos");
   };
 

@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { Container, Typography, Button, Box } from "@mui/material";
 
 export default function Entrypoint() {
+    sessionStorage.setItem("resultado3", 0);
+    sessionStorage.setItem("resultado4", 0);
     const [user, setUser] = useState(null);
     const [loged, setLoged] = useState(false);
 

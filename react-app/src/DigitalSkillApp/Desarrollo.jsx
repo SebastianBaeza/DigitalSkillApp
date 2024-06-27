@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect} from 'react';
 import { Container, Typography, TextField, Button, Box } from '@mui/material';
 import axios from 'axios';
+import agregarDocumento from "../POST"
 import './Preguntas.css';
 
 export default function Desarrollo({ num, competencia, nivelPregunta }) {
@@ -11,7 +12,7 @@ export default function Desarrollo({ num, competencia, nivelPregunta }) {
 
   const api_key = "";
   // const model_id = "gpt-4";
-  const model_id = "gpt-3.5";
+  const model_id = "gpt-3.5-turbo";
 
   useEffect(() => {
     generateQuestion();
@@ -28,7 +29,7 @@ export default function Desarrollo({ num, competencia, nivelPregunta }) {
             Estás evaluando la competencia digital del usuario, basado en el modelo de competencia digital para la ciudadanía DigComp 2.2. Eres un experto en el tema, en especifico en la competencia ${competencia}. Se requiere que generes preguntas o valides la correctitud de las respuestas según corresponda al caso.
             Prompt:
             Pregunta para Medir la Competencia
-            Crea una pregunta que se pueda utilizar para medir la competencia de una persona en la competencia digital mencionada. La pregunta debe estar estructurada en texto plano, para cubrir el nivel ${nivelPregunta} de la competencia correspondiente, con respuestas proporcionadas de la misma forma. Se deben crear preguntas que hagan pensar al usuario, por tanto, se debe evitar preguntar al usuario la percepcion que tiene de sus propios conocimientos, o preguntas que le permitan elegir entre multiples alternativas. El objetivo es comprobar el conocimiento del usuario, por lo que se requiere que redacte la respuesta basado completamente en sus conocimientos del tema. La pregunta a generar puede tratar temas a lo largo de toda la competencia ${competencia}, por lo que trata de variar el contenido, a fin de siempre probar el conocimiento del usuario.
+            No debes dar la respuesta a la pregunta, pues se requiere que el usuario responda sin que le den la respuesta. Crea una pregunta que se pueda utilizar para medir la competencia de una persona en la competencia digital mencionada. La pregunta debe estar estructurada en texto plano, para cubrir el nivel ${nivelPregunta} de la competencia correspondiente, con respuestas proporcionadas de la misma forma. Se deben crear preguntas que hagan pensar al usuario, por tanto, se debe evitar preguntar al usuario la percepcion que tiene de sus propios conocimientos, o preguntas que le permitan elegir entre multiples alternativas. El objetivo es comprobar el conocimiento del usuario, por lo que se requiere que redacte la respuesta basado completamente en sus conocimientos del tema. La pregunta a generar puede tratar temas a lo largo de toda la competencia ${competencia}, por lo que trata de variar el contenido, a fin de siempre probar el conocimiento del usuario.
           `
         }
       ],
@@ -61,7 +62,7 @@ export default function Desarrollo({ num, competencia, nivelPregunta }) {
             Estás evaluando la competencia digital del usuario, basado en el modelo de competencia digital para la ciudadanía DigComp 2.2. Eres un experto en el tema, en especifico en la competencia ${competencia}. Se requiere que generes preguntas o valides la correctitud de las respuestas según corresponda al caso.
             Prompt:
             Analisis de respuesta
-            Ante una pregunta entregada, evaluar (según tus propios conocimientos y el marco de competencias) el grado de exito del usuario para el nivel ${nivelPregunta}, clasificandolo con 3 puntajes distintos: 0 (Fracaso, es decir, que no entiende la competencia a evaluar), 55 (llega al estado 1 del nivel ${nivelPregunta} de la competencia correspondiente) o 100 (llega al estado 2 del nivel ${nivelPregunta} de la competencia correspondiente) según el logro de la respuesta para el nivel correspondiente de la pregunta.
+            Ante una pregunta entregada, evaluar (según tus propios conocimientos y el marco de competencias) el grado de exito del usuario para el nivel ${nivelPregunta}, clasificandolo con puntajes distintos (y solo responde con el numero del puntaje correspondiente) entre los siguientes numeros: 0 (Fracaso, es decir, que no entiende la competencia a evaluar) y 100 (llega al estado 2 del nivel ${nivelPregunta} de la competencia correspondiente) según el logro de la respuesta para el nivel correspondiente de la pregunta.
           `
         },
         {
@@ -82,20 +83,39 @@ export default function Desarrollo({ num, competencia, nivelPregunta }) {
     });
     const responseContent = result.data.choices[0].message.content;
     setResponse(responseContent);
-    downloadResponse(responseContent);
+    saveResult(responseContent);
+    if (num == "4-4"){
+      const enviarDocumento = async () => {
+        const resultado = agregarDocumento(sessionStorage.getItem("resultado4"),4)
+        console.log(resultado);
+      };
+    }
     setRedirectToNextPage(true);
     } catch (error) {
       console.error("Error en la solicitud:", error);
     }
   };
 
-  const downloadResponse = (responseContent) => {
-    const element = document.createElement("a");
-    const file = new Blob([responseContent], { type: 'text/plain' });
-    element.href = URL.createObjectURL(file);
-    element.download = "response.txt";
-    document.body.appendChild(element);
-    element.click();
+  // const downloadResponse = (responseContent) => {
+  //   const element = document.createElement("a");
+  //   const file = new Blob([responseContent], { type: 'text/plain' });
+  //   element.href = URL.createObjectURL(file);
+  //   element.download = "response.txt";
+  //   document.body.appendChild(element);
+  //   element.click();
+  // };
+  const saveResult = (responseContent) => {
+    console.log(responseContent);
+    let resultado = parseInt(responseContent,10);
+    console.log("Resultado: " + resultado);
+    let uwu;
+    if (num[0] == "3"){
+      uwu=parseInt(sessionStorage.getItem("resultado3"),10);
+      sessionStorage.setItem("resultado3", (resultado=="NaN"?uwu:(resultado*0.1)+uwu));
+    } else if (num[0] == "4"){
+      uwu=parseInt(sessionStorage.getItem("resultado4"),10);
+      sessionStorage.setItem("resultado4", (resultado=="NaN"?uwu:(resultado*0.075)+uwu));
+    }
   };
 
   const handleInputChange = (event) => {
@@ -112,28 +132,28 @@ export default function Desarrollo({ num, competencia, nivelPregunta }) {
       let nextPageUrl = "";
       switch (num){
         case "3-1":
-          nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/Simulacion_Powerpoint";
+          nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/Simulador_Powerpoint";
           break;
         case "3-2":
           nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Alternativas/3-3";
           break;
         case "3-3":
-          nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/Simulacion_CC";
+          nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/Simulador_CC";
           break;
         // case "3-4":
         //   nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Desarrollo/Resultados"; //O otro test, no se
         //   break;
         case "4-1":
-          nextPageUrl = "/DigitalSkillApp/Seguridad/Simulacion_Web";
+          nextPageUrl = "/DigitalSkillApp/Seguridad/Simulador_Web";
           break;
         case "4-2":
           nextPageUrl = "/DigitalSkillApp/Seguridad/" + nivelPregunta + "/Pregunta_Alternativas/4-3";
           break;
         case "4-3":
-          nextPageUrl = "/DigitalSkillApp/Seguridad/Simulacion_Ergonomia";
+          nextPageUrl = "/DigitalSkillApp/Seguridad/Simulador_Ergonomia";
           break;
         case "4-4":
-          nextPageUrl = "/DigitalSkillApp/Seguridad/Resultados";
+          nextPageUrl = "/";    
           break;
         default:
           nextPageUrl = "/";
@@ -141,7 +161,7 @@ export default function Desarrollo({ num, competencia, nivelPregunta }) {
       }
       window.location.assign(nextPageUrl);
     }
-  }, [redirectToNextPage, nivelPregunta]);
+  }, [redirectToNextPage, nivelPregunta, num]);
 
   return (
     <Container sx={{ textAlign: "center", marginTop: "30px" }}>

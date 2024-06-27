@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Title } from "./assets/HUs/HU05/Title";
 import { PptToolbar } from "./assets/HUs/HU05/PptToolbar";
@@ -30,7 +30,7 @@ export default function Simulador_Powerpoint() {
     const [showCounter, setShowCounter] = useState(true);
     const [counter, setCounter] = useState(0);
     const [isApproved, setIsApproved] = useState(null);
-    const [redirectToNextPage, setRedirectToNextPage] = useState(false);
+    // const [redirectToNextPage, setRedirectToNextPage] = useState(false);
     
     useEffect(() => {
         let timer = null;
@@ -107,18 +107,21 @@ export default function Simulador_Powerpoint() {
     };
 
     const evaluateTest = () => {
-        console.log(slides);
         for (const slide of slides) {
             if (slide.content.length != 0) {
                 setShowCounter(false);
                 setIsApproved(true);
                 setOpen(true);
+                let uwu=parseInt(sessionStorage.getItem("resultado"),10);
+                sessionStorage.setItem("resultado", 12.5+uwu);
+                console.log(sessionStorage.getItem("resultado"));
                 return;
             }
         }
         setShowCounter(false);
         setIsApproved(false);
         setOpen(true);
+        console.log(sessionStorage.getItem("resultado"));
         return;
     };
 

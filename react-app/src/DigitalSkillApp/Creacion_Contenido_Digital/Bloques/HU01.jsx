@@ -82,7 +82,11 @@ export default function HU01() {
         const outputDiv = document.getElementById('output');
         outputDiv.innerHTML = '> '+codigo;
         if (codigo[0] == '14.0') {
-          setIsModalOpen(true);
+          let uwu = parseInt(sessionStorage.getItem("resultado3"),10);
+          sessionStorage.setItem("resultado3", uwu+12.5);
+          console.log(sessionStorage.getItem("resultado3"));
+          window.location.assign("/DigitalSkillApp/Creacion_Contenido_Digital/Codigo");
+          // sessionStorage.setItem('resultado3', 'true3');
         }
       }
     } catch (error) {
@@ -99,7 +103,7 @@ export default function HU01() {
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={() => setIsModalOpen(false)} href='/' >Seguir</Button>
+        <Button onClick={() => setIsModalOpen(false)} href='/DigitalSkillApp/Creacion_Contenido_Digital/Codigo' >Seguir</Button>
       </DialogActions>
     </Dialog>
   );

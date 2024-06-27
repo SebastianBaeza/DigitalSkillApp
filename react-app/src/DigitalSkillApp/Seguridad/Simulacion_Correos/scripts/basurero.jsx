@@ -34,7 +34,10 @@ const Basurero = ({ trash, moveToInbox, setCronometroRunning }) => { // Destruct
             const calculatedScore = Math.max((correctInTrash.length * 50) - (incorrectInTrash.length * 25), 0);
             console.log('Score:', calculatedScore);
             setScore(calculatedScore); // or send it to the database
-            //window.location.href="/"; //redirigir a la página principal
+            let uwu=parseInt(sessionStorage.getItem("resultado"),10);
+            sessionStorage.setItem("resultado", (score*0.1667)+uwu);
+            window.location.href="/DigitalSkillApp/Creacion_Contenido_Digital/Basico/Pregunta_Desarrollo/4-2"; //redirigir a la página principal
+
         }
 
         // Stop the timer and mark evaluation as finished

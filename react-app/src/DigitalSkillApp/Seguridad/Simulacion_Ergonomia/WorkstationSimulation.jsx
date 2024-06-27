@@ -123,6 +123,8 @@ export default function WorkstationSimulation () {
     setShowFinishPopup(true);
     setShowCounter(false);
     setSlidersDisabled(true); // Deshabilita los sliders al finalizar el test
+    let uwu=parseInt(sessionStorage.getItem("resultado4"),10);
+    sessionStorage.setItem("resultado4", (score*16.67)+uwu);
     setRedirectToNextPage(true);
   };
 

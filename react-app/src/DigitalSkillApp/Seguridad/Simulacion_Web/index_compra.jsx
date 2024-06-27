@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import celularImage from './celular.jpg';
 import audifonosImage from './audifonos.jpg';
 import mouseImage from './MouseGamer.jpg';
 import anuncioImage from './boton_descargar.jpg';
 
-const App = () => {
+export default function Compra () {
   const [cart, setCart] = useState([]);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showRegisterModal, setShowRegisterModal] = useState(false);
   const [showCreditCardModal, setShowCreditCardModal] = useState(false);
   const [showFakePageForm, setShowFakePageForm] = useState(false);
   const [showPorcentajeAciertos, setShowPorcentajeAciertos] = useState(false); 
-  const [showWelcomePage, setShowWelcomePage] = useState(true);
+  const [showWelcomePage, setShowWelcomePage]= useState(true);
   const [publicidadFakeArriba, setPublicidadFakeArriba] = useState(Math.random() >= 0.5);
   const [publicidadFakeAbajo, setPublicidadFakeAbajo] = useState(Math.random() >= 0.5);
   const [celularGratis, setCelularGratis] = useState(Math.random() >= 0.5);
@@ -306,4 +306,4 @@ const App = () => {
     
     </div>
   );
-};export default App;
+}

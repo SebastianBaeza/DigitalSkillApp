@@ -78,7 +78,7 @@ const App = () => {
     const email = event.target.email.value;
     const message = event.target.message.value;
 
-    alert(`Gracias por tu mensaje, ${name}. Nos pondremos en contacto contigo en ${email} lo antes posible.`);
+    alert('Gracias por tu mensaje, ${name}. Nos pondremos en contacto contigo en ${email} lo antes posible.');
     event.target.reset();
   };
 

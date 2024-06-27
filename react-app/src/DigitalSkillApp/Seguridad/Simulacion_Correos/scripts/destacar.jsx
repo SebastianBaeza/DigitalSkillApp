@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Button } from '@mui/material';
 import Borrador from '../assets/goma.png';
 
-const DestacarTexto = ( texto ) => {
+const DestacarTexto = ({ texto }) => { // Destructure `texto` from props
     const [highlightedTexts, setHighlightedTexts] = useState([]);
 
     const toggleHighlight = () => {

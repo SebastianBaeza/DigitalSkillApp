@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { Button } from '@mui/material';
+import Borrador from '../assets/goma.png';
 
-const DestacarTexto = ({ texto }) => {
+const DestacarTexto = ( texto ) => {
     const [highlightedTexts, setHighlightedTexts] = useState([]);
 
     const toggleHighlight = () => {
@@ -69,9 +71,9 @@ const DestacarTexto = ({ texto }) => {
                     {highlightedTexts.map((highlight, index) => (
                         <div key={index}>
                             <p>{highlight.text}</p>
-                            <button onClick={() => removeHighlight(index)} style={styles.removeHighlightButton}>
-                                <img src="./goma.png" alt="Borrar resaltado" style={styles.removeHighlightIcon} />
-                            </button>
+                            <Button variant="contained" onClick={() => removeHighlight(index)} style={styles.removeHighlightButton}>
+                                <img src={Borrador} alt="Borrar resaltado" style={styles.removeHighlightIcon} />
+                            </Button>
                         </div>
                     ))}
                 </div>

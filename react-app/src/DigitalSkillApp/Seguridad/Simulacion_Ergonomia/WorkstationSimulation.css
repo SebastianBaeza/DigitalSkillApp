@@ -82,3 +82,20 @@
   max-width: 50%; /* Asegurar que el ancho máximo sea proporcional */
   transform: rotate(-15deg);
 }
+
+body {
+  margin: 0;
+  font-family: system-ui;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 20px; /* Ajusta según sea necesario */
+}

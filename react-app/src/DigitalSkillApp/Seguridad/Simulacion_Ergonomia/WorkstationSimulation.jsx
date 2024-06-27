@@ -55,7 +55,7 @@ const CustomSlider = styled(Slider)({
   },
 });
 
-const WorkstationSimulation = () => {
+export default function WorkstationSimulation () {
   const initialChairHeight = 0;
   const initialScreenDistance = -55; // Ajustado para estar completamente a la izquierda
   const initialScreenAngle = -25; // Ajustado para estar completamente a la izquierda
@@ -209,7 +209,7 @@ const WorkstationSimulation = () => {
   }, [redirectToNextPage]);
 
   return (
-    <>
+    <div className="App">
       <h1>Simulación Interactiva de Ergonometría</h1>
       {showCounter && (
         <Box sx={{
@@ -400,8 +400,6 @@ const WorkstationSimulation = () => {
       <Button variant="contained" onClick={handleFinishTest} sx={{ position: 'absolute', bottom: 20, right: 20, backgroundColor: '#3a8589', '&:hover': { backgroundColor: '#2e6f72' } }}>
         Finalizar Test
       </Button>
-    </>
+    </div>
   );
-};
-
-export default WorkstationSimulation;
+}

@@ -1,0 +1,15 @@
+[
+    { 
+        "id": 1, 
+        "subject": "Correo 1", 
+        "content": "Contenido del correo 1", 
+        "attachment": { "fileName": "archivo1.txt", "content": "" }
+    },
+    { 
+        "id": 2, 
+        "subject": "Correo 2", 
+        "content": "Contenido del correo 2", 
+        "attachment": { "fileName": "archivo2.txt", "content": "contenido malicioso" }
+    },
+    { "id": 3, "subject": "Correo 3", "content": "Contenido del correo 3" }
+]

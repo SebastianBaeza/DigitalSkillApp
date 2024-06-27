@@ -1,5 +1,5 @@
 // Cronometro.jsx
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { setTiempoTranscurrido } from './globalVariables'; // Importa la función para actualizar la variable global
 
 const Cronometro = ({ running }) => {
@@ -20,7 +20,7 @@ const Cronometro = ({ running }) => {
     return () => clearInterval(intervalo);
   }, [running]);
 
-  return <div>{segundos} segundos</div>;
+  return <div style={{display : 'flex'}}>{segundos+" segundos"}</div>;
 };
 
 export default Cronometro;

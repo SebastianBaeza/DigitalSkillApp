@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import './correo.css';
+import { useState } from 'react';
+import '../main.css';
 
 const Enviados = () => {
     const [emails, setEmails] = useState([

@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import './correo.css';
+import { useState } from 'react';
+import './Css/correo.css';
 import DestacarTexto from './destacar'; // Asegúrate de importar DestacarTexto desde donde esté definido
-import downloadIcon from './download-icon.png'; // Importa la imagen para el botón de descarga
+import downloadIcon from '../assets/download-icon.png'; // Importa la imagen para el botón de descarga
+import { Stack } from '@mui/material';
 
-const Bandeja = ({ correos, moveToTrash, setCronometroRunning }) => {
+const Bandeja = ({ correos, moveToTrash }) => {
     const [selectedCorreos, setSelectedCorreos] = useState([]);
     const [selectedCorreo, setSelectedCorreo] = useState(null);
     const [highlightedText, setHighlightedText] = useState({}); // Estado para el texto resaltado
@@ -34,11 +35,7 @@ const Bandeja = ({ correos, moveToTrash, setCronometroRunning }) => {
 
                 setHighlightedText({
                     ...highlightedText,
-                    [id]: {
-                        text: selectedText,
-                        startIndex,
-                        endIndex
-                    }
+                    [id]: {text: selectedText,startIndex,endIndex}
                 });
             }
         }
@@ -73,7 +70,7 @@ const Bandeja = ({ correos, moveToTrash, setCronometroRunning }) => {
     };
 
     return (
-        <div className="pagina">
+        <Stack direction='row' className="pagina">
             <div className="bandeja-lista">
                 <div className="titulo">Bandeja de entrada</div>
                 <ul>
@@ -118,7 +115,7 @@ const Bandeja = ({ correos, moveToTrash, setCronometroRunning }) => {
                     <p>Selecciona un correo para leer el contenido</p>
                 )}
             </div>
-        </div>
+        </Stack>
     );
 };
 

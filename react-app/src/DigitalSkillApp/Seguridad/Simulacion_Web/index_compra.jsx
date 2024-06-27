@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
-import celularImage from './celular.jpg';
-import audifonosImage from './audifonos.jpg';
-import mouseImage from './MouseGamer.jpg';
-import anuncioImage from './boton_descargar.jpg';
+import { useState, useEffect } from 'react';
+import './sim_web.css';
+import celularImage from './assets/celular.jpg';
+import audifonosImage from './assets/audifonos.jpg';
+import mouseImage from './assets/MouseGamer.jpg';
+import anuncioImage from './assets/boton_descargar.jpg';
+import { Stack } from '@mui/material';
 
 const App = () => {
   const [cart, setCart] = useState([]);
@@ -51,17 +52,13 @@ const App = () => {
     ));
     const total = cart.reduce((acc, item) => acc + item.price, 0);
     return (
-      <div>
-        <div id="cart-items">{cartItems}</div>
-        <div id="cart-total">
-          <h3>Total: ${total}</h3>
-        </div>
+      <>
+        <Stack direction="row" spacing={2} id="cart-items">{cartItems}</Stack>
+        <div id="cart-total"><h3>Total: ${total}</h3></div>
         {cart.length > 0 && (
-          <button id="buy-button" onClick={() => setShowCreditCardModal(true)}>
-            Comprar
-          </button>
+          <button id="buy-button" onClick={() => setShowCreditCardModal(true)}>Comprar</button>
         )}
-      </div>
+      </>
     );
   };
 
@@ -128,7 +125,7 @@ const App = () => {
   };
 
   return (
-    <div>
+    <>
       {showWelcomePage && (
         <div
           id="welcome-page"
@@ -268,23 +265,11 @@ const App = () => {
             <h2>Evaluación de Página Falsa</h2>
             <form onSubmit={(event) => event.preventDefault()}>
               <label htmlFor="phishing">
-                <input
-                  type="checkbox"
-                  id="phishing"
-                  name="suspicion"
-                  checked={sospechaAnunciosSospechosos}
-                  onChange={() => setSospechaAnunciosSospechosos(!sospechaAnunciosSospechosos)}
-                />
+                <input type="checkbox" id="phishing" name="suspicion" checked={sospechaAnunciosSospechosos} onChange={() => setSospechaAnunciosSospechosos(!sospechaAnunciosSospechosos)}/>
                 Anuncios sospechosos
               </label><br />
               <label htmlFor="fakeProducts">
-                <input
-                  type="checkbox"
-                  id="fakeProducts"
-                  name="suspicion"
-                  checked={sospechaPreciosSospechosos}
-                  onChange={() => setSospechaPreciosSospechosos(!sospechaPreciosSospechosos)}
-                />
+                <input type="checkbox" id="fakeProducts" name="suspicion" checked={sospechaPreciosSospechosos} onChange={() => setSospechaPreciosSospechosos(!sospechaPreciosSospechosos)}/>
                 Precios sospechosos
               </label><br />
               <button onClick={endEvaluation}>Enviar Evaluación</button>
@@ -302,8 +287,6 @@ const App = () => {
         </div>
     </div>
     )}
-
-    
-    </div>
+    </>
   );
 };export default App;

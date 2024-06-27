@@ -39,7 +39,7 @@ export default function HU02() {
         <Container id="blocklyDiv">
           <Typography variant="h6">Input:</Typography>
           <form onSubmit={runCode}>
-            <TextField name="pythonCode" label="Enter Python Code" multiline rows={4} variant="outlined" fullWidth margin="normal"/>
+            <TextField name="pythonCode" label="Introduce Codigo de Python" multiline rows={4} variant="outlined" fullWidth margin="normal"/>
             <Button variant="contained" color="primary" type="submit">Run Code</Button>
           </form>
         </Container>

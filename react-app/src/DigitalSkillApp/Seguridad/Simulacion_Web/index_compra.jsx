@@ -125,7 +125,7 @@ export default function Compra () {
     let uwu=parseInt(sessionStorage.getItem("resultado"),10);
     sessionStorage.setItem("resultado", (porcentaje*0.1667)+uwu);
     // setShowPorcentajeAciertos(true);
-    window.location.assign("/DigitalSkillApp/Seguridad/Simulador_Correos");
+    window.location.assign("/Seguridad/Simulador_Correos");
   };
 
   return (

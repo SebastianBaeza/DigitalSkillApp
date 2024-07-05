@@ -17,9 +17,9 @@ return (
     <Container sx={{ textAlign: "center", marginTop: "30px" }}>
       <Typography sx={{ marginBottom: "50px" }} variant="h1" gutterBottom>Creación de Contenido Digital</Typography>
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, alignItems: 'center' }}>
-        <Button variant="contained" href="/DigitalSkillApp/Creacion_Contenido_Digital/Basico/Pregunta_Alternativas/3-1">Nivel Basico</Button>
-        <Button variant="contained" href="/DigitalSkillApp/Creacion_Contenido_Digital/Intermedio/Pregunta_Alternativas/3-1">Nivel Intermedio</Button>
-        <Button variant="contained" href="/DigitalSkillApp/Creacion_Contenido_Digital/Avanzado/Pregunta_Alternativas/3-1">Nivel Avanzado</Button>
+        <Button variant="contained" href="/Creacion_Contenido_Digital/Basico/Pregunta_Alternativas/3-1">Nivel Basico</Button>
+        <Button variant="contained" href="/Creacion_Contenido_Digital/Intermedio/Pregunta_Alternativas/3-1">Nivel Intermedio</Button>
+        <Button variant="contained" href="/Creacion_Contenido_Digital/Avanzado/Pregunta_Alternativas/3-1">Nivel Avanzado</Button>
         <Button variant="contained" href="/">Volver al inicio</Button>
       </Box>
     </Container>

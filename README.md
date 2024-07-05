@@ -2,7 +2,7 @@
 
 ## Wiki
 
-Puede acceder a la Wiki mediante el siguiente enlace: https://github.com/SebastianBaeza/DigitalSkillApp/wiki
+Puede acceder a la Wiki mediante el siguiente [enlace](https://github.com/SebastianBaeza/DigitalSkillApp/wiki)
 
 ## Aspectos técnicos relevantes
 
@@ -10,7 +10,8 @@ Puede acceder a la Wiki mediante el siguiente enlace: https://github.com/Sebasti
 
 ## Correr el código
 
-### Frontend:
+### Frontend
+
 Antes de correr el frontend, debe situarse en el directorio "react-app" y ejecutar los siguientes comandos:
 
 ```npm install```

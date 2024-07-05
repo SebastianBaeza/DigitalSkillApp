@@ -46,7 +46,7 @@ export default function Simulador_Powerpoint() {
           clearInterval(timer); // Limpia el intervalo al desmontar el componente
         };
         // if (redirectToNextPage) {
-        //     window.location.href = "/DigitalSkillApp/Creacion_Contenido_Digital/Basico/Pregunta_Alternativas/3-2"
+        //     window.location.href = "/Creacion_Contenido_Digital/Basico/Pregunta_Alternativas/3-2"
         // }
     }, [showCounter]);
 
@@ -56,7 +56,7 @@ export default function Simulador_Powerpoint() {
 
     const handleClose = () => {
         setOpen(false);
-        window.location.assign("/DigitalSkillApp/Creacion_Contenido_Digital/Basico/Pregunta_Alternativas/3-2");
+        window.location.assign("/Creacion_Contenido_Digital/Basico/Pregunta_Alternativas/3-2");
     }
 
     const [slides, setSlides] = useState([{ id: 1,content: [] }]);

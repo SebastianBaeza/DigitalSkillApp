@@ -36,7 +36,7 @@ const Basurero = ({ trash, moveToInbox, setCronometroRunning }) => { // Destruct
             setScore(calculatedScore); // or send it to the database
             let uwu=parseInt(sessionStorage.getItem("resultado"),10);
             sessionStorage.setItem("resultado", (score*0.1667)+uwu);
-            window.location.href="/DigitalSkillApp/Creacion_Contenido_Digital/Basico/Pregunta_Desarrollo/4-2"; //redirigir a la página principal
+            window.location.href="/Creacion_Contenido_Digital/Basico/Pregunta_Desarrollo/4-2"; //redirigir a la página principal
 
         }
 

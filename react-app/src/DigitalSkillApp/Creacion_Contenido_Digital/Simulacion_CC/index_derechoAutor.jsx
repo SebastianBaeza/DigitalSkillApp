@@ -90,7 +90,7 @@ export default function Simulador_CC() {
     alert(`Porcentaje de acierto: ${accuracy}%`);
 
     // Redirección directa
-    window.location.assign("/DigitalSkillApp/Creacion_Contenido_Digital/Basico/Pregunta_Alternativas/3-4");
+    window.location.assign("/Creacion_Contenido_Digital/Basico/Pregunta_Alternativas/3-4");
   };
 
   const startEvaluation = () => {

@@ -40,7 +40,7 @@ export default function HU02() {
     <Dialog open={isModalOpen} onClose={() => setIsModalOpen(false)}>
       <DialogTitle>Felicidades!</DialogTitle>
       <DialogContent><DialogContentText>El valor es el correcto!</DialogContentText></DialogContent>
-      <DialogActions><Button onClick={() => setIsModalOpen(false)} href='/DigitalSkillApp/Creacion_Contenido_Digital/Resultados' >Seguir</Button></DialogActions>
+      <DialogActions><Button onClick={() => setIsModalOpen(false)} href='/Creacion_Contenido_Digital/Resultados' >Seguir</Button></DialogActions>
     </Dialog>
   );
 

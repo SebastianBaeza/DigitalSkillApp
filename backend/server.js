@@ -10,7 +10,6 @@ app.post('/run-python', (req, res) => {
     let { pythonCode } = req.body;
     console.log("codigo:\n",pythonCode);
 
-
     PythonShell.runString(pythonCode, null, (err, results) => {
         if (err) {return res.status(500).json({ error: err.message });}
         console.log("Error:",err);

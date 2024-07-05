@@ -116,55 +116,53 @@ export default function HU() {
   };
 
   return (
-    <>
-      <div className="app">
-        <Cronometro running={cronometroRunning} onTiempoTranscurrido={setTiempoTranscurrido} />
-        <div>
-          <TabContext value={value}>
-            <Stack direction='row' sx={{ borderBottom: 1, borderColor: 'divider' }}>
-              <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                <TabList onChange={handleChange} orientation='vertical' sx={{ orderRight: 1, borderColor: 'divider' }}>
-                  <Tab label="Instrucciones" value="1" />
-                  <Tab label="Bandeja de entrada" value="2" />
-                  <Tab label="Elementos enviados" value="3" />
-                  <Tab label="Elementos eliminados" value="4" />
-                </TabList>
-              </Box>
-              <TabPanel value="1" index={1}>
-                <Typography variant='h1'>Instrucciones del test</Typography>
-                <p>
-                  Leer cada correo en la bandeja de entrada y colocar en el basurero aquellos que se consideren como phishing o
-                  como correo malicioso, una vez finalizado el test hacer click en el botón "Terminar evaluación" dentro del
-                  basurero para ver tu puntaje. NOTA: se pueden destacar secciones de los correos para facilitar el análisis.
-                </p>
-              </TabPanel>
-              <TabPanel value="2" index={2}>
-                <Bandeja correos={correos} moveToTrash={moveToTrash} setCronometroRunning={setCronometroRunning} />
-              </TabPanel>
-              <TabPanel value="3" index={3}>
-                <Enviados />
-              </TabPanel>
-              <TabPanel value="4" index={4}>
-                <Basurero trash={trash} moveToInbox={moveToInbox} setCronometroRunning={setCronometroRunning} />
-              </TabPanel>
-            </Stack>
-          </TabContext>
-        </div>
-        <div className="dropdown" onClick={toggleDropdown} onMouseLeave={closeDropdown}>
-          <button className="dropdown-button">
-            <img className="usuario-icono" src={usuarioIcono} alt="user" />
-            Usuario invitado
-          </button>
-          {dropdownVisible && (
-            <ul className="dropdown-list">
-              <li className="dropdown-item" onClick={() => handleMenuItemClick('Configuración')}>Configuración</li>
-              <li className="dropdown-item" onClick={() => handleMenuItemClick('Mesa de ayuda')}>Mesa de ayuda</li>
-              <li className="dropdown-item" onClick={() => handleMenuItemClick('Cerrar sesión')}>Cerrar sesión</li>
-            </ul>
-          )}
-        </div>
-        {isPopupOpen && <PopupCopilot onClose={() => setIsPopupOpen(false)} />}
+    <div className="app">
+      <Cronometro running={cronometroRunning} onTiempoTranscurrido={setTiempoTranscurrido} />
+      <div>
+        <TabContext value={value}>
+          <Stack direction='row' sx={{ borderBottom: 1, borderColor: 'divider' }}>
+            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+              <TabList onChange={handleChange} orientation='vertical' sx={{ orderRight: 1, borderColor: 'divider' }}>
+                <Tab label="Instrucciones" value="1" />
+                <Tab label="Bandeja de entrada" value="2" />
+                <Tab label="Elementos enviados" value="3" />
+                <Tab label="Elementos eliminados" value="4" />
+              </TabList>
+            </Box>
+            <TabPanel value="1" index={1}>
+              <Typography variant='h1'>Instrucciones del test</Typography>
+              <p>
+                Leer cada correo en la bandeja de entrada y colocar en el basurero aquellos que se consideren como phishing o
+                como correo malicioso, una vez finalizado el test hacer click en el botón "Terminar evaluación" dentro del
+                basurero para ver tu puntaje. NOTA: se pueden destacar secciones de los correos para facilitar el análisis.
+              </p>
+            </TabPanel>
+            <TabPanel value="2" index={2}>
+              <Bandeja correos={correos} moveToTrash={moveToTrash} setCronometroRunning={setCronometroRunning} />
+            </TabPanel>
+            <TabPanel value="3" index={3}>
+              <Enviados />
+            </TabPanel>
+            <TabPanel value="4" index={4}>
+              <Basurero trash={trash} moveToInbox={moveToInbox} setCronometroRunning={setCronometroRunning} />
+            </TabPanel>
+          </Stack>
+        </TabContext>
       </div>
-    </>
+      <div className="dropdown" onClick={toggleDropdown} onMouseLeave={closeDropdown}>
+        <button className="dropdown-button">
+          <img className="usuario-icono" src={usuarioIcono} alt="user" />
+          Usuario invitado
+        </button>
+        {dropdownVisible && (
+          <ul className="dropdown-list">
+            <li className="dropdown-item" onClick={() => handleMenuItemClick('Configuración')}>Configuración</li>
+            <li className="dropdown-item" onClick={() => handleMenuItemClick('Mesa de ayuda')}>Mesa de ayuda</li>
+            <li className="dropdown-item" onClick={() => handleMenuItemClick('Cerrar sesión')}>Cerrar sesión</li>
+          </ul>
+        )}
+      </div>
+      {isPopupOpen && <PopupCopilot onClose={() => setIsPopupOpen(false)} />}
+    </div>
   );
 }

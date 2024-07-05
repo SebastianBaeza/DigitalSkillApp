@@ -174,9 +174,7 @@ export default function Alternativas({ num, competencia, nivelPregunta }) {
           currentQuestion.opciones?.map((option, index) => (
             <FormControlLabel
               key={index}
-              control={
-                <Checkbox checked={selectedOptions.includes(option)} onChange={handleOptionChange} value={option}/>
-              }
+              control={<Checkbox checked={selectedOptions.includes(option)} onChange={handleOptionChange} value={option}/>}
               label={option}
             />
           ))

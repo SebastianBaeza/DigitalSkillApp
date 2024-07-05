@@ -133,26 +133,26 @@ export default function Desarrollo({ num, competencia, nivelPregunta }) {
       let nextPageUrl = "";
       switch (num){
         case "3-1":
-          nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/Simulador_Powerpoint";
-          nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/Simulador_Powerpoint";
+          nextPageUrl = "/Creacion_Contenido_Digital/Simulador_Powerpoint";
+          nextPageUrl = "/Creacion_Contenido_Digital/Simulador_Powerpoint";
           break;
         case "3-2":
-          nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Alternativas/3-3";
+          nextPageUrl = "/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Alternativas/3-3";
           break;
         case "3-3":
-          nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/Simulador_CC";
+          nextPageUrl = "/Creacion_Contenido_Digital/Simulador_CC";
           break;
         // case "3-4":
-        //   nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Desarrollo/Resultados"; //O otro test, no se
+        //   nextPageUrl = "/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Desarrollo/Resultados"; //O otro test, no se
         //   break;
         case "4-1":
-          nextPageUrl = "/DigitalSkillApp/Seguridad/Simulador_Web";
+          nextPageUrl = "/Seguridad/Simulador_Web";
           break;
         case "4-2":
-          nextPageUrl = "/DigitalSkillApp/Seguridad/" + nivelPregunta + "/Pregunta_Alternativas/4-3";
+          nextPageUrl = "/Seguridad/" + nivelPregunta + "/Pregunta_Alternativas/4-3";
           break;
         case "4-3":
-          nextPageUrl = "/DigitalSkillApp/Seguridad/Simulador_Ergonomia";
+          nextPageUrl = "/Seguridad/Simulador_Ergonomia";
           break;
         case "4-4":
           nextPageUrl = "/";    

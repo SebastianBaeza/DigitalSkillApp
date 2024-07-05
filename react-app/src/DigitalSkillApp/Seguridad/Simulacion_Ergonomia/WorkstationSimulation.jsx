@@ -205,7 +205,7 @@ export default function WorkstationSimulation () {
   useEffect(() => {
     if (redirectToNextPage) {
       // Aquí podrías implementar la lógica de redirección a diferentes páginas según el nivelPregunta
-      let nextPageUrl = "/DigitalSkillApp/Seguridad/Basico/Pregunta_Alternativas/4-4";
+      let nextPageUrl = "/Seguridad/Basico/Pregunta_Alternativas/4-4";
       window.location.href = nextPageUrl;
     }
   }, [redirectToNextPage]);

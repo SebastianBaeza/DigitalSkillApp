@@ -4,7 +4,6 @@ import { blocks } from './blocks/text';
 import { forBlock } from './generators/javascript';
 import { javascriptGenerator } from 'blockly/javascript';
 import { pythonGenerator } from 'blockly/python';
-// import { save, load } from './serialization';
 import { toolbox } from './toolbox';
 import './';
 import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Container,  Typography,Button} from '@mui/material';

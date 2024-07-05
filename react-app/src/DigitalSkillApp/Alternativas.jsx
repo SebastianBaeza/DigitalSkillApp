@@ -1,7 +1,6 @@
 import { useState, useEffect} from 'react';
 import { Container, Typography, FormControlLabel, RadioGroup, Radio, Checkbox, Button, Box } from '@mui/material';
 import axios from 'axios';
-import { GlobalContext } from '../GlobalState';
 import './Preguntas.css';
 
 export default function Alternativas({ num, competencia, nivelPregunta }) {
@@ -9,11 +8,9 @@ export default function Alternativas({ num, competencia, nivelPregunta }) {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [response, setResponse] = useState("");
   const [redirectToNextPage, setRedirectToNextPage] = useState(false);
-  const { SumarPuntaje, globalState } = useContext(GlobalContext);
 
   const api_key = ""; //Soy una api key
   // const model_id = "gpt-4";
-  const model_id = "gpt-3.5-turbo";
   const model_id = "gpt-3.5-turbo";
 
   useEffect(() => {
@@ -50,13 +47,9 @@ export default function Alternativas({ num, competencia, nivelPregunta }) {
       });
       const content = result.data.choices[0].message.content;
       console.log(content);
-      console.log(content);
       const lines = content.split("\n").filter(line => line.trim() !== "");
 
       const isMultiple = lines[0].toLowerCase().startsWith("multiple:");
-      // const pregunta = isMultiple ? lines[0].replace(/^multiple:\s*/i, '') : lines[0].replace(/^pregunta:\s*/i, '');
-      const pregunta = lines[1];
-      const opciones = lines.slice(2, 7);
       // const pregunta = isMultiple ? lines[0].replace(/^multiple:\s*/i, '') : lines[0].replace(/^pregunta:\s*/i, '');
       const pregunta = lines[1];
       const opciones = lines.slice(2, 7);
@@ -80,7 +73,6 @@ export default function Alternativas({ num, competencia, nivelPregunta }) {
             Prompt:
             Análisis de respuesta
             Ante una pregunta entregada, evaluar (según tus propios conocimientos y el marco de competencias) el grado de exito del usuario para el nivel ${nivelPregunta}, clasificandolo con 2 puntajes distintos (y solo responde con el numero del puntaje correspondiente): 0 (Fracaso, es decir, que no entiende la competencia a evaluar) y 100 (llega al estado 2 del nivel ${nivelPregunta} de la competencia correspondiente) según el logro de la respuesta para el nivel correspondiente de la pregunta.
-            Ante una pregunta entregada, evaluar (según tus propios conocimientos y el marco de competencias) el grado de exito del usuario para el nivel ${nivelPregunta}, clasificandolo con 2 puntajes distintos (y solo responde con el numero del puntaje correspondiente): 0 (Fracaso, es decir, que no entiende la competencia a evaluar) y 100 (llega al estado 2 del nivel ${nivelPregunta} de la competencia correspondiente) según el logro de la respuesta para el nivel correspondiente de la pregunta.
           `
         },
         {
@@ -103,7 +95,6 @@ export default function Alternativas({ num, competencia, nivelPregunta }) {
       const responseContent = result.data.choices[0].message.content;
       setResponse(responseContent);
       saveResult(responseContent);
-      saveResult(responseContent);
       setRedirectToNextPage(true);
     } catch (error) {
       console.error("Error en la solicitud:", error);
@@ -118,10 +109,10 @@ export default function Alternativas({ num, competencia, nivelPregunta }) {
     let uwu;
     if (num[0] == "3"){
       uwu=parseInt(sessionStorage.getItem("resultado3"),10);
-      sessionStorage.setItem("resultado3", (resultado=="NaN"?uwu:(resultado*0.05)+uwu));
+      sessionStorage.setItem("resultado3", (isNaN(resultado)?uwu:(resultado*0.05)+uwu));
     } else if (num[0] == "4"){
       uwu=parseInt(sessionStorage.getItem("resultado4"),10);
-      sessionStorage.setItem("resultado4", (resultado=="NaN"?uwu:(resultado*0.06667)+uwu));
+      sessionStorage.setItem("resultado4", (isNaN(resultado)?uwu:(resultado*0.06667)+uwu));
     }
   };
 

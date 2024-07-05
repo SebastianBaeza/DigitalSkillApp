@@ -24,11 +24,9 @@ export default function HU02() {
         const outputDiv = document.getElementById('output');
         outputDiv.innerHTML = '> '+(codigo===null?'':codigo);
         if (codigo[0] == 'Hola Mundo!') {
-          // setIsModalOpen(true);
           let uwu = parseInt(sessionStorage.getItem("resultado3"),10);
           sessionStorage.setItem("resultado3", uwu+12.5);
           console.log(sessionStorage.getItem("resultado3"));
-          // sessionStorage.setItem('resultado3', 'true3');
           addDocument();
           
         }

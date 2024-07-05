@@ -6,7 +6,6 @@ import { PptSidebar } from "./assets/HUs/HU05/PptSidebar";
 import { PptEditor } from "./assets/HUs/HU05/PptEditor";
 import { PptSecondaryMenu } from "./assets/HUs/HU05/PptSecondaryMenu";
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { GlobalContext } from '../../../GlobalState';
 
 import {Box,Button,Typography,Modal} from '@mui/material/';
 
@@ -121,7 +120,6 @@ export default function Simulador_Powerpoint() {
         }
         setShowCounter(false);
         setIsApproved(false);
-        SumarPuntaje(0,2);
         setOpen(true);
         console.log(sessionStorage.getItem("resultado"));
         return;

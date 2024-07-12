@@ -29,8 +29,7 @@ export default function Alternativas({ num, competencia, nivelPregunta }) {
             Prompt:
             Pregunta para Medir la Competencia
             Crea una pregunta que se pueda utilizar para medir la competencia de una persona en el eje mencionado. La pregunta debe estar estructurada en texto plano, para cubrir el nivel ${nivelPregunta} de la competencia correspondiente, con respuestas proporcionadas de la misma forma. Se deben crear preguntas que hagan pensar al usuario, por tanto, se debe evitar preguntar al usuario la percepción que tiene de sus propios conocimientos, o de la competencia en si misma. Las preguntas deben dar contexto real al usuario, pues el usuario no conoce ni entiende todos los detalles de la competencia, por eso prueba sus conocimientos. Las preguntas deben permitir al usuario elegir entre 5 alternativas, de las cuales al menos una respuesta debe ser correcta, aunque múltiples tambien pueden serlo. Las preguntas que tienen una sola respuesta deben empezar por "Pregunta:". Las preguntas que tienen múltiples respuestas deben empezar por "Multiple:". El objetivo es comprobar el conocimiento del usuario, por lo que se requiere que las preguntas no den pistas, para que el usuario se base completamente en sus conocimientos del tema. La pregunta a generar puede tratar temas a lo largo de toda la competencia ${competencia}, por lo que trata de variar el contenido, a fin de siempre probar el conocimiento del usuario.
-            Crea una pregunta que se pueda utilizar para medir la competencia de una persona en el eje mencionado. La pregunta debe estar estructurada en texto plano, para cubrir el nivel ${nivelPregunta} de la competencia correspondiente, con respuestas proporcionadas de la misma forma. Se deben crear preguntas que hagan pensar al usuario, por tanto, se debe evitar preguntar al usuario la percepción que tiene de sus propios conocimientos, o de la competencia en si misma. Las preguntas deben dar contexto real al usuario, pues el usuario no conoce ni entiende todos los detalles de la competencia, por eso prueba sus conocimientos. Las preguntas deben permitir al usuario elegir entre 5 alternativas, de las cuales al menos una respuesta debe ser correcta, aunque múltiples tambien pueden serlo. Las preguntas que tienen una sola respuesta deben empezar por "Pregunta:". Las preguntas que tienen múltiples respuestas deben empezar por "Multiple:". El objetivo es comprobar el conocimiento del usuario, por lo que se requiere que las preguntas no den pistas, para que el usuario se base completamente en sus conocimientos del tema. La pregunta a generar puede tratar temas a lo largo de toda la competencia ${competencia}, por lo que trata de variar el contenido, a fin de siempre probar el conocimiento del usuario.
-          `
+            Crea una pregunta que se pueda utilizar para medir la competencia de una persona en el eje mencionado. La pregunta debe estar estructurada en texto plano, para cubrir el nivel ${nivelPregunta} de la competencia correspondiente, con respuestas proporcionadas de la misma forma. Se deben crear preguntas que hagan pensar al usuario, por tanto, se debe evitar preguntar al usuario la percepción que tiene de sus propios conocimientos, o de la competencia en si misma. Las preguntas deben dar contexto real al usuario, pues el usuario no conoce ni entiende todos los detalles de la competencia, por eso prueba sus conocimientos. Las preguntas deben permitir al usuario elegir entre 5 alternativas, de las cuales al menos una respuesta debe ser correcta, aunque múltiples tambien pueden serlo. Las preguntas que tienen una sola respuesta deben empezar por "Pregunta:". Las preguntas que tienen múltiples respuestas deben empezar por "Multiple:". El objetivo es comprobar el conocimiento del usuario, por lo que se requiere que las preguntas no den pistas, para que el usuario se base completamente en sus conocimientos del tema. La pregunta a generar puede tratar temas a lo largo de toda la competencia ${competencia}, por lo que trata de variar el contenido, a fin de siempre probar el conocimiento del usuario.`
         }
       ],
       max_tokens: 250,
@@ -72,8 +71,7 @@ export default function Alternativas({ num, competencia, nivelPregunta }) {
             Estás evaluando la competencia digital del usuario, basado en el modelo de competencia digital para la ciudadanía DigComp 2.2. Eres un experto en el tema, en especifico en la competencia ${competencia}. Se requiere que generes preguntas o valides la correctitud de las respuestas según corresponda al caso.
             Prompt:
             Análisis de respuesta
-            Ante una pregunta entregada, evaluar (según tus propios conocimientos y el marco de competencias) el grado de exito del usuario para el nivel ${nivelPregunta}, clasificandolo con 2 puntajes distintos (y solo responde con el numero del puntaje correspondiente): 0 (Fracaso, es decir, que no entiende la competencia a evaluar) y 100 (llega al estado 2 del nivel ${nivelPregunta} de la competencia correspondiente) según el logro de la respuesta para el nivel correspondiente de la pregunta.
-          `
+            Ante una pregunta entregada, evaluar (según tus propios conocimientos y el marco de competencias) el grado de exito del usuario para el nivel ${nivelPregunta}, clasificandolo con 2 puntajes distintos (y solo responde con el numero del puntaje correspondiente): 0 (Fracaso, es decir, que no entiende la competencia a evaluar) y 100 (llega al estado 2 del nivel ${nivelPregunta} de la competencia correspondiente) según el logro de la respuesta para el nivel correspondiente de la pregunta.`
         },
         {
           role: "user",
@@ -138,25 +136,25 @@ export default function Alternativas({ num, competencia, nivelPregunta }) {
       let nextPageUrl = "";
       switch (num) {
         case "3-1":
-          nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Desarrollo/3-1";
+          nextPageUrl = "/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Desarrollo/3-1";
           break;
         case "3-2":
-          nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Desarrollo/3-2";
+          nextPageUrl = "/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Desarrollo/3-2";
           break;
         case "3-3":
-          nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Desarrollo/3-3";
+          nextPageUrl = "/Creacion_Contenido_Digital/" + nivelPregunta + "/Pregunta_Desarrollo/3-3";
           break;
         case "3-4":
-          nextPageUrl = "/DigitalSkillApp/Creacion_Contenido_Digital/Bloques";
+          nextPageUrl = "/Creacion_Contenido_Digital/Bloques";
           break;
         case "4-1":
-          nextPageUrl = "/DigitalSkillApp/Seguridad/" + nivelPregunta + "/Pregunta_Desarrollo/4-1";
+          nextPageUrl = "/Seguridad/" + nivelPregunta + "/Pregunta_Desarrollo/4-1";
           break;
         case "4-3":
-          nextPageUrl = "/DigitalSkillApp/Seguridad/" + nivelPregunta + "/Pregunta_Desarrollo/4-3";
+          nextPageUrl = "/Seguridad/" + nivelPregunta + "/Pregunta_Desarrollo/4-3";
           break;
         case "4-4":
-          nextPageUrl = "/DigitalSkillApp/Seguridad/" + nivelPregunta + "/Pregunta_Desarrollo/4-4";
+          nextPageUrl = "/Seguridad/" + nivelPregunta + "/Pregunta_Desarrollo/4-4";
           break;
         default:
           nextPageUrl = "/";
